@@ -45,7 +45,7 @@ devtools::install_github("fdzul/deneggs")
 
 ## Authors
 
-* **Felipe Antonio Dzul Manzanilla ** https://github.com/fdzul ** - [denhotspots](https://github.com/fdzul/denhotspots), [boldenr](https://github.com/fdzul/boldenr),[dendata](https://github.com/fdzul/dendata)
+* **Felipe Antonio Dzul Manzanilla** -**https://github.com/fdzul** - [denhotspots](https://github.com/fdzul/denhotspots), [boldenr](https://github.com/fdzul/boldenr),[dendata](https://github.com/fdzul/dendata)
 
 * **Fabian Correa Morales**
 * **Luis Hernández Herrera**
