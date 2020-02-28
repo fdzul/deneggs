@@ -34,9 +34,24 @@ install.packages("deneggs")
 ### Development version
 
 To get a bug fix, or use a feature from the development version, you can
-install dplyr from GitHub.
+install deneggs from GitHub.
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("fdzul/deneggs")
+``` 
 
+## Inspiration
+Add here credits. Project inspired by..., based on...
+
+## Getting help
+
+If you encounter a clear bug, please file a minimal reproducible example
+on [github](https://github.com/fdzul/deneggs/issues). For questions
+and other discussion, please use 
+
+-----
+
+Please note that this project is released with a [Contributor Code of
+Conduct](https://dplyr.tidyverse.org/CODE_OF_CONDUCT). By participating
+in this project you agree to abide by its terms.
