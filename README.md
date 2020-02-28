@@ -32,6 +32,34 @@ devtools::install_github("fdzul/deneggs")
 ``` 
 
 ## Usage
+``` r
+library(magrittr)
+a <- deneggs::eggs_map(path_lect = "1.Datasets/ovitrampas/lecturas",
+         path_shp = "1.Datasets/shp_loc/ver_loc_urb.shp",
+         loc = c("Veracruz", "Boca Del Río"),
+         size = 1,
+         alpha = 0.5,
+         palette_vir = "plasma",
+         risk = TRUE,
+         leg_title = "",
+         weeks = c(8),
+         path_coord = "1.Datasets/Ovitrampas/coordenadas/DescargaOvitrampasMese30.txt")
+
+b <- deneggs::eggs_map(path_lect = "1.Datasets/ovitrampas/lecturas",
+         path_shp = "1.Datasets/shp_loc/ver_loc_urb.shp",
+         loc = c("Veracruz", "Boca Del Río"),
+         size = 1,
+         alpha = 0.5,
+         palette_vir = "plasma",
+         leg_title = "Huevos",
+         risk = FALSE,
+         weeks = c(8),
+         path_coord = "1.Datasets/Ovitrampas/coordenadas/DescargaOvitrampasMese30.txt")
+
+library(cowplot)
+plot_grid(a, b)
+``` 
+
 
 ## Authors
 
