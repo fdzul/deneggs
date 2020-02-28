@@ -33,6 +33,8 @@ Imports:
     ggplot2,
     purrr,
     sf,
-    tidyr
+    tidyr,
+    graphics,
+    utils
 Suggests: 
     roxygen2
