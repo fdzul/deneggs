@@ -31,7 +31,7 @@ install deneggs from GitHub.
 devtools::install_github("fdzul/deneggs")
 ``` 
 
-## Usage
+## usage example (eggs_map)
 ``` r
 library(magrittr)
 a <- deneggs::eggs_map(path_lect = "1.Datasets/ovitrampas/lecturas",
