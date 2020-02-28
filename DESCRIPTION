@@ -26,6 +26,13 @@ LazyData: true
 RoxygenNote: 6.1.1
 Imports: 
     magrittr,
-    rlang (>= 0.1.2)
+    rlang (>= 0.1.2),
+    INLA,
+    boldenr,
+    dplyr,
+    ggplot2,
+    purrr,
+    sf,
+    tidyr
 Suggests: 
     roxygen2
