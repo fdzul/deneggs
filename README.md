@@ -45,9 +45,10 @@ devtools::install_github("fdzul/deneggs")
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Felipe Antonio Dzul Manzanilla ** - *Initial work* - [denhotspots](https://github.com/fdzul/denhotspots)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+See also the list of [contributors](https://github.com/fdzul/deneggs/contributors) who participated in this project.
 
 ## License
 
