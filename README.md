@@ -22,3 +22,21 @@
 * [Status](#status)
 * [Inspiration](#inspiration)
 * [Contact](#contact)
+
+
+## Instalation
+
+``` r
+# The easiest way to get dplyr is to install the whole tidyverse:
+install.packages("deneggs")
+```
+
+### Development version
+
+To get a bug fix, or use a feature from the development version, you can
+install dplyr from GitHub.
+
+``` r
+# install.packages("devtools")
+devtools::install_github("fdzul/deneggs")
+
