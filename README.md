@@ -31,7 +31,7 @@ install deneggs from GitHub.
 devtools::install_github("fdzul/deneggs")
 ``` 
 
-## usage example (eggs_map)
+## usage example 1.
 ``` r
 library(magrittr)
 a <- deneggs::eggs_map(path_lect = "1.Datasets/ovitrampas/lecturas",
@@ -59,6 +59,22 @@ b <- deneggs::eggs_map(path_lect = "1.Datasets/ovitrampas/lecturas",
 cowplot::plot_grid(a, b)
 ``` 
 
+## usage example 2
+``` r
+deneggs::spde_pred_map(path_lect = "1.Datasets/ovitrampas/lecturas",
+              path_shp = "1.Datasets/shp_loc/ver_loc_urb.shp",
+              loc = c("Veracruz", "Boca Del Río"),
+              path_coord = "1.Datasets/ovitrampas/coordenadas/DescargaOvitrampasMese30.txt",
+              longitude  = "Pocision_X", 
+              latitude =  "Pocision_Y",
+              k = 20, 
+              palette_vir  = "viridis",
+              leg_title = "Huevos de Ae. aegypti",
+              fam = "zeroinflatednbinomial0",
+              week = lubridate::week(Sys.Date())-1,
+              var = "Huevecillos",
+              cell_size = 1500)
+``` 
 
 ## Authors
 
