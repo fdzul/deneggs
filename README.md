@@ -56,8 +56,7 @@ b <- deneggs::eggs_map(path_lect = "1.Datasets/ovitrampas/lecturas",
          weeks = c(8),
          path_coord = "1.Datasets/Ovitrampas/coordenadas/DescargaOvitrampasMese30.txt")
 
-library(cowplot)
-plot_grid(a, b)
+cowplot::plot_grid(a, b)
 ``` 
 
 
