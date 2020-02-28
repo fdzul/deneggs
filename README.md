@@ -78,7 +78,11 @@ deneggs::spde_pred_map(path_lect = "1.Datasets/ovitrampas/lecturas",
 
 ## Authors
 
-* **Felipe Antonio Dzul Manzanilla** -**https://github.com/fdzul** - Packages developed in github: 1) [denhotspots](https://github.com/fdzul/denhotspots), 2) [boldenr](https://github.com/fdzul/boldenr),y 3)[dendata](https://github.com/fdzul/dendata)
+* **Felipe Antonio Dzul Manzanilla** -**https://github.com/fdzul** - Packages developed in github:
+
+- 1) [denhotspots](https://github.com/fdzul/denhotspots). 
+- 2) [boldenr](https://github.com/fdzul/boldenr). 
+- 3) [dendata](https://github.com/fdzul/dendata).
 
 * **Fabian Correa Morales**
 * **Luis Hernández Herrera**
