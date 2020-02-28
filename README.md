@@ -14,16 +14,6 @@
   - `loc_grid_points()` It is a complementary function that helps in the creation of grid of the locality in the prediction stack in [INLA](http://www.r-inla.org/).
   - `mesh()` It is a complementary function that helps in the creation of mesh.
 
-## Table of contents
-* [General info](#general-info)
-* [Technologies](#technologies)
-* [Setup](#setup)
-* [Features](#features)
-* [Status](#status)
-* [Inspiration](#inspiration)
-* [Contact](#contact)
-
-
 ## Instalation
 
 ``` r
@@ -45,7 +35,7 @@ devtools::install_github("fdzul/deneggs")
 
 ## Authors
 
-* **Felipe Antonio Dzul Manzanilla** -**https://github.com/fdzul** - [denhotspots](https://github.com/fdzul/denhotspots), [boldenr](https://github.com/fdzul/boldenr),[dendata](https://github.com/fdzul/dendata)
+* **Felipe Antonio Dzul Manzanilla** -**https://github.com/fdzul** - Packages developed in github: 1) [denhotspots](https://github.com/fdzul/denhotspots), 2) [boldenr](https://github.com/fdzul/boldenr),y 3)[dendata](https://github.com/fdzul/dendata)
 
 * **Fabian Correa Morales**
 * **Luis Hernández Herrera**
