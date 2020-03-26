@@ -56,7 +56,6 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
                  k = k,
                  long = longitude,
                  lat = latitude)
-    print(mesh$n)
 
     ## Step 2. Define the SPDE ####
     spde <- INLA::inla.spde2.matern(mesh = mesh,
@@ -71,9 +70,6 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     A_mod <- INLA::inla.spde.make.A(mesh = mesh,
                               loc = cbind(x[, c(longitude)],
                                           x[, c(latitude)]))
-
-
-    print(dim(A_mod))
 
     ## 3.2. this projector matrix we use for modelling ####
 
@@ -158,11 +154,11 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
                 data.frame(fam = c("poisson",
                                    "zeroinflatedpoisson0",
                                    "zeroinflatedpoisson1",
-                                   "zeroinflatedpoisson2",
+                                   #"zeroinflatedpoisson2",
                                    "nbinomial",
                                    "nbinomial2",
                                    "zeroinflatednbinomial0",
-                                   "zeroinflatednbinomial2",
+                                   #"zeroinflatednbinomial2",
                                    "zeroinflatednbinomial1",
                                    #"nmixnb",
                                    "lognormal"))))
