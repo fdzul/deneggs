@@ -155,9 +155,17 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     }
     purrr::map_df(mod_fam, fun_extrac_dic)
     print(cbind(purrr::map_df(mod_fam, fun_extrac_dic),
-                data.frame(fam = c("poisson", "zeroinflatedpoisson0",
-                                   "zeroinflatedpoisson1", "nbinomial", "zeroinflatednbinomial0",
-                                   "zeroinflatednbinomial1"))))
+                data.frame(fam = c("poisson",
+                                   "zeroinflatedpoisson0",
+                                   "zeroinflatedpoisson1",
+                                   "zeroinflatedpoisson2",
+                                   "nbinomial",
+                                   "nbinomial2",
+                                   "zeroinflatednbinomial0",
+                                   "zeroinflatednbinomial2",
+                                   "zeroinflatednbinomial1",
+                                   "nmixnb",
+                                   "lognormal"))))
 
     ## Step 7.2. Run inla with best family
     mod <- INLA::inla(formula,
@@ -191,6 +199,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
       ggplot2::scale_fill_viridis_c(leg_title,
                                     option = palette_vir) +
       ggplot2::theme_bw()
+    p
     }
 
 
