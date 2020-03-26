@@ -90,7 +90,6 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     # 3.2.3 make the projector matrix for use for modelling ####
     A_pred <- INLA::inla.spde.make.A(mesh = mesh,
                                      loc = sf::st_coordinates(p))
-    print(dim(A_pred))
 
     ## Step 4. Define the Spatial Field (w) ####
     w.index <- INLA::inla.spde.make.index(name = "w",
@@ -128,12 +127,12 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     l_fam <- list("poisson",
                   "zeroinflatedpoisson0",
                   "zeroinflatedpoisson1",
-                  "zeroinflatedpoisson2",
+                  #"zeroinflatedpoisson2",
                   "nbinomial",
                   "nbinomial2",
                   "zeroinflatednbinomial0",
                   "zeroinflatednbinomial1",
-                  "zeroinflatednbinomial1",
+                  #"zeroinflatednbinomial2",
                   #"nmixnb",
                   "lognormal")
     fun_mod_inla <- function(x){
@@ -182,9 +181,8 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     p$pred_mean <- mod$summary.fitted.values[index, "mean"]
     p$pred_ll <- mod$summary.fitted.values[index, "0.025quant"]
     p$pred_ul <- mod$summary.fitted.values[index, "0.025quant"]
-    print(names(p))
 
-    ggplot2::ggplot(data = loc) +
+    map <- ggplot2::ggplot(data = loc) +
       ggplot2::geom_sf() +
       ggplot2::coord_sf(datum = NULL) +
       ggplot2::geom_tile(data = p,
@@ -195,7 +193,11 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
       ggplot2::scale_fill_viridis_c(leg_title,
                                     option = palette_vir) +
       ggplot2::theme_bw()
-    return(p)
+    multi_return <- function() {
+      my_list <- list("data" = p, "map" = map)
+      return(my_list)
+    }
+    multi_return()
     }
 
 
