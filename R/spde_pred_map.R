@@ -199,7 +199,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
       ggplot2::scale_fill_viridis_c(leg_title,
                                     option = palette_vir) +
       ggplot2::theme_bw()
-    p
+    return(p)
     }
 
 
