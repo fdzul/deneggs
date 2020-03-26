@@ -138,7 +138,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
                   "zeroinflatednbinomial0",
                   "zeroinflatednbinomial1",
                   "zeroinflatednbinomial1",
-                  "nmixnb",
+                  #"nmixnb",
                   "lognormal")
     fun_mod_inla <- function(x){
         INLA::inla(formula,
@@ -164,7 +164,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
                                    "zeroinflatednbinomial0",
                                    "zeroinflatednbinomial2",
                                    "zeroinflatednbinomial1",
-                                   "nmixnb",
+                                   #"nmixnb",
                                    "lognormal"))))
 
     ## Step 7.2. Run inla with best family
