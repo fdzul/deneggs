@@ -132,9 +132,14 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     l_fam <- list("poisson",
                   "zeroinflatedpoisson0",
                   "zeroinflatedpoisson1",
+                  "zeroinflatedpoisson2",
                   "nbinomial",
+                  "nbinomial2",
                   "zeroinflatednbinomial0",
-                  "zeroinflatednbinomial1")
+                  "zeroinflatednbinomial1",
+                  "zeroinflatednbinomial1",
+                  "nmixnb",
+                  "lognormal")
     fun_mod_inla <- function(x){
         INLA::inla(formula,
              family = x,
