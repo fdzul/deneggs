@@ -192,7 +192,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
       ggplot2::labs(x = "", y ="") +
       ggplot2::scale_fill_viridis_c(leg_title,
                                     option = palette_vir) +
-      ggplot2::theme_bw()
+      ggplot2::theme_void()
     multi_return <- function() {
       my_list <- list("data" = p, "map" = map)
       return(my_list)
