@@ -199,7 +199,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
 
     ## Step 9. return the map and the prediction values ####
     multi_return <- function() {
-      my_list <- list("data" = p, "map" = map)
+      my_list <- list("data" = p, "map" = map, "mesh" = mesh)
       return(my_list)
     }
     multi_return()
