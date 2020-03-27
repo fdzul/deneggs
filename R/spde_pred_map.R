@@ -182,7 +182,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     p <- data.frame(sf::st_coordinates(p))
     names(p) <- c("x", "y")
     p$pred_mean <- mod$summary.fitted.values[index, "mean"]
-    p$pred_mean <- mod$summary.fitted.values[index, "sd"]
+    p$pred_sd <- mod$summary.fitted.values[index, "sd"]
     p$pred_ll <- mod$summary.fitted.values[index, "0.025quant"]
     p$pred_ul <- mod$summary.fitted.values[index, "0.025quant"]
     p$ws_mean <- mod$summary.random$w[index, "mean"]
