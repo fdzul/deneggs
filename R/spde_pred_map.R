@@ -71,7 +71,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
                               loc = cbind(x[, c(longitude)],
                                           x[, c(latitude)]))
 
-    ## 3.2. this projector matrix we use for modelling ####
+    ## 3.2. this projector matrix we use for prediction ####
 
     # 3.2.1 load the locality limit ####
     loc <- sf::st_read(path_shp) %>%
@@ -86,8 +86,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     p <- loc_grid_points(sf = loc, cell_size = cell_size)
 
 
-
-    # 3.2.3 make the projector matrix for use for modelling ####
+    # 3.2.3 make the projector matrix for use prediction ####
     A_pred <- INLA::inla.spde.make.A(mesh = mesh,
                                      loc = sf::st_coordinates(p))
 
@@ -96,6 +95,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
                                     n.spde = spde$n.spde,
                                     n.group = 1,
                                     n.repl = 1)
+
     ## Step 5. Define the stack ####
 
     ## Step 5.1 Define the stack for the modelling ####
@@ -172,16 +172,19 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
                                            compute = TRUE))
     print(summary(mod))
 
-    ## Step 8.2 Make the predictions ####
+    ## Step 8. Make the predictions ####
+
+    ## Step 8.1 extract the index of predictions ####
     index <- INLA::inla.stack.index(stack = stack_full, tag = "pred")$data
 
-    ## Step 2. extract the prediction ####
+    ## Step 8.2. extract the predictions ####
     p <- data.frame(sf::st_coordinates(p))
     names(p) <- c("x", "y")
     p$pred_mean <- mod$summary.fitted.values[index, "mean"]
     p$pred_ll <- mod$summary.fitted.values[index, "0.025quant"]
     p$pred_ul <- mod$summary.fitted.values[index, "0.025quant"]
 
+    ## Step 8.3. map the predictions ####
     map <- ggplot2::ggplot(data = loc) +
       ggplot2::geom_sf() +
       ggplot2::coord_sf(datum = NULL) +
@@ -193,6 +196,8 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
       ggplot2::scale_fill_viridis_c(leg_title,
                                     option = palette_vir) +
       ggplot2::theme_void()
+
+    ## Step 9. return the map and the prediction values ####
     multi_return <- function() {
       my_list <- list("data" = p, "map" = map)
       return(my_list)
