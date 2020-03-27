@@ -14,7 +14,7 @@
 #' @param var is the name of variable target.
 #' @param leg_title is title of legend.
 #' @param cell_size is the parameter for define the grid of locality for prediction.
-#' @param palette_vir is the palleta of viridis. The option can be magma, plasma, inferno, and viridis.
+#' @param palette_vir is the palette of viridis. The option can be magma, plasma, inferno, and viridis.
 #' @author Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
 #'
 #' @seealso \link[viridis]{viridis}, \link[viridis]{plasma}, \link[viridis]{inferno}, \link[viridis]{magma}
@@ -149,19 +149,19 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     fun_extrac_dic <- function(x){
         data.frame(dic = round(x$dic$dic, digits = 2))
     }
-    purrr::map_df(mod_fam, fun_extrac_dic)
-    print(cbind(purrr::map_df(mod_fam, fun_extrac_dic),
-                data.frame(fam = c("poisson",
-                                   "zeroinflatedpoisson0",
-                                   "zeroinflatedpoisson1",
-                                   "zeroinflatedpoisson2",
-                                   #"nmixnb",
-                                   #"lognormal",
-                                   "nbinomial",
-                                   "nbinomial2",
-                                   "zeroinflatednbinomial0",
-                                   "zeroinflatednbinomial2",
-                                   "zeroinflatednbinomial1"))))
+    dics <- cbind(purrr::map_df(mod_fam, fun_extrac_dic),
+                  data.frame(fam = c("poisson",
+                                     "zeroinflatedpoisson0",
+                                     "zeroinflatedpoisson1",
+                                     "zeroinflatedpoisson2",
+                                     #"nmixnb",
+                                     #"lognormal",
+                                     "nbinomial",
+                                     "nbinomial2",
+                                     "zeroinflatednbinomial0",
+                                     "zeroinflatednbinomial2",
+                                     "zeroinflatednbinomial1")))
+    print(dics)
 
     ## Step 7.2. Run inla with best family
     mod <- INLA::inla(formula,
@@ -200,7 +200,11 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
 
     ## Step 9. return the map and the prediction values ####
     multi_return <- function() {
-      my_list <- list("data" = p, "map" = map, "mesh" = mesh)
+      my_list <- list("data" = p,
+                      "map" = map,
+                      "mesh" = mesh,
+                      "loc" = loc,
+                      "dics" = dics)
       return(my_list)
     }
     multi_return()
