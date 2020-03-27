@@ -19,7 +19,7 @@
 #'
 #' @seealso \link[viridis]{viridis}, \link[viridis]{plasma}, \link[viridis]{inferno}, \link[viridis]{magma}
 #' @seealso \link[INLA]{inla}
-#' @return a ggmap with the prediction of the number of eggs.
+#' @return a list with the gmap with the prediction of the number of eggs, the prediction of number of eggs, the mesh.
 #' @export
 #'
 #' @examples
@@ -74,7 +74,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     ## 3.2. this projector matrix we use for prediction ####
 
     # 3.2.1 load the locality limit ####
-    loc <- sf::st_read(path_shp) %>%
+    loc <- sf::st_read(path_shp, quiet = TRUE) %>%
       dplyr::filter(NOMBRE %in% c(loc)) %>%
       sf::st_transform(crs = 4326) %>%
       dplyr::select(1:4) %>%
@@ -117,7 +117,8 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     stack_full <- INLA::inla.stack(stack_mod, stack_pred)
 
     ## Step 6. Define the formula
-    hyper1 = list(theta = list(prior="pc.prec", param=c(1, 0.01)))
+    hyper1 = list(theta = list(prior = "pc.prec",
+                               param = c(1, 0.01)))
     formula <- y ~ 0 + Intercept +  f(w,
                                       model = spde,
                                       hyper = hyper1)
@@ -204,5 +205,3 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     }
     multi_return()
     }
-
-
