@@ -17,7 +17,7 @@
 ## Instalation
 
 ``` r
-# The easiest way to get dplyr is to install the whole tidyverse:
+# The easiest way to get deneggs is to install:
 install.packages("deneggs")
 ```
 
@@ -26,10 +26,18 @@ install.packages("deneggs")
 To get a bug fix, or use a feature from the development version, you can
 install deneggs from GitHub.
 
+mac
 ``` r
 # install.packages("devtools")
 devtools::install_github("fdzul/deneggs")
 ``` 
+
+linux fedora
+``` r
+
+# install.packages("devtools")
+remote::install_github("fdzul/deneggs")
+```
 
 ## usage example 1.
 ``` r
