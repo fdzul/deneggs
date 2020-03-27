@@ -206,7 +206,6 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
       my_list <- list("data" = x,
                       "pred" = p,
                       "map" = map,
-                      "mesh" = mesh,
                       "loc" = loc,
                       "dics" = dics)
       return(my_list)
