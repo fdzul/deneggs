@@ -52,10 +52,10 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     ####################################################
 
     ## Step 1. make the mesh ####
-    mesh <- mesh(x = x,
+    (mesh <- mesh(x = x,
                  k = k,
                  long = longitude,
-                 lat = latitude)
+                 lat = latitude))
 
     ## Step 2. Define the SPDE ####
     spde <- INLA::inla.spde2.matern(mesh = mesh,
