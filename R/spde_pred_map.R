@@ -36,7 +36,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
 
 
     # Step 0. 2 load the locality limit ####
-    loc <- sf::st_read(path_shp) %>%
+    loc <- sf::st_read(path_shp, quiet = TRUE) %>%
       dplyr::filter(NOMGEO %in% c(loc)) %>%
       sf::st_transform(crs = 4326) %>%
       sf::st_union()
@@ -66,10 +66,10 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     ####################################################
 
     ## Step 1. make the mesh ####
-    (mesh <- mesh(x = x,
-                 k = k,
-                 long = longitude,
-                 lat = latitude))
+    (mesh <- deneggs::mesh(x = x,
+                           k = k,
+                           long = longitude,
+                           lat = latitude))
 
     ## Step 2. Define the SPDE ####
     spde <- INLA::inla.spde2.matern(mesh = mesh,
@@ -90,7 +90,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
 
     # 3.2.2 extract the coordinates of grid point prediction #####
 
-    p <- loc_grid_points(sf = loc, cell_size = cell_size)
+    p <- deneggs::loc_grid_points(sf = loc, cell_size = cell_size)
 
 
     # 3.2.3 make the projector matrix for use prediction ####
