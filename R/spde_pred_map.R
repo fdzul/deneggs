@@ -66,10 +66,10 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     ####################################################
 
     ## Step 1. make the mesh ####
-    (mesh <- deneggs::mesh(x = x,
+    mesh <- deneggs::mesh(x = x,
                            k = k,
                            long = longitude,
-                           lat = latitude))
+                           lat = latitude)
 
     ## Step 2. Define the SPDE ####
     spde <- INLA::inla.spde2.matern(mesh = mesh,
@@ -169,7 +169,6 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
                                      "zeroinflatednbinomial0",
                                      #"zeroinflatednbinomial2",
                                      "zeroinflatednbinomial1")))
-    print(dics)
 
     ## Step 7.2. Run inla with best family
     mod <- INLA::inla(formula,
@@ -180,7 +179,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
                   control.predictor = list(A = INLA::inla.stack.A(stack_full),
                                            link = 1,
                                            compute = TRUE))
-    print(summary(mod))
+
 
     ## Step 8. Make the predictions ####
 
