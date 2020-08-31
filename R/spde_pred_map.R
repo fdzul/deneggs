@@ -173,7 +173,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
 
     ## Step 7.2. Run inla with best family
     mod <- INLA::inla(formula,
-                  family = a$dics[a$dics$dic == min(a$dics$dic),][,2],
+                  family = dics[dics$dic == min(dics$dic),][,2],
                   data  = INLA::inla.stack.data(stack_full, spde = spde),
                   control.compute = list(dic = TRUE, waic = TRUE,
                                          openmp.strategy="huge"),
