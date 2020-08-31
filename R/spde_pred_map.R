@@ -1,6 +1,6 @@
 #' spde_pred_map
 #'
-#' This function predicts the number of eggs in areas where it was not collected using geostatistical analysis at INLA
+#' This function predicts the number of eggs in areas where it was not collected using geostatistical analysis with INLA
 #'
 #' @param path_lect is the directory of the ovitrampas readings file.
 #' @param loc is the locality target.
@@ -26,14 +26,21 @@
 #' @details \link[INLA]{inla}.
 spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
                           leg_title,
-                          longitude, latitude, k, fam, week, var,
+                          longitude, latitude, k, week, var,
                           cell_size, palette_vir){
 
     ## Step 0.1 load the ovitrap dataset ####
     x <- boldenr::read_dataset_bol(path = path_lect,
                                    dataset = "vectores",
-                                   inf = "Lecturas") %>%
-        dplyr::filter(Localidad %in% c(loc))
+                                   inf = "Lecturas")
+
+
+    # Step 0. 2 load the locality limit ####
+    loc <- sf::st_read(path_shp) %>%
+      dplyr::filter(NOMGEO %in% c(loc)) %>%
+      sf::st_transform(crs = 4326) %>%
+      sf::st_union()
+
 
     ## Step 0.2 load the coordinates dataset ####
     y <- read.table(file = path_coord,
@@ -45,9 +52,16 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     x$Ovitrampa <- as.numeric(x$Ovitrampa)
     y$Ovitrampa <- as.numeric(y$Ovitrampa)
     x <- dplyr::left_join(x = x,
-                           y = y,
-                           by = "Ovitrampa") %>%
-        dplyr::filter(Semana.Epidemiologica %in% c(week))
+                          y = y,
+                          by = "Ovitrampa") %>%
+      dplyr::filter(Semana.Epidemiologica %in% c(week)) %>%
+      dplyr::mutate(long = Pocision_X,
+                    lat = Pocision_Y) %>%
+      sf::st_as_sf(coords = c("long", "lat"),
+                   crs = 4326)
+    x <- x[loc, ] %>%
+      sf::st_drop_geometry() %>%
+      as.data.frame()
 
     ####################################################
 
@@ -71,14 +85,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
                               loc = cbind(x[, c(longitude)],
                                           x[, c(latitude)]))
 
-    ## 3.2. this projector matrix we use for prediction ####
 
-    # 3.2.1 load the locality limit ####
-    loc <- sf::st_read(path_shp, quiet = TRUE) %>%
-      dplyr::filter(NOMBRE %in% c(loc)) %>%
-      sf::st_transform(crs = 4326) %>%
-      dplyr::select(1:4) %>%
-      sf::st_union()
 
 
     # 3.2.2 extract the coordinates of grid point prediction #####
@@ -128,19 +135,20 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     l_fam <- list("poisson",
                   "zeroinflatedpoisson0",
                   "zeroinflatedpoisson1",
-                  "zeroinflatedpoisson2",
+                  #"zeroinflatedpoisson2",
                   #"nmixnb",
                   #"lognormal",
                   "nbinomial",
                   "nbinomial2",
                   "zeroinflatednbinomial0",
-                  "zeroinflatednbinomial2",
+                  #"zeroinflatednbinomial2",
                   "zeroinflatednbinomial1")
     fun_mod_inla <- function(x){
         INLA::inla(formula,
              family = x,
              data  = INLA::inla.stack.data(stack_full),
-             control.compute = list(dic = TRUE, waic = TRUE),
+             control.compute = list(dic = TRUE, waic = TRUE,
+                                    openmp.strategy="huge"),
              control.predictor = list(A = INLA::inla.stack.A(stack_full),
                                       link = 1,
                                       compute = TRUE))
@@ -153,21 +161,22 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
                   data.frame(fam = c("poisson",
                                      "zeroinflatedpoisson0",
                                      "zeroinflatedpoisson1",
-                                     "zeroinflatedpoisson2",
+                                     #"zeroinflatedpoisson2",
                                      #"nmixnb",
                                      #"lognormal",
                                      "nbinomial",
                                      "nbinomial2",
                                      "zeroinflatednbinomial0",
-                                     "zeroinflatednbinomial2",
+                                     #"zeroinflatednbinomial2",
                                      "zeroinflatednbinomial1")))
     print(dics)
 
     ## Step 7.2. Run inla with best family
     mod <- INLA::inla(formula,
-                  family = fam,
+                  family = a$dics[a$dics$dic == min(a$dics$dic),][,2],
                   data  = INLA::inla.stack.data(stack_full, spde = spde),
-                  control.compute = list(dic = TRUE, waic = TRUE),
+                  control.compute = list(dic = TRUE, waic = TRUE,
+                                         openmp.strategy="huge"),
                   control.predictor = list(A = INLA::inla.stack.A(stack_full),
                                            link = 1,
                                            compute = TRUE))
@@ -189,16 +198,16 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     p$ws_sd <- mod$summary.random$w[index, "sd"]
 
     ## Step 8.3. map the predictions ####
-    map <- ggplot2::ggplot(data = loc) +
-      ggplot2::geom_sf() +
-      ggplot2::coord_sf(datum = NULL) +
+    map <- ggplot2::ggplot() +
       ggplot2::geom_tile(data = p,
                          ggplot2::aes(x = x,
                                       y = y,
                                       fill = pred_mean)) +
-      ggplot2::labs(x = "", y ="") +
       ggplot2::scale_fill_viridis_c(leg_title,
                                     option = palette_vir) +
+      ggplot2::geom_sf(data = loc,
+                       fill = NA,
+                       col = "black", lwd = 1.5) +
       ggplot2::theme_void()
 
     ## Step 9. return the map and the prediction values ####
