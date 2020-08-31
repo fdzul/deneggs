@@ -24,7 +24,7 @@
 #'
 #' @examples
 #' @details \link[INLA]{inla}.
-spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
+spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
                           leg_title,
                           longitude, latitude, k, week, var,
                           cell_size, palette_vir){
@@ -39,7 +39,7 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
     loc <- sf::st_read(path_shp, quiet = TRUE)
     Encoding(loc$NOMGEO) <- "latin1"
     loc <- loc %>%
-      dplyr::filter(NOMGEO %in% c(loc)) %>%
+      dplyr::filter(NOMGEO %in% c(locality)) %>%
       sf::st_transform(crs = 4326) %>%
       sf::st_union()
 
