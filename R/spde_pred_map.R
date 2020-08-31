@@ -37,10 +37,10 @@ spde_pred_map <- function(path_lect,loc, path_coord, path_shp,
 
     # Step 0. 2 load the locality limit ####
     loc <- sf::st_read(path_shp, quiet = TRUE) %>%
+      dplyr::mutate(NOMGEO = Encoding(NOMGEO, value = "latin1")) %>%
       dplyr::filter(NOMGEO %in% c(loc)) %>%
       sf::st_transform(crs = 4326) %>%
       sf::st_union()
-
 
     ## Step 0.2 load the coordinates dataset ####
     y <- read.table(file = path_coord,
