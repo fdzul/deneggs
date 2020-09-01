@@ -21,6 +21,6 @@ loc_grid_points <- function(sf, cell_size){
                       crs = 4326)
     ind <- sf::st_intersects(sf, p)
     p <- p[ind[[1]],]
-    plot(p, asp = 1)
+    #plot(p, asp = 1)
     p
 }

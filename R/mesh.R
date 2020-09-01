@@ -24,6 +24,6 @@ mesh <- function(x, k, long, lat){
         #max.edge = c(1/k, 2/k), ## mandatory
         max.edge = c(0.3/k, 2/k), ## mandatory
         cutoff= 0.1/k) ## good to have >0
-    plot(mesh, asp=1, main = ""); points(coor, col= "red")
+    #plot(mesh, asp=1, main = ""); points(coor, col= "red")
     mesh
 }
