@@ -171,9 +171,17 @@ spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
                                      #"zeroinflatednbinomial2",
                                      "zeroinflatednbinomial1")))
 
+    ###
+
+    if(nrow(dics[dics$dic == min(dics$dic),]) == 2){
+      fam <- dics[dics$dic == min(dics$dic),][2,2]
+    } else {
+      fam <- dics[dics$dic == min(dics$dic),][,2]
+    }
+
     ## Step 7.2. Run inla with best family
     mod <- INLA::inla(formula,
-                  family = dics[dics$dic == min(dics$dic),][,2],
+                  family = fam,
                   data  = INLA::inla.stack.data(stack_full, spde = spde),
                   control.compute = list(dic = TRUE, waic = TRUE,
                                          openmp.strategy="huge"),
