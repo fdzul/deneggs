@@ -26,6 +26,7 @@
 #' @details \link[INLA]{inla}.
 spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
                           leg_title,
+                          aproximation, integration,
                           longitude, latitude, k, week, var,
                           cell_size, palette_vir){
 
@@ -185,6 +186,8 @@ spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
                   data  = INLA::inla.stack.data(stack_full, spde = spde),
                   control.compute = list(dic = TRUE, waic = TRUE,
                                          openmp.strategy="huge"),
+                  control.inla = list(strategy = aproximation,
+                                      int.strategy = integration),
                   control.predictor = list(A = INLA::inla.stack.A(stack_full),
                                            link = 1,
                                            compute = TRUE))
