@@ -225,6 +225,84 @@ spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
                        col = "black", lwd = 1.5) +
       ggplot2::theme_void()
 
+    ##
+    hotspots_eggs <- function(x, var, alpha){
+
+      vtess <- deldir::deldir(x$x, x$y)
+
+
+      voronoipolygons = function(thiess) {
+        w = deldir::tile.list(thiess)
+        polys = vector(mode='list', length=length(w))
+        for (i in seq(along=polys)) {
+          pcrds = cbind(w[[i]]$x, w[[i]]$y)
+          pcrds = rbind(pcrds, pcrds[1,])
+          polys[[i]] = sp::Polygons(list(sp::Polygon(pcrds)), ID=as.character(i))
+        }
+        SP = sp::SpatialPolygons(polys)
+        voronoi = sp::SpatialPolygonsDataFrame(SP, data=data.frame(dummy = seq(length(SP)), row.names=sapply(slot(SP, 'polygons'),
+                                                                                                             function(x) slot(x, 'ID'))))
+      }
+
+
+      v <- voronoipolygons(vtess)
+
+      vtess.sf <- sf::st_as_sf(v)
+
+      # Contiguity weights for Thiessen polygons ####
+      st_queen <- function(a, b = a) sf::st_relate(a, b, pattern = "F***T****")
+      queen.sgbp <- st_queen(vtess.sf)
+
+      as.nb.sgbp <- function(x, ...) {
+        attrs <- attributes(x)
+        x <- lapply(x, function(i) { if(length(i) == 0L) 0L else i } )
+        attributes(x) <- attrs
+        class(x) <- "nb"
+        x
+      }
+
+      queen.nb <- as.nb.sgbp(queen.sgbp)
+
+      ###
+      swm_gi <- spdep::nb2listw(queen.nb, style = "B", zero.policy = TRUE)
+
+
+      getis_ord <- function(x, var){
+        x[is.na(x)] <- 0
+        y <- spdep::localG(x  = (unlist(x[, c(var)]) - mean(unlist(x[, c(var)]),
+                                                            na.rm = TRUE))/sd(unlist(x[,c(var)]),
+                                                                              na.rm = TRUE),
+                           listw = swm_gi,
+                           zero.policy = TRUE)
+        attributes(y) <- NULL
+        y <- as.data.frame(y)
+        y
+      }
+
+      #y2 <- getis_ord(x, var = var)
+
+      x$z_score <- getis_ord(x, var = var)
+      x
+
+      # The critical values for cutt off of Getis values ####
+      ## Bonferroni-corrected z-value (Getis & Ord, 1995)
+      getis_ord_umbral <- function(n, alpha){
+        round(qnorm(p = -((1-alpha)/n) + 1, mean = 0, sd = 1), digits = 4)
+      }
+      cutt_off <- getis_ord_umbral(n = nrow(x), alpha = alpha)
+
+      # detect the hotspot based in the cutt_off of benferroni ####
+      hotspots_gi <- function(x){
+        as.numeric(ifelse(x >= cutt_off, 1, 0))
+      }
+
+      x %>%
+        dplyr::mutate(hotspots = ifelse(z_score >= cutt_off, "Hotspots", "No Hotspots"))
+
+
+    }
+
+
 
 
     ## Step 9. return the map and the prediction values ####
@@ -233,7 +311,8 @@ spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
                       "pred" = p,
                       "map" = map,
                       "loc" = loc,
-                      "dics" = dics)
+                      "dics" = dics,
+                      "hotspots" =  hotspots_eggs(x = p, var = "pred_mean", alpha = alpha))
       return(my_list)
     }
     multi_return()
