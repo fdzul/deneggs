@@ -25,7 +25,7 @@
 #' @examples
 #' @details \link[INLA]{inla}.
 spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
-                          leg_title,
+                          leg_title, alpha,
                           aproximation, integration,
                           longitude, latitude, k, week, var,
                           cell_size, palette_vir){
