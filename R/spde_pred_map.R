@@ -59,6 +59,7 @@ spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
       dplyr::filter(Semana.Epidemiologica %in% c(week)) %>%
       dplyr::mutate(long = Pocision_X,
                     lat = Pocision_Y) %>%
+      dplyr::filter(!is.na(long)) %>%
       sf::st_as_sf(coords = c("long", "lat"),
                    crs = 4326)
     x <- x[loc, ] %>%
@@ -207,6 +208,9 @@ spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
     p$pred_ul <- mod$summary.fitted.values[index, "0.025quant"]
     p$ws_mean <- mod$summary.random$w[index, "mean"]
     p$ws_sd <- mod$summary.random$w[index, "sd"]
+    p$week <- week
+    p$fam <- fam
+    p$dic <- mod$dic$dic
 
     ## Step 8.3. map the predictions ####
     map <- ggplot2::ggplot() +
@@ -220,6 +224,8 @@ spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
                        fill = NA,
                        col = "black", lwd = 1.5) +
       ggplot2::theme_void()
+
+
 
     ## Step 9. return the map and the prediction values ####
     multi_return <- function() {
