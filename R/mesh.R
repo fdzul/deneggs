@@ -15,7 +15,7 @@
 #' @seealso \link[INLA]{inla.mesh.2d}
 #' @details this function use \link[INLA]{inla}.
 #' @examples
-mesh <- function(x, k, long, lat){
+mesh <- function(x, k, long, lat, loc_limit){
     #x$X <- x$long
     #x$Y <- x$lat
     coor <- cbind(x[,c(long)], x[, c(lat)])
