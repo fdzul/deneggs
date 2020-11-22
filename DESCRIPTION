@@ -35,6 +35,11 @@ Imports:
     sf,
     tidyr,
     graphics,
-    utils
+    utils,
+    methods,
+    stats,
+    deldir,
+    sp,
+    spdep
 Suggests: 
     roxygen2
