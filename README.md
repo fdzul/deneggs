@@ -1,6 +1,6 @@
 # **deneggs**
 
-[![Build Status](https://travis-ci.org/pages-themes/cayman.svg?branch=master)](https://travis-ci.org/pages-themes/cayman) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-cayman.svg)](https://badge.fury.io/rb/jekyll-theme-cayman)
+[![Build Status](https://travis-ci.org/pages-themes/cayman.svg?branch=master)](https://travis-ci.org/pages-themes/cayman) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-cayman.svg)](https://badge.fury.io/rb/jekyll-theme-cayman)[![Github All Releases](https://img.shields.io/github/downloads/fdzul/deneggs/total.svg)]()
 
 **deneggs is a package developed in the department of prevention and control of diseases transmitted by vector of the [Secretary of Health of Veracruz](https://www.ssaver.gob.mx/) and with colaboration of the [CENAPRECE](https://www.gob.mx/salud/cenaprece)**
 
