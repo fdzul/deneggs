@@ -42,7 +42,8 @@ spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
     loc <- sf::st_read(path_shp, quiet = TRUE)
     Encoding(loc$NOMGEO) <- "latin1"
     loc <- loc %>%
-      dplyr::filter(NOMGEO %in% c(locality)) %>%
+      dplyr::filter(NOMGEO %in% c(locality) &
+                      AMBITO %in% c("Urbana")) %>%
       sf::st_transform(crs = 4326) %>%
       sf::st_union()
     loc_sp <- sf::as_Spatial(from = sf::st_geometry(loc), cast = TRUE)
