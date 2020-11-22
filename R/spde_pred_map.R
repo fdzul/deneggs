@@ -15,7 +15,9 @@
 #' @param leg_title is title of legend.
 #' @param cell_size is the parameter for define the grid of locality for prediction.
 #' @param palette_vir is the palette of viridis. The option can be magma, plasma, inferno, and viridis.
-#' @author Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
+#' @param plot is a logical argument. if TRUE plot the mesh else no plot the mesh.
+#'
+#'@author Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
 #'
 #' @seealso \link[viridis]{viridis}, \link[viridis]{plasma}, \link[viridis]{inferno}, \link[viridis]{magma}
 #' @seealso \link[INLA]{inla}
@@ -25,7 +27,7 @@
 #' @examples
 #' @details \link[INLA]{inla}.
 spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
-                          leg_title, alpha,
+                          leg_title, alpha, plot = NULL,
                           aproximation, integration,
                           longitude, latitude, k, week, var,
                           cell_size, palette_vir){
@@ -43,6 +45,7 @@ spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
       dplyr::filter(NOMGEO %in% c(locality)) %>%
       sf::st_transform(crs = 4326) %>%
       sf::st_union()
+    loc_sp <- sf::as_Spatial(from = sf::st_geometry(loc), cast = TRUE)
 
     ## Step 0.2 load the coordinates dataset ####
     y <- read.table(file = path_coord,
@@ -70,9 +73,11 @@ spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
 
     ## Step 1. make the mesh ####
     mesh <- deneggs::mesh(x = x,
-                           k = k,
-                           long = longitude,
-                           lat = latitude)
+                          k = k,
+                          loc_limit = loc_sp,
+                          plot = plot,
+                          long = longitude,
+                          lat = latitude)
 
     ## Step 2. Define the SPDE ####
     spde <- INLA::inla.spde2.matern(mesh = mesh,
