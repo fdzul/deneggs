@@ -9,7 +9,6 @@
 #' @param longitude is the name of the column of the longitude in the ovitrampas dataset.
 #' @param latitude is the name of the column of the longitude in the ovitrampas dataset.
 #' @param k is the parameter for define the triagulization of delauney.
-#' @param fam is the name of the family of the distribution for modelling count data. The option can be  poisson, zeroinflatedpoisson0, zeroinflatedpoisson1, nbinomial, zeroinflatednbinomial0 and zeroinflatednbinomial1
 #' @param week is the week target. proactive is the current week.
 #' @param var is the name of variable target.
 #' @param leg_title is title of legend.
@@ -18,7 +17,7 @@
 #' @param plot is a logical argument. if TRUE plot the mesh else no plot the mesh.
 #' @param alpha The significance level, also denoted as alpha or α, is the probability of rejecting the null hypothesis when it is true.
 #' @param aproximation is the aproximation of the joint posterior of the marginals and hyperparameter. The options are "gaussian", "simplified.laplace" & "laplace".
-#' @param integration integration strategy. The options are "grid", "eb" & "ccd".
+#' @param integration is the integration strategy. The options are "grid", "eb" & "ccd".
 #'
 #' @author Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
 #'
@@ -26,6 +25,11 @@
 #' @seealso \link[INLA]{inla}
 #' @return a list with the gmap with the prediction of the number of eggs, the prediction of number of eggs, the mesh.
 #' @export
+#'
+#' @importFrom magrittr %>%
+#' @importFrom methods slot
+#' @importFrom stats qnorm
+#' @importFrom stats sd
 #'
 #' @examples 1+ 1
 #' @details \link[INLA]{inla}.
@@ -94,8 +98,8 @@ spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
 
     ## 3.1. this projector matrix we use for modelling ####
     A_mod <- INLA::inla.spde.make.A(mesh = mesh,
-                              loc = cbind(x[, c(longitude)],
-                                          x[, c(latitude)]))
+                                    loc = cbind(x[, c(longitude)],
+                                                x[, c(latitude)]))
 
 
 

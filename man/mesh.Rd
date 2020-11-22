@@ -28,6 +28,9 @@ This function create the mesh for modelling with INLA framework
 \details{
 this function use \link[INLA]{inla}.
 }
+\examples{
+1+1
+}
 \seealso{
 \link[INLA]{inla.mesh.2d}
 }

@@ -40,7 +40,7 @@ spde_pred_map(
 
 \item{aproximation}{is the aproximation of the joint posterior of the marginals and hyperparameter. The options are "gaussian", "simplified.laplace" & "laplace".}
 
-\item{integration}{integration strategy. The options are "grid", "eb" & "ccd".}
+\item{integration}{is the integration strategy. The options are "grid", "eb" & "ccd".}
 
 \item{longitude}{is the name of the column of the longitude in the ovitrampas dataset.}
 
@@ -55,8 +55,6 @@ spde_pred_map(
 \item{cell_size}{is the parameter for define the grid of locality for prediction.}
 
 \item{palette_vir}{is the palette of viridis. The option can be magma, plasma, inferno, and viridis.}
-
-\item{fam}{is the name of the family of the distribution for modelling count data. The option can be  poisson, zeroinflatedpoisson0, zeroinflatedpoisson1, nbinomial, zeroinflatednbinomial0 and zeroinflatednbinomial1}
 }
 \value{
 a list with the gmap with the prediction of the number of eggs, the prediction of number of eggs, the mesh.

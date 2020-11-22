@@ -15,7 +15,7 @@
 #' @export
 #' @seealso \link[INLA]{inla.mesh.2d}
 #' @details this function use \link[INLA]{inla}.
-#' @examples
+#' @examples 1+1
 mesh <- function(x, k, long, lat, loc_limit, plot = NULL){
     #x$X <- x$long
     #x$Y <- x$lat

@@ -8,7 +8,7 @@
 #' @return a points
 #' @export
 #'
-#' @examples
+#' @examples 1+1
 loc_grid_points <- function(sf, cell_size){
     sf <- sf::st_transform(sf, crs = 4326)
     bb <- sf::st_bbox(sf)

@@ -44,6 +44,9 @@ a ggplot.
 \description{
 The function generates an egg map of Aedes Aegypti.
 }
+\examples{
+1 +1
+}
 \author{
 Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
 }

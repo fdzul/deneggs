@@ -17,3 +17,6 @@ a points
 \description{
 this function make the prediction grid for spde modelling
 }
+\examples{
+1+1
+}

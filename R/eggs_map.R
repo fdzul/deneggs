@@ -17,7 +17,7 @@
 #' @return a ggplot.
 #' @export
 #'
-#' @examples
+#' @examples 1 +1
 eggs_map <- function(path_lect, path_coord, path_shp,
                      leg_title,
                      loc, size, alpha, palette_vir, risk, weeks){
