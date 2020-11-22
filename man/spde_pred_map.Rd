@@ -26,13 +26,21 @@ spde_pred_map(
 \arguments{
 \item{path_lect}{is the directory of the ovitrampas readings file.}
 
+\item{locality}{is the locality target.}
+
 \item{path_coord}{is the directory of the ovitrampas coordinates file.}
 
 \item{path_shp}{is the directory of shepefile dataset.}
 
 \item{leg_title}{is title of legend.}
 
+\item{alpha}{The significance level, also denoted as alpha or α, is the probability of rejecting the null hypothesis when it is true.}
+
 \item{plot}{is a logical argument. if TRUE plot the mesh else no plot the mesh.}
+
+\item{aproximation}{is the aproximation of the joint posterior of the marginals and hyperparameter. The options are "gaussian", "simplified.laplace" & "laplace".}
+
+\item{integration}{integration strategy. The options are "grid", "eb" & "ccd".}
 
 \item{longitude}{is the name of the column of the longitude in the ovitrampas dataset.}
 
@@ -48,8 +56,6 @@ spde_pred_map(
 
 \item{palette_vir}{is the palette of viridis. The option can be magma, plasma, inferno, and viridis.}
 
-\item{loc}{is the locality target.}
-
 \item{fam}{is the name of the family of the distribution for modelling count data. The option can be  poisson, zeroinflatedpoisson0, zeroinflatedpoisson1, nbinomial, zeroinflatednbinomial0 and zeroinflatednbinomial1}
 }
 \value{
@@ -60,6 +66,9 @@ This function predicts the number of eggs in areas where it was not collected us
 }
 \details{
 \link[INLA]{inla}.
+}
+\examples{
+1+ 1
 }
 \seealso{
 \link[viridis]{viridis}, \link[viridis]{plasma}, \link[viridis]{inferno}, \link[viridis]{magma}
