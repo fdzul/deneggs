@@ -7,6 +7,7 @@
 #' @param long is the longitude.
 #' @param lat is the latitude.
 #' @param loc_limit is the locality limit.
+#' @param plot is a logical argument. if TRUE plot the mesh else no plot the mesh.
 #'
 #' @author Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
 #'
@@ -15,7 +16,7 @@
 #' @seealso \link[INLA]{inla.mesh.2d}
 #' @details this function use \link[INLA]{inla}.
 #' @examples
-mesh <- function(x, k, long, lat, loc_limit){
+mesh <- function(x, k, long, lat, loc_limit, plot = NULL){
     #x$X <- x$long
     #x$Y <- x$lat
     coor <- cbind(x[,c(long)], x[, c(lat)])
@@ -24,6 +25,11 @@ mesh <- function(x, k, long, lat, loc_limit){
                                boundary = loc_limit,
                                max.edge = c(0.3/k, 2/k), ## mandatory
                                cutoff= 0.1/k) ## good to have >0
-    #plot(mesh, asp=1, main = ""); points(coor, col= "red")
+    if(plot == TRUE){
+        plot(mesh, asp=1, main = ""); points(coor, col= "red")
+    } else {
+
+    }
+
     mesh
 }
