@@ -4,8 +4,18 @@
 \alias{eggs_map}
 \title{eggs_map}
 \usage{
-eggs_map(path_lect, path_coord, path_shp, leg_title, loc, size, alpha,
-  palette_vir, risk, weeks)
+eggs_map(
+  path_lect,
+  path_coord,
+  path_shp,
+  leg_title,
+  loc,
+  size,
+  alpha,
+  palette_vir,
+  risk,
+  weeks
+)
 }
 \arguments{
 \item{path_lect}{is the directory of ovitraps dataset.}

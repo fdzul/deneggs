@@ -3,7 +3,7 @@
 #' This function predicts the number of eggs in areas where it was not collected using geostatistical analysis with INLA
 #'
 #' @param path_lect is the directory of the ovitrampas readings file.
-#' @param loc is the locality target.
+#' @param locality is the locality target.
 #' @param path_coord is the directory of the ovitrampas coordinates file.
 #' @param path_shp is the directory of shepefile dataset.
 #' @param longitude is the name of the column of the longitude in the ovitrampas dataset.
@@ -16,15 +16,18 @@
 #' @param cell_size is the parameter for define the grid of locality for prediction.
 #' @param palette_vir is the palette of viridis. The option can be magma, plasma, inferno, and viridis.
 #' @param plot is a logical argument. if TRUE plot the mesh else no plot the mesh.
+#' @param alpha The significance level, also denoted as alpha or α, is the probability of rejecting the null hypothesis when it is true.
+#' @param aproximation is the aproximation of the joint posterior of the marginals and hyperparameter. The options are "gaussian", "simplified.laplace" & "laplace".
+#' @param integration integration strategy. The options are "grid", "eb" & "ccd".
 #'
-#'@author Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
+#' @author Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
 #'
 #' @seealso \link[viridis]{viridis}, \link[viridis]{plasma}, \link[viridis]{inferno}, \link[viridis]{magma}
 #' @seealso \link[INLA]{inla}
 #' @return a list with the gmap with the prediction of the number of eggs, the prediction of number of eggs, the mesh.
 #' @export
 #'
-#' @examples
+#' @examples 1+ 1
 #' @details \link[INLA]{inla}.
 spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
                           leg_title, alpha, plot = NULL,

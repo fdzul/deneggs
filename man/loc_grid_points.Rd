@@ -15,5 +15,5 @@ loc_grid_points(sf, cell_size)
 a points
 }
 \description{
-this function make the prediction gris for spde modelling
+this function make the prediction grid for spde modelling
 }

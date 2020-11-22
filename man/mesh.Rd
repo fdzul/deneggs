@@ -4,7 +4,7 @@
 \alias{mesh}
 \title{mesh}
 \usage{
-mesh(x, k, long, lat)
+mesh(x, k, long, lat, loc_limit, plot = NULL)
 }
 \arguments{
 \item{x}{is the dataset with the coordinates and the target variable.}
@@ -14,6 +14,10 @@ mesh(x, k, long, lat)
 \item{long}{is the longitude.}
 
 \item{lat}{is the latitude.}
+
+\item{loc_limit}{is the locality limit.}
+
+\item{plot}{is a logical argument. if TRUE plot the mesh else no plot the mesh.}
 }
 \value{
 a mesh and plot of the mesh.

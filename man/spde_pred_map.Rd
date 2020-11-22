@@ -4,13 +4,27 @@
 \alias{spde_pred_map}
 \title{spde_pred_map}
 \usage{
-spde_pred_map(path_lect, loc, path_coord, path_shp, leg_title, longitude,
-  latitude, k, fam, week, var, cell_size, palette_vir)
+spde_pred_map(
+  path_lect,
+  locality,
+  path_coord,
+  path_shp,
+  leg_title,
+  alpha,
+  plot = NULL,
+  aproximation,
+  integration,
+  longitude,
+  latitude,
+  k,
+  week,
+  var,
+  cell_size,
+  palette_vir
+)
 }
 \arguments{
 \item{path_lect}{is the directory of the ovitrampas readings file.}
-
-\item{loc}{is the locality target.}
 
 \item{path_coord}{is the directory of the ovitrampas coordinates file.}
 
@@ -18,13 +32,13 @@ spde_pred_map(path_lect, loc, path_coord, path_shp, leg_title, longitude,
 
 \item{leg_title}{is title of legend.}
 
+\item{plot}{is a logical argument. if TRUE plot the mesh else no plot the mesh.}
+
 \item{longitude}{is the name of the column of the longitude in the ovitrampas dataset.}
 
 \item{latitude}{is the name of the column of the longitude in the ovitrampas dataset.}
 
 \item{k}{is the parameter for define the triagulization of delauney.}
-
-\item{fam}{is the name of the family of the distribution for modelling count data. The option can be  poisson, zeroinflatedpoisson0, zeroinflatedpoisson1, nbinomial, zeroinflatednbinomial0 and zeroinflatednbinomial1}
 
 \item{week}{is the week target. proactive is the current week.}
 
@@ -32,13 +46,17 @@ spde_pred_map(path_lect, loc, path_coord, path_shp, leg_title, longitude,
 
 \item{cell_size}{is the parameter for define the grid of locality for prediction.}
 
-\item{palette_vir}{is the palleta of viridis. The option can be magma, plasma, inferno, and viridis.}
+\item{palette_vir}{is the palette of viridis. The option can be magma, plasma, inferno, and viridis.}
+
+\item{loc}{is the locality target.}
+
+\item{fam}{is the name of the family of the distribution for modelling count data. The option can be  poisson, zeroinflatedpoisson0, zeroinflatedpoisson1, nbinomial, zeroinflatednbinomial0 and zeroinflatednbinomial1}
 }
 \value{
-a ggmap with the prediction of the number of eggs.
+a list with the gmap with the prediction of the number of eggs, the prediction of number of eggs, the mesh.
 }
 \description{
-This function predicts the number of eggs in areas where it was not collected using geostatistical analysis at INLA
+This function predicts the number of eggs in areas where it was not collected using geostatistical analysis with INLA
 }
 \details{
 \link[INLA]{inla}.
