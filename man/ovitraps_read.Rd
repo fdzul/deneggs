@@ -19,18 +19,8 @@ a dataframe.
 \description{
 This function has been designed for read the ovitrap datasets (historic and current year).
 }
-\details{
-the current and historic ovitrap dataset is download of the homepage of \href{**Sistema Integral de Monitoreo de Vectores**}{https://www.inegi.org.mx/default.html}.
-}
 \examples{
 1+1
-
-}
-\references{
-xxxxx
-}
-\seealso{
-\link[boldenr]{read_dataset_bol}
 }
 \author{
 Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
