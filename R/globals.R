@@ -3,5 +3,5 @@ utils::globalVariables(c("Localidad", "Semana.Epidemiologica", "read.table",
                          "Pocision_X", "plot", "mesh", "pred_mean", "points",
                          "z_score", "hotspots_eggs", "getis_ord_umbral", "getis_ord_umbral",
                          "getis_ord", "voronoipolygons", "NOMGEO", "long", "AMBITO",
-                         "Clave", "Ovitramps", "Fecha.Lectura",
-                         "unzip_read"))
+                         "Clave", "Ovitrampa", "Fecha.Lectura",
+                         "unzip_read", "unzip"))
