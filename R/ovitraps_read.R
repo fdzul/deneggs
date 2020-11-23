@@ -16,7 +16,7 @@
 #'
 #' @seealso \link[boldenr]{read_dataset_bol}
 #'
-#' @details the current and historic ovitrap dataset is download of the homepage of \href{**Sistema Integral de Monitoreo de Vectores**}{https://www.inegi.org.mx/default.html}.
+#' @details the current and historic ovitrap dataset is download of the homepage of \href{https://www.inegi.org.mx/default.html}{**Sistema Integral de Monitoreo de Vectores**} \url{https://www.inegi.org.mx/default.html}{**Sistema Integral de Monitoreo de Vectores**}.
 ovitraps_read <- function(path, current_year, year = NULL){
 
     ## Step 0.1 load the ovitrap dataset ####
