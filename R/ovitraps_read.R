@@ -10,7 +10,6 @@
 #'
 #' @return a dataframe.
 #' @export
-#' @import
 #' @importFrom utils data
 #' @importFrom utils read.table
 #' @examples 1+1
