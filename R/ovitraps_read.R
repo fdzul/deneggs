@@ -1,3 +1,17 @@
+#' Read the ovitrap dataset
+#'
+#' This function has been designed for read the ovitrap datasets (historic and current year).
+#'
+#' @param path is the directory where the files are located. The files for the current year is in txt (currente_year = TRUE), the historic dataset is a zip file (currente_year = FALSE).
+#' @param current_year is a logical value. The current_year = TRUE is for current year dataset (2020), else is for historic dataset (2011 to 2019).
+#' @param year is a string value. When the current_year is FALSE, we need define the year. When current_year is TRUE the value for year is NULL.
+#'
+#' @author Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
+#'
+#' @return a dataframe.
+#' @export
+#'
+#' @examples 1+1
 ovitraps_read <- function(path, current_year, year = NULL){
 
     ## Step 0.1 load the ovitrap dataset ####
