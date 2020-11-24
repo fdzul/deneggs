@@ -83,6 +83,8 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord, path_shp
     # Step 0.3 joint the coordinates ####
     x$Ovitrampa <- as.numeric(x$ovitrap)
     y$Ovitrampa <- as.numeric(y$Ovitrampa)
+    y$clave <- as.numeric(y$clave)
+    x$clave <- as.numeric(x$clave)
     x <- dplyr::left_join(x = x,
                           y = y,
                           by = c("Ovitrampa",
