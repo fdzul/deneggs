@@ -57,6 +57,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
         y$year <- lubridate::year(y$date)
         y$week <-  lubridate::epiweek(y$date)
         y$fecha_lectura <- NULL
+        y$clave <- as.numeric(y$clave)
         y
 
     } else {
@@ -97,6 +98,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
             y$year <- lubridate::year(y$date)
             y$week <-  lubridate::epiweek(y$date)
             y$fecha_lectura <- NULL
+            y$clave <- as.numeric(y$clave)
             y
         }
         ## Step 4. apply the function for each file and row bind
