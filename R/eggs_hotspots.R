@@ -24,9 +24,14 @@
 #'
 #' @return a list of object (data, map, loc, dics, hotspots). data is original dataset (ovitraps + coordinates). The map is the map of eggs prediction. Loc is the sf objecto of locality limit. dics is the Deviancie Information Criterio of the model. the hotspots object is the dataset with the eggs prediction and the hotspots.
 #' @export
+#' @author Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
 #'
-#' @examples
-eggs_hotpots <- function(path_lect, year = NULL, locality, path_coord, path_shp,
+#' @seealso \link[viridis]{viridis}, \link[viridis]{plasma}, \link[viridis]{inferno}, \link[viridis]{magma}
+#' @seealso \link[INLA]{inla}
+#'
+#' @examples 1+1
+#' @details \link[INLA]{inla}.
+eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord, path_shp,
                          leg_title, fam, alpha, plot = NULL,
                          aproximation, integration,
                          longitude, latitude, k, sem, var,
