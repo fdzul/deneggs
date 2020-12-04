@@ -3,7 +3,7 @@
 export("%>%")
 export(":=")
 export(.data)
-export(animap_vector_cl)
+export(animap_vector_manz)
 export(eggs_hotspots)
 export(eggs_map)
 export(enexpr)
