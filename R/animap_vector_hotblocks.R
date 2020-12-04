@@ -16,9 +16,8 @@
 #' @seealso \link[tmap]{tmap_animation}
 #'
 #' @examples 1+1
-animap_vector_manz <- function(path_vector, path_manz, path_loc,
-                               locality,
-                               dir, name, vel, xleg, yleg){
+animap_vector_hotblocks <- function(path_vector, path_manz, path_loc, locality,
+                                    dir, name, vel, xleg, yleg){
     # Step 1. load the dataset ####
     x  <- boldenr::read_dataset_bol(path = path_vector,
                                     dataset = "vectores",
