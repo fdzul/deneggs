@@ -28,7 +28,7 @@ are generated using geostatistical analysis in the
     calculate the hotspots. Run the model with one distribution.
 -   **`deneggs::animap_vector_hotblocks()`** generate the animated map
     of hotblocks of eggs abundance.
--   **`deneggs::ovitraps_read()`**reads current ovitramp databases and
+-   **`deneggs::ovitraps_read()`** reads current ovitramp databases and
     historical.
 -   **`deneggs::eggs_map()`** generates an entomological risk map or an
     egg density map.
@@ -64,17 +64,19 @@ linux fedora
 remote::install_github("fdzul/deneggs")
 ```
 
-## Example **`deneggs::spde_pred_map()`** this function return a list with six object:
+## **`deneggs::spde_pred_map()`** return a list with six object:
 
--   **`data`** is the original dataset of the ovitrap.
--   **`pred`** is the predicction dataset of *the Ae. aegypti* eggs.
--   **`dics`** is a dataframe with the dics of six distribution
-    (poisson, zeroinflatedpoisson0, 1, zeroinflatedpoisson1, nbinomial,
-    nbinomial2, zeroinflatednbinomial0, zeroinflatednbinomial1).
--   **`hotspots`** a dataset with the eggs prediction and the hotspots
-    eggs.
--   **`loc`** is the loclaity limit.
--   **`map`** is the map prediction.
+### - **`data`** is the original dataset of the ovitrap.
+
+### - **`pred`** is the predicction dataset of *the Ae. aegypti* eggs.
+
+### - **`dics`** is a dataframe with the dics of six distribution (poisson, zeroinflatedpoisson0, 1, zeroinflatedpoisson1, nbinomial, nbinomial2, zeroinflatednbinomial0, zeroinflatednbinomial1).
+
+### - **`hotspots`** a dataset with the eggs prediction and the hotspots eggs.
+
+### - **`loc`** is the loclaity limit.
+
+### - **`map`** is the map prediction.
 
 ``` r
 # Step 1. define the paths 
@@ -139,7 +141,7 @@ knitr::kable(head(acapulco$dics), "simple")
 | 48792.52 | zeroinflatedpoisson0   |
 | 48794.68 | zeroinflatedpoisson1   |
 | 24837.15 | nbinomial              |
-| 25771.49 | nbinomial2             |
+| 25771.48 | nbinomial2             |
 | 24530.23 | zeroinflatednbinomial0 |
 
 ``` r
@@ -163,11 +165,86 @@ plot(sf::st_geometry(acapulco$loc))
 <img src="man/figures/README-example-2.png" width="100%" style="display: block; margin: auto;" />
 
 ``` r
-# The egge prediction in Acapulco
+# prediction of the number of Ae. aegypty eggs in the metropolitan area of Acapulco
 acapulco$map
 ```
 
 <img src="man/figures/README-example-3.png" width="100%" style="display: block; margin: auto;" />
+
+``` r
+# prediction of the number of eggs in the metropolitan area of Monterrey
+deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/19_NuevoLeon",
+                       path_shp = "D:/Users/OneDrive/datasets/MG_sep_2019/19_nuevoleon/conjunto_de_datos/19l.shp",
+                       locality  = c("Ciudad General Escobedo", "Ciudad Apodaca",
+                                     "Guadalupe", "Monterrey", "Ciudad Santa Catarina",
+                                     "San Pedro Garza García", "Ciudad Benito Juárez",
+                                     "San Nicolás de los Garza", "Montebello"),
+                       path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/19_NuevoLeon/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, #####
+                       sem = lubridate::epiweek(Sys.Date())-2,
+                       var = "eggs",
+                       cell_size = 1000,
+                       alpha = .99)$map
+```
+
+<img src="man/figures/README-example-4.png" width="100%" style="display: block; margin: auto;" />
+
+``` r
+# prediction of the number of eggs in the metropolitan area of Merida
+deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/31_Yucatan",
+                       path_shp = "D:/Users/OneDrive/datasets/MG_sep_2019/31_yucatan/conjunto_de_datos/31l.shp",
+                       locality  = c("Mérida"),
+                       path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/31_yucatan/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 30,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, #####
+                       sem = lubridate::epiweek(Sys.Date())-2,
+                       var = "eggs",
+                       cell_size = 1000,
+                       alpha = .99)$map
+```
+
+<img src="man/figures/README-example-5.png" width="100%" style="display: block; margin: auto;" />
+
+``` r
+# prediction of the number of eggs in the metropolitan area of Guadalajara
+deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco",
+                       path_shp = "D:/Users/OneDrive/datasets/MG_sep_2019/14_jalisco/conjunto_de_datos/14l.shp",
+                       locality  = c("Guadalajara", "Tlaquepaque", "Zapopan", "Tonalá"),
+                       path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco/DescargaOvitrampasMesFco.txt",
+                       longitude  = "Pocision_X",
+                       latitude =  "Pocision_Y",
+                       aproximation = "gaussian",
+                       integration = "eb",
+                       fam = "zeroinflatednbinomial1",
+                       k = 40,
+                       palette_vir  = "magma",
+                       leg_title = "Huevos",
+                       plot = FALSE,
+                       hist_dataset = FALSE, #####
+                       sem = lubridate::epiweek(Sys.Date())-2,
+                       var = "eggs",
+                       cell_size = 1000,
+                       alpha = .99)$map
+```
+
+<img src="man/figures/README-example-6.png" width="100%" style="display: block; margin: auto;" />
 
 ## Authors
 
