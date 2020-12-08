@@ -60,7 +60,7 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,
         dplyr::filter(NOMGEO %in% c(similiars::find_most_similar_string(locality, unique(NOMGEO))) &
                           AMBITO %in% c("Urbana"))
 
-    if(nrow(z) > 1){
+    if(nrow(loc) > 1){
         loc <- loc %>% sf::st_union()
     } else {
 
