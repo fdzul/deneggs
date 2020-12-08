@@ -59,43 +59,6 @@ remote::install_github("fdzul/deneggs")
 
 ## Example
 
-animated maps of hotblocks in Veracruz locality
-
-``` r
-library(magrittr)
-#> Warning: package 'magrittr' was built under R version 4.0.3
-library(sf)
-#> Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1
-path_vector <- "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/30_Veracruz"
-deneggs::animap_vector_hotblocks(path_vector = path_vector,
-                                 locality = c("Veracruz", "Boca del Rio"),
-                                 dir = "man/figures/",
-                                 name = "README-example-1",
-                                 vel = 50,
-                                 xleg = .75,
-                                 yleg = .8)
-#> although coordinates are longitude/latitude, st_intersects assumes that they are planar
-#> Warning in val_cols[col_id] <- unname(as.list(data[cols])): número de items para
-#> para sustituir no es un múltiplo de la longitud del reemplazo
-#> Creating frames
-#> =============
-#> =======
-#> =======
-#> ======
-#> =======
-#> =======
-#> ======
-#> =======
-#> =======
-#> ======
-#> =======
-#> 
-#> Creating animation
-#> Frame 1 (8%)Frame 2 (16%)Frame 3 (25%)Frame 4 (33%)Frame 5 (41%)Frame 6 (50%)Frame 7 (58%)Frame 8 (66%)Frame 9 (75%)Frame 10 (83%)Frame 11 (91%)Frame 12 (100%)
-#> Finalizing encoding... done!
-#> Animation saved to D:\Users\Dropbox\Packages\deneggs\man\figures\README-example-1_animated_map.gif
-```
-
 ## Authors
 
 -   **Felipe Antonio Dzul Manzanilla** -**<https://github.com/fdzul>** -
