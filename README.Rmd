@@ -73,6 +73,7 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                  palette_vir  = "magma",
                  leg_title = "Huevos de Ae. aegypti",
                  week = lubridate::epiweek(Sys.Date())-2,
+                 plot = TRUE,
                  var = "Huevecillos",
                  cell_size = 1000,
                  alpha = .99)
