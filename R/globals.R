@@ -5,5 +5,5 @@ utils::globalVariables(c("Localidad", "Semana.Epidemiologica", "read.table",
                          "getis_ord", "voronoipolygons", "NOMGEO", "long", "AMBITO",
                          "Clave", "Ovitrampa", "Fecha.Lectura",
                          "unzip_read", "unzip", "week", "Municipio", "Entidad", "eggs",
-                         "Sector", "Manzana", "sec_manz", "SECCION", "MANZANA", "geometry",
+                         "Sector", "Manzana", "sec_manz", "seccion", "manzana", "geometry",
                          "risk"))
