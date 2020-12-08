@@ -4,24 +4,10 @@
 \alias{animap_vector_hotblocks}
 \title{animap_vector_hotblocks: a function for create the animated map of hotblocks of eggs.}
 \usage{
-animap_vector_hotblocks(
-  path_vector,
-  path_manz,
-  path_loc,
-  locality,
-  dir,
-  name,
-  vel,
-  xleg,
-  yleg
-)
+animap_vector_hotblocks(path_vector, locality, dir, name, vel, xleg, yleg)
 }
 \arguments{
 \item{path_vector}{is the directory of ovitrap datasets.}
-
-\item{path_manz}{is the directory of the blocks shapefile of state.}
-
-\item{path_loc}{is the directory of the locality limit shapefile.}
 
 \item{locality}{is the locality target with the ovitraps.}
 
