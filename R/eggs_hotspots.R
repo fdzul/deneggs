@@ -56,13 +56,15 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord, path_shp
 
 
     # Step 0. 2 load the locality limit ####
-    loc <- sf::st_read(path_shp, quiet = TRUE)
-    Encoding(loc$NOMGEO) <- "latin1"
-    loc <- loc %>%
-        dplyr::filter(NOMGEO %in% c(locality) &
-                          AMBITO %in% c("Urbana")) %>%
-        sf::st_transform(crs = 4326) %>%
-        sf::st_union()
+    loc <- rgeomex::loc_inegi19_mx %>%
+        dplyr::filter(NOMGEO %in% c(similiars::find_most_similar_string(locality, unique(NOMGEO))) &
+                          AMBITO %in% c("Urbana"))
+
+    if(nrow(z) > 1){
+        loc <- loc %>% sf::st_union()
+    } else {
+
+    }
 
     loc_sp <- sf::as_Spatial(from = sf::st_geometry(loc), cast = TRUE)
 
