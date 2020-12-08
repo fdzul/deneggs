@@ -22,12 +22,19 @@ eggs or adults in areas where it is not collected.The predictive maps
 are generated using geostatistical analysis in the
 [INLA](http://www.r-inla.org/) framework.
 
--   **`spde_pred_map()`** generate the predictive map.
--   **`eggs_map()`** generates an entomological risk map or an egg
-    density map.
--   **`loc_grid_points()`** It is a complementary function that helps in
-    the creation of grid of the locality in the prediction stack in
-    [INLA](http://www.r-inla.org/).
+-   **`deneggs::spde_pred_map()`** generate the predictive mapand
+    calculate the hotspots. Run the models with six distributions.
+-   **`deneggs::eggs_hotspots()`** generate the predictive map and
+    calculate the hotspots. Run the model with one distribution.
+-   **`deneggs::animap_vector_hotblocks()`** generate the animated map
+    of hotblocks of eggs abundance.
+-   **`deneggs::ovitraps_read()`**reads current ovitramp databases and
+    historical.
+-   **`deneggs::eggs_map()`** generates an entomological risk map or an
+    egg density map.
+-   **`deneggs::loc_grid_points()`** It is a complementary function that
+    helps in the creation of grid of the locality in the prediction
+    stack in [INLA](http://www.r-inla.org/).
 -   **`mesh()`** It is a complementary function that helps in the
     creation of mesh.
 
@@ -57,7 +64,17 @@ linux fedora
 remote::install_github("fdzul/deneggs")
 ```
 
-## Example
+## Example **`deneggs::spde_pred_map()`** this function return a list with six object:
+
+-   **`data`** is the original dataset of the ovitrap.
+-   **`pred`** is the predicction dataset of *the Ae. aegypti* eggs.
+-   **`dics`** is a dataframe with the dics of six distribution
+    (poisson, zeroinflatedpoisson0, 1, zeroinflatedpoisson1, nbinomial,
+    nbinomial2, zeroinflatednbinomial0, zeroinflatednbinomial1).
+-   **`hotspots`** a dataset with the eggs prediction and the hotspots
+    eggs.
+-   **`loc`** is the loclaity limit.
+-   **`map`** is the map prediction.
 
 ``` r
 # Step 1. define the paths 
@@ -87,7 +104,7 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
 <img src="man/figures/README-example-1.png" width="100%" style="display: block; margin: auto;" />
 
 ``` r
-knitr::kable(head(acapulco$data), "simple", caption = "An example table caption.")
+knitr::kable(head(acapulco$data), "simple")
 ```
 
 |      | Clave.x           | Entidad.x   | Jurisdiccion  | Municipio.x        | Localidad.x        | Sector | Manzana |   Ovitrampa | Huevecillos | No.Lectura | Fecha.Lectura | Fecha.Recoleccion.Papeleta | Semana.Epidemiologica | Usuario  | Fecha.Captura | RFC.del.Operador | CAMEX | Clave.y           | Entidad.y   | Municipio.y            | Localidad.y             | Pocision\_X | Pocision\_Y | FechaGeo   |
@@ -99,10 +116,8 @@ knitr::kable(head(acapulco$data), "simple", caption = "An example table caption.
 | 5601 | 12001000101120053 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    112 |      53 | 12001015402 |           0 | 29         | 23/11/2020    | 23/11/2020                 |                    48 | c1207:18 | 24/11/2020    | MOLJ680425165    | SI    | 12001000101120053 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.82800 |    16.92169 | 11/08/2015 |
 | 5602 | 12001000101120053 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    112 |      53 | 12001015403 |           0 | 29         | 23/11/2020    | 23/11/2020                 |                    48 | c1207:18 | 24/11/2020    | MOLJ680425165    | SI    | 12001000101120053 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.82761 |    16.92173 | 11/08/2015 |
 
-An example table caption.
-
 ``` r
-knitr::kable(head(acapulco$pred), "simple", caption = "An example table caption.")
+knitr::kable(head(acapulco$pred), "simple")
 ```
 
 |         x |        y | pred\_mean | pred\_sd | pred\_ll | pred\_ul | ws\_mean | ws\_sd | week | fam                    |      dic |
@@ -114,25 +129,21 @@ knitr::kable(head(acapulco$pred), "simple", caption = "An example table caption.
 | -99.71302 | 16.72228 |   10.04565 | 3.161963 | 5.245654 | 5.245654 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 |
 | -99.72226 | 16.72451 |   10.54229 | 4.843968 | 4.061820 | 4.061820 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 |
 
-An example table caption.
-
 ``` r
-knitr::kable(head(acapulco$dics), "simple", caption = "An example table caption.")
+knitr::kable(head(acapulco$dics), "simple")
 ```
 
 |      dic | fam                    |
 |---------:|:-----------------------|
-| 69157.89 | poisson                |
+| 69157.90 | poisson                |
 | 48792.52 | zeroinflatedpoisson0   |
 | 48794.68 | zeroinflatedpoisson1   |
 | 24837.15 | nbinomial              |
-| 25771.48 | nbinomial2             |
+| 25771.49 | nbinomial2             |
 | 24530.23 | zeroinflatednbinomial0 |
 
-An example table caption.
-
 ``` r
-knitr::kable(head(acapulco$hotspots), "simple", caption = "An example table caption.")
+knitr::kable(head(acapulco$hotspots), "simple")
 ```
 
 |         x |        y | pred\_mean | pred\_sd | pred\_ll | pred\_ul | ws\_mean | ws\_sd | week | fam                    |      dic | z\_score   | hotspots    |
@@ -144,15 +155,15 @@ knitr::kable(head(acapulco$hotspots), "simple", caption = "An example table capt
 | -99.71302 | 16.72228 |   10.04565 | 3.161963 | 5.245654 | 5.245654 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 | -0.2669700 | No Hotspots |
 | -99.72226 | 16.72451 |   10.54229 | 4.843968 | 4.061820 | 4.061820 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 | -0.1483803 | No Hotspots |
 
-An example table caption.
-
 ``` r
+# The locality limit of Acapulco
 plot(sf::st_geometry(acapulco$loc))
 ```
 
 <img src="man/figures/README-example-2.png" width="100%" style="display: block; margin: auto;" />
 
 ``` r
+# The egge prediction in Acapulco
 acapulco$map
 ```
 

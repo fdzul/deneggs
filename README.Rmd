@@ -24,9 +24,12 @@ knitr::opts_chunk$set(
 
 **deneggs** is a package to generate predictive maps of the number of eggs or adults in areas where it is not collected.The predictive maps are generated using geostatistical analysis in the [INLA](http://www.r-inla.org/) framework. 
 
-  - **`spde_pred_map()`** generate the predictive map.
-  - **`eggs_map()`** generates an entomological risk map or an egg density map.
-  - **`loc_grid_points()`** It is a complementary function that helps in the creation of grid of the locality in the prediction stack in [INLA](http://www.r-inla.org/).
+  - **`deneggs::spde_pred_map()`** generate the predictive mapand calculate the hotspots. Run the models with six distributions.
+  - **`deneggs::eggs_hotspots()`** generate the predictive map and calculate the hotspots. Run the model with one distribution.
+  - **`deneggs::animap_vector_hotblocks()`** generate the animated map of hotblocks of eggs abundance.
+  - **`deneggs::ovitraps_read()`**reads current ovitramp databases and historical.
+  - **`deneggs::eggs_map()`** generates an entomological risk map or an egg density map.
+  - **`deneggs::loc_grid_points()`** It is a complementary function that helps in the creation of grid of the locality in the prediction stack in [INLA](http://www.r-inla.org/).
   - **`mesh()`** It is a complementary function that helps in the creation of mesh.
 
 ## Instalation
@@ -52,7 +55,15 @@ linux fedora
 # install.packages("devtools")
 remote::install_github("fdzul/deneggs")
 ```
-## Example
+## Example **`deneggs::spde_pred_map()`** this function return a list with six object:
+
+- **`data`** is the original dataset of the ovitrap.
+- **`pred`** is the predicction dataset of *the Ae. aegypti* eggs.
+- **`dics`** is a dataframe with the dics of six distribution (poisson, zeroinflatedpoisson0, 1, zeroinflatedpoisson1, nbinomial, nbinomial2, zeroinflatednbinomial0, zeroinflatednbinomial1).
+- **`hotspots`** a dataset with the eggs prediction and the hotspots eggs.
+- **`loc`** is the loclaity limit.
+- **`map`** is the map prediction.
+
 
 ```{r example, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE,}
 # Step 1. define the paths 
@@ -78,17 +89,19 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                  cell_size = 1000,
                  alpha = .99)
 
-knitr::kable(head(acapulco$data), "simple", caption = "An example table caption.")
+knitr::kable(head(acapulco$data), "simple")
 
-knitr::kable(head(acapulco$pred), "simple", caption = "An example table caption.")
+knitr::kable(head(acapulco$pred), "simple")
 
-knitr::kable(head(acapulco$dics), "simple", caption = "An example table caption.")
+knitr::kable(head(acapulco$dics), "simple")
 
-knitr::kable(head(acapulco$hotspots), "simple", caption = "An example table caption.")
+knitr::kable(head(acapulco$hotspots), "simple")
 
+# The locality limit of Acapulco
 plot(sf::st_geometry(acapulco$loc))
-acapulco$map
 
+# The egge prediction in Acapulco
+acapulco$map
 ```
 
 ## Authors
