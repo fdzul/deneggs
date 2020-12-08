@@ -71,7 +71,7 @@ animap_vector_hotblocks <- function(path_vector, locality,
         dplyr::select(-data) %>%
         tidyr::unnest(cols = c(risk)) %>%
         as.data.frame() %>%
-        dplyr::mutate(week2 = forcats::fct_reorder(paste("Semana Epidemiológica",
+        dplyr::mutate(week2 = forcats::fct_reorder(paste("Semana ",
                                                          week, sep = " "),
                                                    week)) %>%
         sf::st_set_geometry(value = "geometry")
