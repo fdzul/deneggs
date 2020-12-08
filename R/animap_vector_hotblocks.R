@@ -1,8 +1,6 @@
 #' animap_vector_hotblocks: a function for create the animated map of hotblocks of eggs.
 #'
 #' @param path_vector is the directory of ovitrap datasets.
-#' @param path_manz is the directory of the blocks shapefile of state.
-#' @param path_loc is the directory of the locality limit shapefile.
 #' @param locality is the locality target with the ovitraps.
 #' @param dir is the directory where the animation will be saved.
 #' @param name is the name of the gif file.
@@ -16,7 +14,7 @@
 #' @seealso \link[tmap]{tmap_animation}
 #'
 #' @examples 1+1
-animap_vector_hotblocks <- function(path_vector, path_manz, path_loc, locality,
+animap_vector_hotblocks <- function(path_vector, locality,
                                     dir, name, vel, xleg, yleg){
     # Step 1. load the dataset ####
     x  <- boldenr::read_dataset_bol(path = path_vector,
@@ -30,19 +28,18 @@ animap_vector_hotblocks <- function(path_vector, path_manz, path_loc, locality,
                            names_from = Semana.Epidemiologica,
                            values_from = mean)
 
-    # Step 2. load the shapefile  pf municipalities####
-    y <- sf::st_read(path_manz,
-                     quiet = TRUE) %>%
-        sf::st_transform(crs = 4326) %>%
-        dplyr::mutate(sec_manz =  paste(SECCION, MANZANA, sep = ""))
+    # Step 2. load the blocks ####
+    y <- rbind(rgeomex::blocks_ine20_mx_a,
+               rgeomex::blocks_ine20_mx_b,
+               rgeomex::blocks_ine20_mx_c,
+               rgeomex::blocks_ine20_mx_d,
+               rgeomex::blocks_ine20_mx_e) %>%
+        dplyr::mutate(sec_manz =  paste(seccion, manzana, sep = ""))
 
     # Step 3. load the locality shapefile ####
-    z <- sf::st_read(path_loc, quiet = TRUE)
-    Encoding(z$NOMGEO) <- "latin1"
-    z <- z %>%
+    z <- rgeomex::loc_inegi19_mx %>%
         dplyr::filter(NOMGEO %in% c(similiars::find_most_similar_string(locality, unique(NOMGEO))) &
-                          AMBITO %in% c("Urbana")) %>%
-        sf::st_transform(crs = 4326)
+                          AMBITO %in% c("Urbana"))
 
     if(nrow(z) > 1){
         z <- z %>%   sf::st_union()
