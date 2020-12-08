@@ -8,7 +8,7 @@ spde_pred_map(
   path_lect,
   locality,
   path_coord,
-  path_shp,
+  cve_ent,
   leg_title,
   alpha,
   plot = NULL,
@@ -30,7 +30,7 @@ spde_pred_map(
 
 \item{path_coord}{is the directory of the ovitrampas coordinates file.}
 
-\item{path_shp}{is the directory of shepefile dataset.}
+\item{cve_ent}{is the text id of the state.}
 
 \item{leg_title}{is title of legend.}
 
@@ -55,6 +55,8 @@ spde_pred_map(
 \item{cell_size}{is the parameter for define the grid of locality for prediction.}
 
 \item{palette_vir}{is the palette of viridis. The option can be magma, plasma, inferno, and viridis.}
+
+\item{path_shp}{is the directory of shepefile dataset.}
 }
 \value{
 a list with the gmap with the prediction of the number of eggs, the prediction of number of eggs, the mesh.

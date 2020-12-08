@@ -4,6 +4,7 @@
 #'
 #' @param path_lect is the directory of the ovitrampas readings file.
 #' @param locality is the locality target.
+#' @param cve_ent is the text id of the state.
 #' @param path_coord is the directory of the ovitrampas coordinates file.
 #' @param path_shp is the directory of shepefile dataset.
 #' @param longitude is the name of the column of the longitude in the ovitrampas dataset.
@@ -33,7 +34,7 @@
 #'
 #' @examples 1+ 1
 #' @details \link[INLA]{inla}.
-spde_pred_map <- function(path_lect,locality, path_coord,
+spde_pred_map <- function(path_lect,locality, path_coord,cve_ent,
                           leg_title, alpha, plot = NULL,
                           aproximation, integration,
                           longitude, latitude, k, week, var,
@@ -48,7 +49,7 @@ spde_pred_map <- function(path_lect,locality, path_coord,
     # Step 0. 2 load the locality limit ####
     loc <- rgeomex::loc_inegi19_mx %>%
       dplyr::filter(NOMGEO %in% c(similiars::find_most_similar_string(locality, unique(NOMGEO))) &
-                      AMBITO %in% c("Urbana"))
+                      CVE_ENT %in% c(cve_ent))
 
     if(nrow(loc) > 1){
       loc <- loc %>% sf::st_union()

@@ -9,7 +9,7 @@ eggs_hotspots(
   year = NULL,
   locality,
   path_coord,
-  path_shp,
+  cve_ent,
   leg_title,
   fam,
   alpha,
@@ -35,7 +35,7 @@ eggs_hotspots(
 
 \item{path_coord}{is the directory of the ovitrampas coordinates file.}
 
-\item{path_shp}{is the directory of shepefile dataset.}
+\item{cve_ent}{is the text id of the state.}
 
 \item{leg_title}{is title of legend.}
 
@@ -64,6 +64,8 @@ eggs_hotspots(
 \item{palette_vir}{is the palette.}
 
 \item{hist_dataset}{is a logical value for define the dataset, if TRUE is the ovitraps historical dataset and we neen define the year to analyze.}
+
+\item{path_shp}{is the directory of shepefile dataset.}
 }
 \value{
 a list of object (data, map, loc, dics, hotspots). data is original dataset (ovitraps + coordinates). The map is the map of eggs prediction. Loc is the sf objecto of locality limit. dics is the Deviancie Information Criterio of the model. the hotspots object is the dataset with the eggs prediction and the hotspots.
