@@ -43,6 +43,7 @@ Imports:
     forcats,
     similiars,
     tmap,
+    rgeomex,
     stats,
     deldir,
     sp,
