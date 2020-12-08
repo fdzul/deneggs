@@ -62,7 +62,6 @@ remote::install_github("fdzul/deneggs")
 ``` r
 # Step 1. define the paths 
 library(magrittr)
-#> Warning: package 'magrittr' was built under R version 4.0.3
 path_lect <- "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero"
 path_shp <- "D:/Users/OneDrive/datasets/MG_sep_2019/12_guerrero/conjunto_de_datos/12l.shp"
 path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero/DescargaOvitrampasMesFco.txt"
@@ -77,32 +76,15 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                  integration = "eb",
                  k = 20,
                  palette_vir  = "magma",
-                 leg_title = "Huevos de Ae. aegypti",
+                 leg_title = "Huevos",
                  week = lubridate::epiweek(Sys.Date())-2,
                  plot = TRUE,
                  var = "Huevecillos",
                  cell_size = 1000,
                  alpha = .99)
-#> Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :
-#> embedded nul(s) found in input
-#> Warning in scan(file = file, what = what, sep = sep, quote = quote, dec = dec, :
-#> embedded nul(s) found in input
-#> although coordinates are longitude/latitude, st_intersects assumes that they are planar
-#> although coordinates are longitude/latitude, st_intersects assumes that they are planar
-#> Warning in proj4string(sp): CRS object has comment, which is lost in output
-#> although coordinates are longitude/latitude, st_intersects assumes that they are planar
-#> 
-#>      PLEASE NOTE:  The components "delsgs" and "summary" of the
-#>  object returned by deldir() are now DATA FRAMES rather than
-#>  matrices (as they were prior to release 0.0-18).
-#>  See help("deldir").
-#>  
-#>      PLEASE NOTE: The process that deldir() uses for determining
-#>  duplicated points has changed from that used in version
-#>  0.0-9 of this package (and previously). See help("deldir").
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example-1.png" width="100%" style="display: block; margin: auto;" />
 
 ``` r
 knitr::kable(head(acapulco$data), "simple", caption = "An example table caption.")
@@ -140,11 +122,11 @@ knitr::kable(head(acapulco$dics), "simple", caption = "An example table caption.
 
 |      dic | fam                    |
 |---------:|:-----------------------|
-| 69157.90 | poisson                |
+| 69157.89 | poisson                |
 | 48792.52 | zeroinflatedpoisson0   |
 | 48794.68 | zeroinflatedpoisson1   |
 | 24837.15 | nbinomial              |
-| 25771.48 | nbinomial2             |
+| 25771.50 | nbinomial2             |
 | 24530.23 | zeroinflatednbinomial0 |
 
 An example table caption.
@@ -168,13 +150,13 @@ An example table caption.
 plot(sf::st_geometry(acapulco$loc))
 ```
 
-<img src="man/figures/README-example-2.png" width="100%" />
+<img src="man/figures/README-example-2.png" width="100%" style="display: block; margin: auto;" />
 
 ``` r
 acapulco$map
 ```
 
-<img src="man/figures/README-example-3.png" width="100%" />
+<img src="man/figures/README-example-3.png" width="100%" style="display: block; margin: auto;" />
 
 ## Authors
 

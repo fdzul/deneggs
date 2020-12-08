@@ -78,10 +78,10 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                  cell_size = 1000,
                  alpha = .99)
 
-knitr::kable(acapulco$data, "simple", caption = "An example table caption.")
-knitr::kable(acapulco$pred, "simple", caption = "An example table caption.")
-knitr::kable(acapulco$dics, "simple", caption = "An example table caption.")
-knitr::kable(acapulco$hotspots, "simple", caption = "An example table caption.")
+knitr::kable(head(acapulco$data), "simple", caption = "An example table caption.")
+knitr::kable(head(acapulco$pred), "simple", caption = "An example table caption.")
+knitr::kable(head(acapulco$dics), "simple", caption = "An example table caption.")
+knitr::kable(head(acapulco$hotspots), "simple", caption = "An example table caption.")
 
 plot(sf::st_geometry(acapulco$loc))
 acapulco$map
