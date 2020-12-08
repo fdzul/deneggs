@@ -82,7 +82,7 @@ animap_vector_hotblocks <- function(path_vector, locality,
         tmap::tm_polygons(col = "gray85",
                           border.col = "white",
                           lwd = 0.01) +
-        tmap::tm_shape(shp = xy2 %>% dplyr::filter(!is.na(risk))) +
+        tmap::tm_shape(shp = xy %>% dplyr::filter(!is.na(risk))) +
         tmap::tm_fill(col = "risk",
                       style = "cat",
                       title = "",
