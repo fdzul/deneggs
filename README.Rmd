@@ -55,8 +55,38 @@ remote::install_github("fdzul/deneggs")
 ## Example
 
 ```{r example, dpi = 300}
+# Step 1. define the paths 
+library(magrittr)
+path_lect <- "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero"
+path_shp <- "D:/Users/OneDrive/datasets/MG_sep_2019/12_guerrero/conjunto_de_datos/12l.shp"
+path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero/DescargaOvitrampasMesFco.txt"
+
+acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
+                 path_shp = path_shp,
+                 locality  = c("Acapulco de Juárez"),
+                 path_coord =  path_coord,
+                 longitude  = "Pocision_X",
+                 latitude =  "Pocision_Y",
+                 aproximation = "gaussian",
+                 integration = "eb",
+                 k = 20,
+                 palette_vir  = "magma",
+                 leg_title = "Huevos de Ae. aegypti",
+                 week = lubridate::epiweek(Sys.Date())-2,
+                 var = "Huevecillos",
+                 cell_size = 1000,
+                 alpha = .99)
+
+knitr::kable(acapulco$data, "simple", caption = "An example table caption.")
+knitr::kable(acapulco$pred, "simple", caption = "An example table caption.")
+knitr::kable(acapulco$dics, "simple", caption = "An example table caption.")
+knitr::kable(acapulco$hotspots, "simple", caption = "An example table caption.")
+
+plot(sf::st_geometry(acapulco$loc))
+acapulco$map
 
 ```
+
 
 ## Authors
 
