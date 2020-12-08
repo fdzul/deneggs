@@ -55,39 +55,40 @@ linux fedora
 # install.packages("devtools")
 remote::install_github("fdzul/deneggs")
 ```
-## **`deneggs::spde_pred_map()`** return a list with six object:
+### **`deneggs::spde_pred_map()`** return a list with six object:
 
-### - **`data`** is the original dataset of the ovitrap.
-### - **`pred`** is the predicction dataset of *the Ae. aegypti* eggs.
-### - **`dics`** is a dataframe with the dics of six distribution (poisson, zeroinflatedpoisson0, 1, zeroinflatedpoisson1, nbinomial, nbinomial2, zeroinflatednbinomial0, zeroinflatednbinomial1).
-### - **`hotspots`** a dataset with the eggs prediction and the hotspots eggs.
-### - **`loc`** is the loclaity limit.
-### - **`map`** is the map prediction.
+ - **`data`** is the original dataset of the ovitrap.
+ - **`pred`** is the predicction dataset of *the Ae. aegypti* eggs.
+ - **`dics`** is a dataframe with the dics of six distribution (poisson, zeroinflatedpoisson0, 1, zeroinflatedpoisson1, nbinomial, nbinomial2, zeroinflatednbinomial0, zeroinflatednbinomial1).
+ - **`hotspots`** a dataset with the eggs prediction and the hotspots eggs.
+ - **`loc`** is the loclaity limit.
+ - **`map`** is the map prediction.
 
 
 ```{r example, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE,}
 # Step 1. define the paths 
 library(magrittr)
+library(sf)
 path_lect <- "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero"
-path_shp <- "D:/Users/OneDrive/datasets/MG_sep_2019/12_guerrero/conjunto_de_datos/12l.shp"
 path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero/DescargaOvitrampasMesFco.txt"
 
 acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
-                 path_shp = path_shp,
-                 locality  = c("Acapulco de Juárez"),
-                 path_coord =  path_coord,
-                 longitude  = "Pocision_X",
-                 latitude =  "Pocision_Y",
-                 aproximation = "gaussian",
-                 integration = "eb",
-                 k = 20,
-                 palette_vir  = "magma",
-                 leg_title = "Huevos",
-                 week = lubridate::epiweek(Sys.Date())-2,
-                 plot = TRUE,
-                 var = "Huevecillos",
-                 cell_size = 1000,
-                 alpha = .99)
+                                   cve_ent = "12",
+                                   locality  = c("Acapulco de Juárez"),
+                                   path_coord =  path_coord,
+                                   longitude  = "Pocision_X",
+                                   latitude =  "Pocision_Y",
+                                   aproximation = "gaussian",
+                                   integration = "eb",
+                                   k = 20,
+                                   palette_vir  = "magma",
+                                   leg_title = "Huevos",
+                                   week = lubridate::epiweek(Sys.Date())-2,
+                                   plot = TRUE,
+                                   var = "Huevecillos",
+                                   cell_size = 1000,
+                                   alpha = .99)
+
 
 knitr::kable(head(acapulco$data), "simple")
 
@@ -105,7 +106,7 @@ acapulco$map
 
 # prediction of the number of eggs in the metropolitan area of Monterrey
 deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/19_NuevoLeon",
-                       path_shp = "D:/Users/OneDrive/datasets/MG_sep_2019/19_nuevoleon/conjunto_de_datos/19l.shp",
+                       cve_ent = "19",
                        locality  = c("Ciudad General Escobedo", "Ciudad Apodaca",
                                      "Guadalupe", "Monterrey", "Ciudad Santa Catarina",
                                      "San Pedro Garza García", "Ciudad Benito Juárez",
@@ -128,7 +129,7 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
 
 # prediction of the number of eggs in the metropolitan area of Merida
 deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/31_Yucatan",
-                       path_shp = "D:/Users/OneDrive/datasets/MG_sep_2019/31_yucatan/conjunto_de_datos/31l.shp",
+                       cve_ent = "31",
                        locality  = c("Mérida"),
                        path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/31_yucatan/DescargaOvitrampasMesFco.txt",
                        longitude  = "Pocision_X",
@@ -148,7 +149,7 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
 
 # prediction of the number of eggs in the metropolitan area of Guadalajara
 deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco",
-                       path_shp = "D:/Users/OneDrive/datasets/MG_sep_2019/14_jalisco/conjunto_de_datos/14l.shp",
+                       cve_ent = "14",
                        locality  = c("Guadalajara", "Tlaquepaque", "Zapopan", "Tonalá"),
                        path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco/DescargaOvitrampasMesFco.txt",
                        longitude  = "Pocision_X",

@@ -64,48 +64,47 @@ linux fedora
 remote::install_github("fdzul/deneggs")
 ```
 
-## **`deneggs::spde_pred_map()`** return a list with six object:
+### **`deneggs::spde_pred_map()`** return a list with six object:
 
-### - **`data`** is the original dataset of the ovitrap.
-
-### - **`pred`** is the predicction dataset of *the Ae. aegypti* eggs.
-
-### - **`dics`** is a dataframe with the dics of six distribution (poisson, zeroinflatedpoisson0, 1, zeroinflatedpoisson1, nbinomial, nbinomial2, zeroinflatednbinomial0, zeroinflatednbinomial1).
-
-### - **`hotspots`** a dataset with the eggs prediction and the hotspots eggs.
-
-### - **`loc`** is the loclaity limit.
-
-### - **`map`** is the map prediction.
+-   **`data`** is the original dataset of the ovitrap.
+-   **`pred`** is the predicction dataset of *the Ae. aegypti* eggs.
+-   **`dics`** is a dataframe with the dics of six distribution
+    (poisson, zeroinflatedpoisson0, 1, zeroinflatedpoisson1, nbinomial,
+    nbinomial2, zeroinflatednbinomial0, zeroinflatednbinomial1).
+-   **`hotspots`** a dataset with the eggs prediction and the hotspots
+    eggs.
+-   **`loc`** is the loclaity limit.
+-   **`map`** is the map prediction.
 
 ``` r
 # Step 1. define the paths 
 library(magrittr)
+library(sf)
 path_lect <- "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero"
-path_shp <- "D:/Users/OneDrive/datasets/MG_sep_2019/12_guerrero/conjunto_de_datos/12l.shp"
 path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero/DescargaOvitrampasMesFco.txt"
 
 acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
-                 path_shp = path_shp,
-                 locality  = c("Acapulco de Juárez"),
-                 path_coord =  path_coord,
-                 longitude  = "Pocision_X",
-                 latitude =  "Pocision_Y",
-                 aproximation = "gaussian",
-                 integration = "eb",
-                 k = 20,
-                 palette_vir  = "magma",
-                 leg_title = "Huevos",
-                 week = lubridate::epiweek(Sys.Date())-2,
-                 plot = TRUE,
-                 var = "Huevecillos",
-                 cell_size = 1000,
-                 alpha = .99)
+                                   cve_ent = "12",
+                                   locality  = c("Acapulco de Juárez"),
+                                   path_coord =  path_coord,
+                                   longitude  = "Pocision_X",
+                                   latitude =  "Pocision_Y",
+                                   aproximation = "gaussian",
+                                   integration = "eb",
+                                   k = 20,
+                                   palette_vir  = "magma",
+                                   leg_title = "Huevos",
+                                   week = lubridate::epiweek(Sys.Date())-2,
+                                   plot = TRUE,
+                                   var = "Huevecillos",
+                                   cell_size = 1000,
+                                   alpha = .99)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" style="display: block; margin: auto;" />
 
 ``` r
+
 knitr::kable(head(acapulco$data), "simple")
 ```
 
@@ -124,12 +123,12 @@ knitr::kable(head(acapulco$pred), "simple")
 
 |         x |        y | pred\_mean | pred\_sd | pred\_ll | pred\_ul | ws\_mean | ws\_sd | week | fam                    |      dic |
 |----------:|---------:|-----------:|---------:|---------:|---------:|---------:|-------:|-----:|:-----------------------|---------:|
-| -99.70839 | 16.71783 |   10.04623 | 3.162354 | 5.245729 | 5.245729 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 |
-| -99.71302 | 16.72005 |   10.02330 | 3.075008 | 5.322923 | 5.322923 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 |
-| -99.71764 | 16.72228 |   10.12196 | 3.448031 | 5.004219 | 5.004219 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 |
-| -99.71533 | 16.72228 |   10.04068 | 3.144643 | 5.260470 | 5.260470 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 |
-| -99.71302 | 16.72228 |   10.04565 | 3.161963 | 5.245654 | 5.245654 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 |
-| -99.72226 | 16.72451 |   10.54229 | 4.843968 | 4.061820 | 4.061820 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 |
+| -99.70839 | 16.71783 |   10.01657 | 3.079739 | 5.311724 | 5.311724 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 |
+| -99.71302 | 16.72005 |    9.99466 | 2.994894 | 5.388366 | 5.388366 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 |
+| -99.71764 | 16.72228 |   10.09259 | 3.370229 | 5.060979 | 5.060979 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 |
+| -99.71533 | 16.72228 |   10.01277 | 3.068324 | 5.321209 | 5.321209 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 |
+| -99.71302 | 16.72228 |   10.01622 | 3.080123 | 5.310990 | 5.310990 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 |
+| -99.72226 | 16.72451 |   10.49927 | 4.734287 | 4.117980 | 4.117980 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 |
 
 ``` r
 knitr::kable(head(acapulco$dics), "simple")
@@ -137,12 +136,12 @@ knitr::kable(head(acapulco$dics), "simple")
 
 |      dic | fam                    |
 |---------:|:-----------------------|
-| 69157.90 | poisson                |
-| 48792.52 | zeroinflatedpoisson0   |
-| 48794.68 | zeroinflatedpoisson1   |
-| 24837.15 | nbinomial              |
-| 25771.48 | nbinomial2             |
-| 24530.23 | zeroinflatednbinomial0 |
+| 69160.05 | poisson                |
+| 48794.01 | zeroinflatedpoisson0   |
+| 48795.62 | zeroinflatedpoisson1   |
+| 24837.18 | nbinomial              |
+| 25771.58 | nbinomial2             |
+| 24530.29 | zeroinflatednbinomial0 |
 
 ``` r
 knitr::kable(head(acapulco$hotspots), "simple")
@@ -150,12 +149,12 @@ knitr::kable(head(acapulco$hotspots), "simple")
 
 |         x |        y | pred\_mean | pred\_sd | pred\_ll | pred\_ul | ws\_mean | ws\_sd | week | fam                    |      dic | z\_score   | hotspots    |
 |----------:|---------:|-----------:|---------:|---------:|---------:|---------:|-------:|-----:|:-----------------------|---------:|:-----------|:------------|
-| -99.70839 | 16.71783 |   10.04623 | 3.162354 | 5.245729 | 5.245729 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 | -0.2201271 | No Hotspots |
-| -99.71302 | 16.72005 |   10.02330 | 3.075008 | 5.322923 | 5.322923 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 | -0.3218197 | No Hotspots |
-| -99.71764 | 16.72228 |   10.12196 | 3.448031 | 5.004219 | 5.004219 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 | -0.2646135 | No Hotspots |
-| -99.71533 | 16.72228 |   10.04068 | 3.144643 | 5.260470 | 5.260470 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 | -0.3170065 | No Hotspots |
-| -99.71302 | 16.72228 |   10.04565 | 3.161963 | 5.245654 | 5.245654 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 | -0.2669700 | No Hotspots |
-| -99.72226 | 16.72451 |   10.54229 | 4.843968 | 4.061820 | 4.061820 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.27 | -0.1483803 | No Hotspots |
+| -99.70839 | 16.71783 |   10.01657 | 3.079739 | 5.311724 | 5.311724 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 | -0.2219278 | No Hotspots |
+| -99.71302 | 16.72005 |    9.99466 | 2.994894 | 5.388366 | 5.388366 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 | -0.3217408 | No Hotspots |
+| -99.71764 | 16.72228 |   10.09259 | 3.370229 | 5.060979 | 5.060979 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 | -0.2664164 | No Hotspots |
+| -99.71533 | 16.72228 |   10.01277 | 3.068324 | 5.321209 | 5.321209 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 | -0.3174457 | No Hotspots |
+| -99.71302 | 16.72228 |   10.01622 | 3.080123 | 5.310990 | 5.310990 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 | -0.2711364 | No Hotspots |
+| -99.72226 | 16.72451 |   10.49927 | 4.734287 | 4.117980 | 4.117980 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 | -0.1527493 | No Hotspots |
 
 ``` r
 # The locality limit of Acapulco
@@ -174,7 +173,7 @@ acapulco$map
 ``` r
 # prediction of the number of eggs in the metropolitan area of Monterrey
 deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/19_NuevoLeon",
-                       path_shp = "D:/Users/OneDrive/datasets/MG_sep_2019/19_nuevoleon/conjunto_de_datos/19l.shp",
+                       cve_ent = "19",
                        locality  = c("Ciudad General Escobedo", "Ciudad Apodaca",
                                      "Guadalupe", "Monterrey", "Ciudad Santa Catarina",
                                      "San Pedro Garza García", "Ciudad Benito Juárez",
@@ -201,7 +200,7 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
 ``` r
 # prediction of the number of eggs in the metropolitan area of Merida
 deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/31_Yucatan",
-                       path_shp = "D:/Users/OneDrive/datasets/MG_sep_2019/31_yucatan/conjunto_de_datos/31l.shp",
+                       cve_ent = "31",
                        locality  = c("Mérida"),
                        path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/31_yucatan/DescargaOvitrampasMesFco.txt",
                        longitude  = "Pocision_X",
@@ -225,7 +224,7 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
 ``` r
 # prediction of the number of eggs in the metropolitan area of Guadalajara
 deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco",
-                       path_shp = "D:/Users/OneDrive/datasets/MG_sep_2019/14_jalisco/conjunto_de_datos/14l.shp",
+                       cve_ent = "14",
                        locality  = c("Guadalajara", "Tlaquepaque", "Zapopan", "Tonalá"),
                        path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco/DescargaOvitrampasMesFco.txt",
                        longitude  = "Pocision_X",
