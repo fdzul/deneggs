@@ -1,6 +1,7 @@
 #' animap_vector_hotblocks: a function for create the animated map of hotblocks of eggs.
 #'
 #' @param path_vector is the directory of ovitrap datasets.
+#' @param cve_ent is the text id of the state.
 #' @param locality is the locality target with the ovitraps.
 #' @param dir is the directory where the animation will be saved.
 #' @param name is the name of the gif file.
@@ -14,7 +15,7 @@
 #' @seealso \link[tmap]{tmap_animation}
 #'
 #' @examples 1+1
-animap_vector_hotblocks <- function(path_vector, locality,
+animap_vector_hotblocks <- function(path_vector, locality,cve_ent,
                                     dir, name, vel, xleg, yleg){
     # Step 1. load the dataset ####
     x  <- boldenr::read_dataset_bol(path = path_vector,
@@ -39,7 +40,7 @@ animap_vector_hotblocks <- function(path_vector, locality,
     # Step 3. load the locality shapefile ####
     z <- rgeomex::loc_inegi19_mx %>%
         dplyr::filter(NOMGEO %in% c(similiars::find_most_similar_string(locality, unique(NOMGEO))) &
-                          AMBITO %in% c("Urbana"))
+                          CVE_ENT %in% c(cve_ent))
 
     if(nrow(z) > 1){
         z <- z %>%   sf::st_union()
