@@ -54,7 +54,7 @@ remote::install_github("fdzul/deneggs")
 ```
 ## Example
 
-```{r example, dpi = 300}
+```{r example, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE,}
 # Step 1. define the paths 
 library(magrittr)
 path_lect <- "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero"
@@ -71,7 +71,7 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                  integration = "eb",
                  k = 20,
                  palette_vir  = "magma",
-                 leg_title = "Huevos de Ae. aegypti",
+                 leg_title = "Huevos",
                  week = lubridate::epiweek(Sys.Date())-2,
                  plot = TRUE,
                  var = "Huevecillos",
@@ -79,15 +79,17 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                  alpha = .99)
 
 knitr::kable(head(acapulco$data), "simple", caption = "An example table caption.")
+
 knitr::kable(head(acapulco$pred), "simple", caption = "An example table caption.")
+
 knitr::kable(head(acapulco$dics), "simple", caption = "An example table caption.")
+
 knitr::kable(head(acapulco$hotspots), "simple", caption = "An example table caption.")
 
 plot(sf::st_geometry(acapulco$loc))
 acapulco$map
 
 ```
-
 
 ## Authors
 

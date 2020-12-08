@@ -126,7 +126,7 @@ knitr::kable(head(acapulco$dics), "simple", caption = "An example table caption.
 | 48792.52 | zeroinflatedpoisson0   |
 | 48794.68 | zeroinflatedpoisson1   |
 | 24837.15 | nbinomial              |
-| 25771.50 | nbinomial2             |
+| 25771.48 | nbinomial2             |
 | 24530.23 | zeroinflatednbinomial0 |
 
 An example table caption.
