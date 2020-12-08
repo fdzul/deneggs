@@ -31,7 +31,7 @@
 #'
 #' @examples 1+1
 #' @details \link[INLA]{inla}.
-eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord, path_shp,
+eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,
                          leg_title, fam, alpha, plot = NULL,
                          aproximation, integration,
                          longitude, latitude, k, sem, var,

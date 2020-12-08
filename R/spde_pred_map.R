@@ -33,7 +33,7 @@
 #'
 #' @examples 1+ 1
 #' @details \link[INLA]{inla}.
-spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
+spde_pred_map <- function(path_lect,locality, path_coord,
                           leg_title, alpha, plot = NULL,
                           aproximation, integration,
                           longitude, latitude, k, week, var,
@@ -51,7 +51,7 @@ spde_pred_map <- function(path_lect,locality, path_coord, path_shp,
                       AMBITO %in% c("Urbana"))
 
     if(nrow(z) > 1){
-      loc <- loc %>%   sf::st_union()
+      loc <- loc %>% sf::st_union()
     } else {
 
     }
