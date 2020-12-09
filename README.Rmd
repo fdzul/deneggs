@@ -83,7 +83,7 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                                    k = 20,
                                    palette_vir  = "magma",
                                    leg_title = "Huevos",
-                                   week = lubridate::epiweek(Sys.Date())-2,
+                                   week = lubridate::epiweek(Sys.Date())-1,
                                    plot = TRUE,
                                    var = "Huevecillos",
                                    cell_size = 1000,
@@ -104,7 +104,7 @@ plot(sf::st_geometry(acapulco$loc))
 # prediction of the number of Ae. aegypty eggs in the metropolitan area of Acapulco
 acapulco$map
 
-# prediction of the number of eggs in the metropolitan area of Monterrey
+# prediction of the number of eggs in the metropolitan area of Monterrey 
 deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/19_NuevoLeon",
                        cve_ent = "19",
                        locality  = c("Ciudad General Escobedo", "Ciudad Apodaca",
@@ -122,7 +122,7 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
                        leg_title = "Huevos",
                        plot = FALSE,
                        hist_dataset = FALSE, #####
-                       sem = lubridate::epiweek(Sys.Date())-2,
+                       sem = lubridate::epiweek(Sys.Date())-1,
                        var = "eggs",
                        cell_size = 1000,
                        alpha = .99)$map
@@ -142,7 +142,7 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
                        leg_title = "Huevos",
                        plot = FALSE,
                        hist_dataset = FALSE, #####
-                       sem = lubridate::epiweek(Sys.Date())-2,
+                       sem = lubridate::epiweek(Sys.Date())-1,
                        var = "eggs",
                        cell_size = 1000,
                        alpha = .99)$map
@@ -162,7 +162,7 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
                        leg_title = "Huevos",
                        plot = FALSE,
                        hist_dataset = FALSE, #####
-                       sem = lubridate::epiweek(Sys.Date())-2,
+                       sem = lubridate::epiweek(Sys.Date())-1,
                        var = "eggs",
                        cell_size = 1000,
                        alpha = .99)$map

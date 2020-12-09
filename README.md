@@ -94,7 +94,7 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                                    k = 20,
                                    palette_vir  = "magma",
                                    leg_title = "Huevos",
-                                   week = lubridate::epiweek(Sys.Date())-2,
+                                   week = lubridate::epiweek(Sys.Date())-1,
                                    plot = TRUE,
                                    var = "Huevecillos",
                                    cell_size = 1000,
@@ -110,25 +110,25 @@ knitr::kable(head(acapulco$data), "simple")
 
 |      | Clave.x           | Entidad.x   | Jurisdiccion  | Municipio.x        | Localidad.x        | Sector | Manzana |   Ovitrampa | Huevecillos | No.Lectura | Fecha.Lectura | Fecha.Recoleccion.Papeleta | Semana.Epidemiologica | Usuario  | Fecha.Captura | RFC.del.Operador | CAMEX | Clave.y           | Entidad.y   | Municipio.y            | Localidad.y             | Pocision\_X | Pocision\_Y | FechaGeo   |
 |------|:------------------|:------------|:--------------|:-------------------|:-------------------|-------:|--------:|------------:|------------:|:-----------|:--------------|:---------------------------|----------------------:|:---------|:--------------|:-----------------|:------|:------------------|:------------|:-----------------------|:------------------------|------------:|------------:|:-----------|
-| 5597 | 12001000102150095 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    215 |      95 | 12001015390 |           3 | 29         | 23/11/2020    | 23/11/2020                 |                    48 | c1207:17 | 24/11/2020    | EADA0209114T8    | SI    | 12001000102150095 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.84975 |    16.88086 | 11/08/2015 |
-| 5598 | 12001000102150095 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    215 |      95 | 12001015391 |          16 | 29         | 23/11/2020    | 23/11/2020                 |                    48 | c1207:17 | 24/11/2020    | EADA0209114T8    | SI    | 12001000102150095 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.84999 |    16.88040 | 11/08/2015 |
-| 5599 | 12001000102150095 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    215 |      95 | 12001015392 |          28 | 29         | 23/11/2020    | 23/11/2020                 |                    48 | c1207:17 | 24/11/2020    | EADA0209114T8    | SI    | 12001000102150095 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.84993 |    16.87995 | 11/08/2015 |
-| 5600 | 12001000102150095 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    215 |      95 | 12001015393 |          24 | 29         | 23/11/2020    | 23/11/2020                 |                    48 | c1207:17 | 24/11/2020    | EADA0209114T8    | SI    | 12001000102150095 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.84956 |    16.87996 | 11/08/2015 |
-| 5601 | 12001000101120053 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    112 |      53 | 12001015402 |           0 | 29         | 23/11/2020    | 23/11/2020                 |                    48 | c1207:18 | 24/11/2020    | MOLJ680425165    | SI    | 12001000101120053 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.82800 |    16.92169 | 11/08/2015 |
-| 5602 | 12001000101120053 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    112 |      53 | 12001015403 |           0 | 29         | 23/11/2020    | 23/11/2020                 |                    48 | c1207:18 | 24/11/2020    | MOLJ680425165    | SI    | 12001000101120053 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.82761 |    16.92173 | 11/08/2015 |
+| 6411 | 12001000103010298 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    301 |     298 | 12001017264 |           0 | 32         | 04/12/2020    | 04/12/2020                 |                    49 | C1207:02 | 07/12/2020    | OECJ870108KK8    | SI    | 12001000103010298 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.81421 |    16.83524 | 20/04/2018 |
+| 6412 | 12001000103010298 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    301 |     298 | 12001017265 |           0 | 32         | 04/12/2020    | 04/12/2020                 |                    49 | C1207:02 | 07/12/2020    | OECJ870108KK8    | SI    | 12001000103010298 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.81427 |    16.83550 | 20/04/2018 |
+| 6413 | 12001000102940155 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    294 |     155 | 12001017266 |           0 | 31         | 30/11/2020    | 30/11/2020                 |                    49 | C1207:02 | 01/12/2020    | AAAL860731HL3    | SI    | 12001000102940155 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.80778 |    16.83621 | 20/04/2018 |
+| 6414 | 12001000102940155 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    294 |     155 | 12001017267 |           2 | 31         | 30/11/2020    | 30/11/2020                 |                    49 | C1207:02 | 01/12/2020    | AAAL860731HL3    | SI    | 12001000102940155 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.80782 |    16.83604 | 20/04/2018 |
+| 6415 | 12001000102940155 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    294 |     155 | 12001017268 |           0 | 31         | 30/11/2020    | 30/11/2020                 |                    49 | C1207:02 | 01/12/2020    | AAAL860731HL3    | SI    | 12001000102940155 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.80676 |    16.83585 | 20/04/2018 |
+| 6416 | 12001000102940155 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    294 |     155 | 12001017269 |           1 | 31         | 30/11/2020    | 30/11/2020                 |                    49 | C1207:02 | 01/12/2020    | AAAL860731HL3    | SI    | 12001000102940155 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.80671 |    16.83599 | 20/04/2018 |
 
 ``` r
 knitr::kable(head(acapulco$pred), "simple")
 ```
 
-|         x |        y | pred\_mean | pred\_sd | pred\_ll | pred\_ul | ws\_mean | ws\_sd | week | fam                    |      dic |
-|----------:|---------:|-----------:|---------:|---------:|---------:|---------:|-------:|-----:|:-----------------------|---------:|
-| -99.70839 | 16.71783 |   10.01657 | 3.079739 | 5.311724 | 5.311724 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 |
-| -99.71302 | 16.72005 |    9.99466 | 2.994894 | 5.388366 | 5.388366 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 |
-| -99.71764 | 16.72228 |   10.09259 | 3.370229 | 5.060979 | 5.060979 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 |
-| -99.71533 | 16.72228 |   10.01277 | 3.068324 | 5.321209 | 5.321209 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 |
-| -99.71302 | 16.72228 |   10.01622 | 3.080123 | 5.310990 | 5.310990 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 |
-| -99.72226 | 16.72451 |   10.49927 | 4.734287 | 4.117980 | 4.117980 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 |
+|         x |        y | pred\_mean | pred\_sd | pred\_ll | pred\_ul | ws\_mean | ws\_sd | week | fam                    |     dic |
+|----------:|---------:|-----------:|---------:|---------:|---------:|---------:|-------:|-----:|:-----------------------|--------:|
+| -99.70839 | 16.71783 |   8.318508 | 3.685817 | 3.316328 | 3.316328 |       NA |     NA |   49 | zeroinflatednbinomial0 | 23826.6 |
+| -99.71302 | 16.72005 |   8.296969 | 3.614828 | 3.359264 | 3.359264 |       NA |     NA |   49 | zeroinflatednbinomial0 | 23826.6 |
+| -99.71764 | 16.72228 |   8.224431 | 3.371201 | 3.514488 | 3.514488 |       NA |     NA |   49 | zeroinflatednbinomial0 | 23826.6 |
+| -99.71533 | 16.72228 |   8.243241 | 3.436640 | 3.471199 | 3.471199 |       NA |     NA |   49 | zeroinflatednbinomial0 | 23826.6 |
+| -99.71302 | 16.72228 |   8.320136 | 3.685880 | 3.317524 | 3.317524 |       NA |     NA |   49 | zeroinflatednbinomial0 | 23826.6 |
+| -99.72226 | 16.72451 |   8.406972 | 3.934505 | 3.182243 | 3.182243 |       NA |     NA |   49 | zeroinflatednbinomial0 | 23826.6 |
 
 ``` r
 knitr::kable(head(acapulco$dics), "simple")
@@ -136,25 +136,25 @@ knitr::kable(head(acapulco$dics), "simple")
 
 |      dic | fam                    |
 |---------:|:-----------------------|
-| 69160.05 | poisson                |
-| 48794.01 | zeroinflatedpoisson0   |
-| 48795.62 | zeroinflatedpoisson1   |
-| 24837.18 | nbinomial              |
-| 25771.58 | nbinomial2             |
-| 24530.29 | zeroinflatednbinomial0 |
+| 60626.10 | poisson                |
+| 43101.53 | zeroinflatedpoisson0   |
+| 43104.48 | zeroinflatedpoisson1   |
+| 24172.43 | nbinomial              |
+| 24934.48 | nbinomial2             |
+| 23832.66 | zeroinflatednbinomial0 |
 
 ``` r
 knitr::kable(head(acapulco$hotspots), "simple")
 ```
 
-|         x |        y | pred\_mean | pred\_sd | pred\_ll | pred\_ul | ws\_mean | ws\_sd | week | fam                    |      dic | z\_score   | hotspots    |
-|----------:|---------:|-----------:|---------:|---------:|---------:|---------:|-------:|-----:|:-----------------------|---------:|:-----------|:------------|
-| -99.70839 | 16.71783 |   10.01657 | 3.079739 | 5.311724 | 5.311724 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 | -0.2219278 | No Hotspots |
-| -99.71302 | 16.72005 |    9.99466 | 2.994894 | 5.388366 | 5.388366 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 | -0.3217408 | No Hotspots |
-| -99.71764 | 16.72228 |   10.09259 | 3.370229 | 5.060979 | 5.060979 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 | -0.2664164 | No Hotspots |
-| -99.71533 | 16.72228 |   10.01277 | 3.068324 | 5.321209 | 5.321209 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 | -0.3174457 | No Hotspots |
-| -99.71302 | 16.72228 |   10.01622 | 3.080123 | 5.310990 | 5.310990 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 | -0.2711364 | No Hotspots |
-| -99.72226 | 16.72451 |   10.49927 | 4.734287 | 4.117980 | 4.117980 |       NA |     NA |   48 | zeroinflatednbinomial0 | 24524.93 | -0.1527493 | No Hotspots |
+|         x |        y | pred\_mean | pred\_sd | pred\_ll | pred\_ul | ws\_mean | ws\_sd | week | fam                    |     dic | z\_score    | hotspots    |
+|----------:|---------:|-----------:|---------:|---------:|---------:|---------:|-------:|-----:|:-----------------------|--------:|:------------|:------------|
+| -99.70839 | 16.71783 |   8.318508 | 3.685817 | 3.316328 | 3.316328 |       NA |     NA |   49 | zeroinflatednbinomial0 | 23826.6 | -0.05498901 | No Hotspots |
+| -99.71302 | 16.72005 |   8.296969 | 3.614828 | 3.359264 | 3.359264 |       NA |     NA |   49 | zeroinflatednbinomial0 | 23826.6 | -0.14175733 | No Hotspots |
+| -99.71764 | 16.72228 |   8.224431 | 3.371201 | 3.514488 | 3.514488 |       NA |     NA |   49 | zeroinflatednbinomial0 | 23826.6 | -0.14237606 | No Hotspots |
+| -99.71533 | 16.72228 |   8.243241 | 3.436640 | 3.471199 | 3.471199 |       NA |     NA |   49 | zeroinflatednbinomial0 | 23826.6 | -0.15257546 | No Hotspots |
+| -99.71302 | 16.72228 |   8.320136 | 3.685880 | 3.317524 | 3.317524 |       NA |     NA |   49 | zeroinflatednbinomial0 | 23826.6 | -0.05124080 | No Hotspots |
+| -99.72226 | 16.72451 |   8.406972 | 3.934505 | 3.182243 | 3.182243 |       NA |     NA |   49 | zeroinflatednbinomial0 | 23826.6 | -0.07364651 | No Hotspots |
 
 ``` r
 # The locality limit of Acapulco
@@ -171,7 +171,7 @@ acapulco$map
 <img src="man/figures/README-example-3.png" width="100%" style="display: block; margin: auto;" />
 
 ``` r
-# prediction of the number of eggs in the metropolitan area of Monterrey
+# prediction of the number of eggs in the metropolitan area of Monterrey 
 deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/19_NuevoLeon",
                        cve_ent = "19",
                        locality  = c("Ciudad General Escobedo", "Ciudad Apodaca",
@@ -189,7 +189,7 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
                        leg_title = "Huevos",
                        plot = FALSE,
                        hist_dataset = FALSE, #####
-                       sem = lubridate::epiweek(Sys.Date())-2,
+                       sem = lubridate::epiweek(Sys.Date())-1,
                        var = "eggs",
                        cell_size = 1000,
                        alpha = .99)$map
@@ -213,7 +213,7 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
                        leg_title = "Huevos",
                        plot = FALSE,
                        hist_dataset = FALSE, #####
-                       sem = lubridate::epiweek(Sys.Date())-2,
+                       sem = lubridate::epiweek(Sys.Date())-1,
                        var = "eggs",
                        cell_size = 1000,
                        alpha = .99)$map
@@ -237,25 +237,13 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
                        leg_title = "Huevos",
                        plot = FALSE,
                        hist_dataset = FALSE, #####
-                       sem = lubridate::epiweek(Sys.Date())-2,
+                       sem = lubridate::epiweek(Sys.Date())-1,
                        var = "eggs",
                        cell_size = 1000,
                        alpha = .99)$map
 ```
 
 <img src="man/figures/README-example-6.png" width="100%" style="display: block; margin: auto;" />
-
-    #> Warning in deneggs::ovitraps_read(path = path_lect, current_year = TRUE): NAs
-    #> introducidos por coerción
-    #> Warning in deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/
-    #> SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco", : NAs
-    #> introducidos por coerción
-    #> although coordinates are longitude/latitude, st_intersects assumes that they are planar
-    #> although coordinates are longitude/latitude, st_intersects assumes that they are planar
-    #> Warning in proj4string(sp): CRS object has comment, which is lost in output
-    #> although coordinates are longitude/latitude, st_intersects assumes that they are planar
-
-<img src="man/figures/README-example2-1.png" width="100%" />
 
 ## Authors
 
