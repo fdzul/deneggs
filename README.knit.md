@@ -4,14 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
+
 
 # **deneggs**
 
@@ -65,7 +58,8 @@ remote::install_github("fdzul/deneggs")
  - **`map`** is the map prediction.
 
 
-```{r example, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE,}
+
+```r
 # Step 1. define the paths 
 library(magrittr)
 library(sf)
@@ -83,28 +77,91 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                                    k = 20,
                                    palette_vir  = "magma",
                                    leg_title = "Huevos",
-                                   week = lubridate::epiweek(Sys.Date())-2,
+                                   week = lubridate::epiweek(Sys.Date())-1,
                                    plot = TRUE,
                                    var = "Huevecillos",
                                    cell_size = 1000,
                                    alpha = .99)
+```
+
+<img src="man/figures/README-example-1.png" width="100%" style="display: block; margin: auto;" />
+
+```r
 
 
 knitr::kable(head(acapulco$data), "simple")
+```
+
+       Clave.x             Entidad.x     Jurisdiccion    Municipio.x          Localidad.x           Sector   Manzana     Ovitrampa   Huevecillos  No.Lectura   Fecha.Lectura   Fecha.Recoleccion.Papeleta    Semana.Epidemiologica  Usuario    Fecha.Captura   RFC.del.Operador   CAMEX   Clave.y             Entidad.y     Municipio.y              Localidad.y                Pocision_X   Pocision_Y  FechaGeo   
+-----  ------------------  ------------  --------------  -------------------  -------------------  -------  --------  ------------  ------------  -----------  --------------  ---------------------------  ----------------------  ---------  --------------  -----------------  ------  ------------------  ------------  -----------------------  ------------------------  -----------  -----------  -----------
+6411   12001000103010298   12 Guerrero   1207 Acapulco   Acapulco de Juárez   Acapulco De Juárez       301       298   12001017264             0  32           04/12/2020      04/12/2020                                       49  C1207:02   07/12/2020      OECJ870108KK8      SI      12001000103010298   12 Guerrero   001 Acapulco de Juárez   0001 ACAPULCO DE JUÁREZ     -99.81421     16.83524  20/04/2018 
+6412   12001000103010298   12 Guerrero   1207 Acapulco   Acapulco de Juárez   Acapulco De Juárez       301       298   12001017265             0  32           04/12/2020      04/12/2020                                       49  C1207:02   07/12/2020      OECJ870108KK8      SI      12001000103010298   12 Guerrero   001 Acapulco de Juárez   0001 ACAPULCO DE JUÁREZ     -99.81427     16.83550  20/04/2018 
+6413   12001000102940155   12 Guerrero   1207 Acapulco   Acapulco de Juárez   Acapulco De Juárez       294       155   12001017266             0  31           30/11/2020      30/11/2020                                       49  C1207:02   01/12/2020      AAAL860731HL3      SI      12001000102940155   12 Guerrero   001 Acapulco de Juárez   0001 ACAPULCO DE JUÁREZ     -99.80778     16.83621  20/04/2018 
+6414   12001000102940155   12 Guerrero   1207 Acapulco   Acapulco de Juárez   Acapulco De Juárez       294       155   12001017267             2  31           30/11/2020      30/11/2020                                       49  C1207:02   01/12/2020      AAAL860731HL3      SI      12001000102940155   12 Guerrero   001 Acapulco de Juárez   0001 ACAPULCO DE JUÁREZ     -99.80782     16.83604  20/04/2018 
+6415   12001000102940155   12 Guerrero   1207 Acapulco   Acapulco de Juárez   Acapulco De Juárez       294       155   12001017268             0  31           30/11/2020      30/11/2020                                       49  C1207:02   01/12/2020      AAAL860731HL3      SI      12001000102940155   12 Guerrero   001 Acapulco de Juárez   0001 ACAPULCO DE JUÁREZ     -99.80676     16.83585  20/04/2018 
+6416   12001000102940155   12 Guerrero   1207 Acapulco   Acapulco de Juárez   Acapulco De Juárez       294       155   12001017269             1  31           30/11/2020      30/11/2020                                       49  C1207:02   01/12/2020      AAAL860731HL3      SI      12001000102940155   12 Guerrero   001 Acapulco de Juárez   0001 ACAPULCO DE JUÁREZ     -99.80671     16.83599  20/04/2018 
+
+```r
 
 knitr::kable(head(acapulco$pred), "simple")
+```
+
+         x          y   pred_mean    pred_sd    pred_ll    pred_ul   ws_mean   ws_sd   week  fam                           dic
+----------  ---------  ----------  ---------  ---------  ---------  --------  ------  -----  -----------------------  --------
+ -99.70839   16.71783    8.318508   3.685817   3.316328   3.316328        NA      NA     49  zeroinflatednbinomial0    23826.6
+ -99.71302   16.72005    8.296969   3.614828   3.359264   3.359264        NA      NA     49  zeroinflatednbinomial0    23826.6
+ -99.71764   16.72228    8.224431   3.371201   3.514488   3.514488        NA      NA     49  zeroinflatednbinomial0    23826.6
+ -99.71533   16.72228    8.243241   3.436640   3.471199   3.471199        NA      NA     49  zeroinflatednbinomial0    23826.6
+ -99.71302   16.72228    8.320136   3.685880   3.317524   3.317524        NA      NA     49  zeroinflatednbinomial0    23826.6
+ -99.72226   16.72451    8.406972   3.934505   3.182243   3.182243        NA      NA     49  zeroinflatednbinomial0    23826.6
+
+```r
 
 knitr::kable(head(acapulco$dics), "simple")
+```
+
+      dic  fam                    
+---------  -----------------------
+ 60626.10  poisson                
+ 43101.53  zeroinflatedpoisson0   
+ 43104.48  zeroinflatedpoisson1   
+ 24172.43  nbinomial              
+ 24934.48  nbinomial2             
+ 23832.66  zeroinflatednbinomial0 
+
+```r
 
 knitr::kable(head(acapulco$hotspots), "simple")
+```
+
+         x          y   pred_mean    pred_sd    pred_ll    pred_ul   ws_mean   ws_sd   week  fam                           dic  z_score       hotspots    
+----------  ---------  ----------  ---------  ---------  ---------  --------  ------  -----  -----------------------  --------  ------------  ------------
+ -99.70839   16.71783    8.318508   3.685817   3.316328   3.316328        NA      NA     49  zeroinflatednbinomial0    23826.6  -0.05498901   No Hotspots 
+ -99.71302   16.72005    8.296969   3.614828   3.359264   3.359264        NA      NA     49  zeroinflatednbinomial0    23826.6  -0.14175733   No Hotspots 
+ -99.71764   16.72228    8.224431   3.371201   3.514488   3.514488        NA      NA     49  zeroinflatednbinomial0    23826.6  -0.14237606   No Hotspots 
+ -99.71533   16.72228    8.243241   3.436640   3.471199   3.471199        NA      NA     49  zeroinflatednbinomial0    23826.6  -0.15257546   No Hotspots 
+ -99.71302   16.72228    8.320136   3.685880   3.317524   3.317524        NA      NA     49  zeroinflatednbinomial0    23826.6  -0.05124080   No Hotspots 
+ -99.72226   16.72451    8.406972   3.934505   3.182243   3.182243        NA      NA     49  zeroinflatednbinomial0    23826.6  -0.07364651   No Hotspots 
+
+```r
 
 # The locality limit of Acapulco
 plot(sf::st_geometry(acapulco$loc))
+```
+
+<img src="man/figures/README-example-2.png" width="100%" style="display: block; margin: auto;" />
+
+```r
 
 # prediction of the number of Ae. aegypty eggs in the metropolitan area of Acapulco
 acapulco$map
+```
 
-# prediction of the number of eggs in the metropolitan area of Monterrey
+<img src="man/figures/README-example-3.png" width="100%" style="display: block; margin: auto;" />
+
+```r
+
+# prediction of the number of eggs in the metropolitan area of Monterrey 
 deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/19_NuevoLeon",
                        cve_ent = "19",
                        locality  = c("Ciudad General Escobedo", "Ciudad Apodaca",
@@ -122,10 +179,15 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
                        leg_title = "Huevos",
                        plot = FALSE,
                        hist_dataset = FALSE, #####
-                       sem = lubridate::epiweek(Sys.Date())-2,
+                       sem = lubridate::epiweek(Sys.Date())-1,
                        var = "eggs",
                        cell_size = 1000,
                        alpha = .99)$map
+```
+
+<img src="man/figures/README-example-4.png" width="100%" style="display: block; margin: auto;" />
+
+```r
 
 # prediction of the number of eggs in the metropolitan area of Merida
 deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/31_Yucatan",
@@ -142,10 +204,15 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
                        leg_title = "Huevos",
                        plot = FALSE,
                        hist_dataset = FALSE, #####
-                       sem = lubridate::epiweek(Sys.Date())-2,
+                       sem = lubridate::epiweek(Sys.Date())-1,
                        var = "eggs",
                        cell_size = 1000,
                        alpha = .99)$map
+```
+
+<img src="man/figures/README-example-5.png" width="100%" style="display: block; margin: auto;" />
+
+```r
 
 # prediction of the number of eggs in the metropolitan area of Guadalajara
 deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco",
@@ -162,11 +229,13 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
                        leg_title = "Huevos",
                        plot = FALSE,
                        hist_dataset = FALSE, #####
-                       sem = lubridate::epiweek(Sys.Date())-2,
+                       sem = lubridate::epiweek(Sys.Date())-1,
                        var = "eggs",
                        cell_size = 1000,
                        alpha = .99)$map
 ```
+
+<img src="man/figures/README-example-6.png" width="100%" style="display: block; margin: auto;" />
 
 ## Authors
 

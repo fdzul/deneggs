@@ -245,6 +245,18 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
 
 <img src="man/figures/README-example-6.png" width="100%" style="display: block; margin: auto;" />
 
+    #> Warning in deneggs::ovitraps_read(path = path_lect, current_year = TRUE): NAs
+    #> introducidos por coerción
+    #> Warning in deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/
+    #> SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco", : NAs
+    #> introducidos por coerción
+    #> although coordinates are longitude/latitude, st_intersects assumes that they are planar
+    #> although coordinates are longitude/latitude, st_intersects assumes that they are planar
+    #> Warning in proj4string(sp): CRS object has comment, which is lost in output
+    #> although coordinates are longitude/latitude, st_intersects assumes that they are planar
+
+<img src="man/figures/README-example2-1.png" width="100%" />
+
 ## Authors
 
 -   **Felipe Antonio Dzul Manzanilla** -**<https://github.com/fdzul>** -
