@@ -61,7 +61,7 @@ linux fedora
 
 ``` r
 # install.packages("devtools")
-remote::install_github("fdzul/deneggs")
+remotes::install_github("fdzul/deneggs")
 ```
 
 ### **`deneggs::spde_pred_map()`** return a list with six object:
