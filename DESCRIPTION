@@ -50,3 +50,6 @@ Imports:
     spdep
 Suggests: 
     roxygen2
+    
+Remotes: 
+    fdzul/rgeomex
