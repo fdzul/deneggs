@@ -6,7 +6,6 @@
 #' @param locality is the locality target.
 #' @param cve_ent is the text id of the state.
 #' @param path_coord is the directory of the ovitrampas coordinates file.
-#' @param path_shp is the directory of shepefile dataset.
 #' @param longitude is the name of the column of the longitude in the ovitrampas dataset.
 #' @param latitude is the name of the column of the longitude in the ovitrampas dataset.
 #' @param k is the parameter for define the triagulization of delauney.

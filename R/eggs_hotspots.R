@@ -7,7 +7,6 @@
 #' @param locality is the locality target.
 #' @param cve_ent is the text id of the state.
 #' @param path_coord is the directory of the ovitrampas coordinates file.
-#' @param path_shp is the directory of shepefile dataset.
 #' @param leg_title is title of legend.
 #' @param fam is the name of the family of the distribution for modelling count data. The option can be  poisson, zeroinflatedpoisson0, zeroinflatedpoisson1, nbinomial, zeroinflatednbinomial0 and zeroinflatednbinomial1
 #' @param alpha alpha The significance level, also denoted as alpha or α, is the probability of rejecting the null hypothesis when it is true.

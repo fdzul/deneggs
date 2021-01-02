@@ -55,8 +55,6 @@ spde_pred_map(
 \item{cell_size}{is the parameter for define the grid of locality for prediction.}
 
 \item{palette_vir}{is the palette of viridis. The option can be magma, plasma, inferno, and viridis.}
-
-\item{path_shp}{is the directory of shepefile dataset.}
 }
 \value{
 a list with the gmap with the prediction of the number of eggs, the prediction of number of eggs, the mesh.
