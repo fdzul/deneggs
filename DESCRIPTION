@@ -50,6 +50,8 @@ Imports:
     spdep
 Suggests: 
     roxygen2
-    
 Remotes: 
-    fdzul/rgeomex
+    fdzul/rgeomex,
+    fdzul/boldenr,
+    davidsjoberg/similiars,
+    url::https://inla.r-inla-download.org/R/stable
