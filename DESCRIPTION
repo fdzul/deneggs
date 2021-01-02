@@ -49,9 +49,12 @@ Imports:
     sp,
     spdep
 Suggests: 
-    roxygen2
+    roxygen2,
+    knitr,
+    rmarkdown
 Remotes: 
     fdzul/rgeomex,
     fdzul/boldenr,
     davidsjoberg/similiars,
     url::https://inla.r-inla-download.org/R/stable
+VignetteBuilder: knitr
