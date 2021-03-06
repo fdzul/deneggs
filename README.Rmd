@@ -69,8 +69,8 @@ remotes::install_github("fdzul/deneggs")
 # Step 1. define the paths 
 library(magrittr)
 library(sf)
-path_lect <- "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero"
-path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero/DescargaOvitrampasMesFco.txt"
+path_lect <- "C:/Users/felip/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero"
+path_coord =  "C:/Users/felip/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero/DescargaOvitrampasMesFco.txt"
 
 acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                                    cve_ent = "12",

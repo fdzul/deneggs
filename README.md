@@ -3,7 +3,8 @@
 
 # **deneggs**
 
-[![Build Status](https://travis-ci.org/fdzul/deneggs.svg?branch=master)](https://travis-ci.org/fdzul/deneggs)
+[![Build
+Status](https://travis-ci.org/pages-themes/cayman.svg?branch=master)](https://travis-ci.org/pages-themes/cayman)
 [![Gem
 Version](https://badge.fury.io/rb/jekyll-theme-cayman.svg)](https://badge.fury.io/rb/jekyll-theme-cayman)[![Github
 All
@@ -79,8 +80,8 @@ remotes::install_github("fdzul/deneggs")
 # Step 1. define the paths 
 library(magrittr)
 library(sf)
-path_lect <- "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero"
-path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero/DescargaOvitrampasMesFco.txt"
+path_lect <- "C:/Users/felip/Dropbox/cenaprece_datasets/12_Guerrero"
+path_coord <- paste(path_lect,"DescargaOvitrampasMesFco.txt", sep = "/")
 
 acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                                    cve_ent = "12",
@@ -93,7 +94,7 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                                    k = 20,
                                    palette_vir  = "magma",
                                    leg_title = "Huevos",
-                                   week = lubridate::epiweek(Sys.Date())-2,
+                                   week = lubridate::epiweek(Sys.Date())-1,
                                    plot = TRUE,
                                    var = "Huevecillos",
                                    cell_size = 1000,
@@ -109,12 +110,12 @@ knitr::kable(head(acapulco$data), "simple")
 
 |      | Clave.x           | Entidad.x   | Jurisdiccion  | Municipio.x        | Localidad.x        | Sector | Manzana |   Ovitrampa | Huevecillos | No.Lectura | Fecha.Lectura | Fecha.Recoleccion.Papeleta | Semana.Epidemiologica | Usuario  | Fecha.Captura | RFC.del.Operador | CAMEX | Clave.y           | Entidad.y   | Municipio.y            | Localidad.y             | Pocision\_X | Pocision\_Y | FechaGeo   |
 |------|:------------------|:------------|:--------------|:-------------------|:-------------------|-------:|--------:|------------:|------------:|:-----------|:--------------|:---------------------------|----------------------:|:---------|:--------------|:-----------------|:------|:------------------|:------------|:-----------------------|:------------------------|------------:|------------:|:-----------|
-| 7201 | 12001000103060758 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    306 |     758 | 12001018871 |          NA | 34         | 18/12/2020    | 18/12/2020                 |                    51 | c1207:10 | 19/12/2020    | PEHA730423Q80    | SI    | 12001000103060758 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.80358 |    16.82112 | 26/04/2018 |
-| 7202 | 12001000103060758 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    306 |     758 | 12001018872 |           3 | 34         | 18/12/2020    | 18/12/2020                 |                    51 | c1207:10 | 19/12/2020    | PEHA730423Q80    | SI    | 12001000103060758 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.80358 |    16.82113 | 26/04/2018 |
-| 7203 | 12001000103060758 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    306 |     758 | 12001018873 |           2 | 34         | 18/12/2020    | 18/12/2020                 |                    51 | c1207:10 | 19/12/2020    | PEHA730423Q80    | SI    | 12001000103060758 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.80388 |    16.82023 | 26/04/2018 |
-| 7204 | 12001000103060758 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    306 |     758 | 12001018874 |           0 | 34         | 18/12/2020    | 18/12/2020                 |                    51 | c1207:10 | 19/12/2020    | PEHA730423Q80    | SI    | 12001000103060758 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.80380 |    16.82020 | 26/04/2018 |
-| 7205 | 12001000103060733 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    306 |     733 | 12001018875 |           0 | 34         | 18/12/2020    | 18/12/2020                 |                    51 | c1207:10 | 19/12/2020    | PEHA730423Q80    | SI    | 12001000103060733 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.80475 |    16.82151 | 26/04/2018 |
-| 7206 | 12001000103060733 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    306 |     733 | 12001018876 |           3 | 34         | 18/12/2020    | 18/12/2020                 |                    51 | c1207:10 | 19/12/2020    | PEHA730423Q80    | SI    | 12001000103060733 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.80465 |    16.82150 | 26/04/2018 |
+| 8455 | 12001000102630043 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    263 |      43 | 12001012561 |           6 | 6          | 26/02/2021    | 26/02/2021                 |                     8 | c1207:18 | 01/03/2021    | GOCY730430EI5    | NO    | 12001000102630043 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.85986 |    16.86853 | 12/05/2014 |
+| 8456 | 12001000102180044 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |    218 |      44 | 12001012563 |          10 | 6          | 22/02/2021    | 22/02/2021                 |                     8 | c1207:16 | 25/02/2021    | VACA780627S19    | SI    | 12001000102180044 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.85719 |    16.87830 | 12/05/2014 |
+| 8457 | 12001000100530051 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |     53 |      51 | 12001012760 |           3 | 6          | 26/02/2021    | 26/02/2021                 |                     8 | c1207:17 | 01/03/2021    | VACA780627S19    | NO    | 12001000100530051 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.91502 |    16.86112 | 27/06/2014 |
+| 8458 | 12001000100530051 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |     53 |      51 | 12001012761 |           7 | 6          | 26/02/2021    | 26/02/2021                 |                     8 | c1207:17 | 01/03/2021    | VACA780627S19    | NO    | 12001000100530051 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.91495 |    16.86135 | 27/06/2014 |
+| 8459 | 12001000100530051 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |     53 |      51 | 12001012762 |          10 | 6          | 26/02/2021    | 26/02/2021                 |                     8 | c1207:17 | 01/03/2021    | VACA780627S19    | NO    | 12001000100530051 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.91484 |    16.86162 | 27/06/2014 |
+| 8460 | 12001000100530051 | 12 Guerrero | 1207 Acapulco | Acapulco de Juárez | Acapulco De Juárez |     53 |      51 | 12001012763 |           7 | 6          | 26/02/2021    | 26/02/2021                 |                     8 | c1207:17 | 01/03/2021    | VACA780627S19    | NO    | 12001000100530051 | 12 Guerrero | 001 Acapulco de Juárez | 0001 ACAPULCO DE JUÁREZ |   -99.91563 |    16.86156 | 27/06/2014 |
 
 ``` r
 knitr::kable(head(acapulco$pred), "simple")
@@ -122,12 +123,12 @@ knitr::kable(head(acapulco$pred), "simple")
 
 |         x |        y | pred\_mean | pred\_sd | pred\_ll | pred\_ul | ws\_mean | ws\_sd | week | fam                    |      dic |
 |----------:|---------:|-----------:|---------:|---------:|---------:|---------:|-------:|-----:|:-----------------------|---------:|
-| -99.70839 | 16.71783 |   10.67464 | 11.82568 | 1.235099 | 1.235099 |       NA |     NA |   51 | zeroinflatednbinomial0 | 21064.11 |
-| -99.71302 | 16.72005 |   10.65358 | 11.64921 | 1.261346 | 1.261346 |       NA |     NA |   51 | zeroinflatednbinomial0 | 21064.11 |
-| -99.71764 | 16.72228 |   10.23380 | 10.06743 | 1.452240 | 1.452240 |       NA |     NA |   51 | zeroinflatednbinomial0 | 21064.11 |
-| -99.71533 | 16.72228 |   10.40324 | 10.69944 | 1.369551 | 1.369551 |       NA |     NA |   51 | zeroinflatednbinomial0 | 21064.11 |
-| -99.71302 | 16.72228 |   10.79439 | 12.02678 | 1.236413 | 1.236413 |       NA |     NA |   51 | zeroinflatednbinomial0 | 21064.11 |
-| -99.72226 | 16.72451 |   10.75880 | 11.27469 | 1.371532 | 1.371532 |       NA |     NA |   51 | zeroinflatednbinomial0 | 21064.11 |
+| -99.70839 | 16.71783 |   9.634648 | 4.655073 | 3.534199 | 3.534199 |       NA |     NA |    8 | zeroinflatednbinomial0 | 13920.97 |
+| -99.71302 | 16.72005 |   9.583629 | 4.499411 | 3.616479 | 3.616479 |       NA |     NA |    8 | zeroinflatednbinomial0 | 13920.97 |
+| -99.71764 | 16.72228 |  10.005135 | 5.748256 | 3.044626 | 3.044626 |       NA |     NA |    8 | zeroinflatednbinomial0 | 13920.97 |
+| -99.71533 | 16.72228 |   9.704511 | 4.865771 | 3.428322 | 3.428322 |       NA |     NA |    8 | zeroinflatednbinomial0 | 13920.97 |
+| -99.71302 | 16.72228 |   9.646772 | 4.691857 | 3.515263 | 3.515263 |       NA |     NA |    8 | zeroinflatednbinomial0 | 13920.97 |
+| -99.72226 | 16.72451 |  11.308387 | 9.452139 | 2.081397 | 2.081397 |       NA |     NA |    8 | zeroinflatednbinomial0 | 13920.97 |
 
 ``` r
 knitr::kable(head(acapulco$dics), "simple")
@@ -135,12 +136,12 @@ knitr::kable(head(acapulco$dics), "simple")
 
 |      dic | fam                    |
 |---------:|:-----------------------|
-| 54438.09 | poisson                |
-| 36099.52 | zeroinflatedpoisson0   |
-| 36120.26 | zeroinflatedpoisson1   |
-| 21727.63 | nbinomial              |
-| 22400.06 | nbinomial2             |
-| 21069.52 | zeroinflatednbinomial0 |
+| 46944.84 | poisson                |
+| 31760.89 | zeroinflatedpoisson0   |
+| 31772.67 | zeroinflatedpoisson1   |
+| 14032.69 | nbinomial              |
+| 15124.45 | nbinomial2             |
+| 13924.58 | zeroinflatednbinomial0 |
 
 ``` r
 knitr::kable(head(acapulco$hotspots), "simple")
@@ -148,12 +149,12 @@ knitr::kable(head(acapulco$hotspots), "simple")
 
 |         x |        y | pred\_mean | pred\_sd | pred\_ll | pred\_ul | ws\_mean | ws\_sd | week | fam                    |      dic | z\_score   | hotspots    |
 |----------:|---------:|-----------:|---------:|---------:|---------:|---------:|-------:|-----:|:-----------------------|---------:|:-----------|:------------|
-| -99.70839 | 16.71783 |   10.67464 | 11.82568 | 1.235099 | 1.235099 |       NA |     NA |   51 | zeroinflatednbinomial0 | 21064.11 | 0.17022279 | No Hotspots |
-| -99.71302 | 16.72005 |   10.65358 | 11.64921 | 1.261346 | 1.261346 |       NA |     NA |   51 | zeroinflatednbinomial0 | 21064.11 | 0.02814144 | No Hotspots |
-| -99.71764 | 16.72228 |   10.23380 | 10.06743 | 1.452240 | 1.452240 |       NA |     NA |   51 | zeroinflatednbinomial0 | 21064.11 | 0.03956312 | No Hotspots |
-| -99.71533 | 16.72228 |   10.40324 | 10.69944 | 1.369551 | 1.369551 |       NA |     NA |   51 | zeroinflatednbinomial0 | 21064.11 | 0.02618988 | No Hotspots |
-| -99.71302 | 16.72228 |   10.79439 | 12.02678 | 1.236413 | 1.236413 |       NA |     NA |   51 | zeroinflatednbinomial0 | 21064.11 | 0.29358801 | No Hotspots |
-| -99.72226 | 16.72451 |   10.75880 | 11.27469 | 1.371532 | 1.371532 |       NA |     NA |   51 | zeroinflatednbinomial0 | 21064.11 | 0.13294394 | No Hotspots |
+| -99.70839 | 16.71783 |   9.634648 | 4.655073 | 3.534199 | 3.534199 |       NA |     NA |    8 | zeroinflatednbinomial0 | 13920.97 | -0.6408057 | No Hotspots |
+| -99.71302 | 16.72005 |   9.583629 | 4.499411 | 3.616479 | 3.616479 |       NA |     NA |    8 | zeroinflatednbinomial0 | 13920.97 | -0.8739322 | No Hotspots |
+| -99.71764 | 16.72228 |  10.005135 | 5.748256 | 3.044626 | 3.044626 |       NA |     NA |    8 | zeroinflatednbinomial0 | 13920.97 | -0.7189590 | No Hotspots |
+| -99.71533 | 16.72228 |   9.704511 | 4.865771 | 3.428322 | 3.428322 |       NA |     NA |    8 | zeroinflatednbinomial0 | 13920.97 | -0.8592798 | No Hotspots |
+| -99.71302 | 16.72228 |   9.646772 | 4.691857 | 3.515263 | 3.515263 |       NA |     NA |    8 | zeroinflatednbinomial0 | 13920.97 | -0.8091939 | No Hotspots |
+| -99.72226 | 16.72451 |  11.308387 | 9.452139 | 2.081397 | 2.081397 |       NA |     NA |    8 | zeroinflatednbinomial0 | 13920.97 | -0.4333133 | No Hotspots |
 
 ``` r
 # The locality limit of Acapulco
@@ -171,13 +172,13 @@ acapulco$map
 
 ``` r
 # prediction of the number of eggs in the metropolitan area of Monterrey 
-deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/19_NuevoLeon",
+deneggs::eggs_hotspots(path_lect = "C:/Users/felip/Dropbox/cenaprece_datasets/19_nuevo_leon",
                        cve_ent = "19",
                        locality  = c("Ciudad General Escobedo", "Ciudad Apodaca",
                                      "Guadalupe", "Monterrey", "Ciudad Santa Catarina",
                                      "San Pedro Garza García", "Ciudad Benito Juárez",
                                      "San Nicolás de los Garza", "Montebello"),
-                       path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/19_NuevoLeon/DescargaOvitrampasMesFco.txt",
+                       path_coord =  "C:/Users/felip/Dropbox/cenaprece_datasets/19_nuevo_leon/DescargaOvitrampasMesFco.txt",
                        longitude  = "Pocision_X",
                        latitude =  "Pocision_Y",
                        aproximation = "gaussian",
@@ -198,10 +199,10 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
 
 ``` r
 # prediction of the number of eggs in the metropolitan area of Merida
-deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/31_Yucatan",
+deneggs::eggs_hotspots(path_lect = "C:/Users/felip/Dropbox/cenaprece_datasets/31_yucatan",
                        cve_ent = "31",
                        locality  = c("Mérida"),
-                       path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/31_yucatan/DescargaOvitrampasMesFco.txt",
+                       path_coord =  "C:/Users/felip/Dropbox/cenaprece_datasets/31_yucatan/DescargaOvitrampasMesFco.txt",
                        longitude  = "Pocision_X",
                        latitude =  "Pocision_Y",
                        aproximation = "gaussian",
@@ -222,10 +223,10 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
 
 ``` r
 # prediction of the number of eggs in the metropolitan area of Guadalajara
-deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco",
+deneggs::eggs_hotspots(path_lect = "C:/Users/felip/Dropbox/cenaprece_datasets/14_jalisco",
                        cve_ent = "14",
                        locality  = c("Guadalajara", "Tlaquepaque", "Zapopan", "Tonalá"),
-                       path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco/DescargaOvitrampasMesFco.txt",
+                       path_coord =  "C:/Users/felip/Dropbox/cenaprece_datasets/14_jalisco/DescargaOvitrampasMesFco.txt",
                        longitude  = "Pocision_X",
                        latitude =  "Pocision_Y",
                        aproximation = "gaussian",
