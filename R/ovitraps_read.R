@@ -58,6 +58,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
         y$week <-  lubridate::epiweek(y$date)
         y$fecha_lectura <- NULL
         y$clave <- as.numeric(y$clave)
+        y$ovitrap <- stringr::str_trim(y$ovitrap, side = "both")
         y
 
     } else {
@@ -99,6 +100,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
             y$week <-  lubridate::epiweek(y$date)
             y$fecha_lectura <- NULL
             y$clave <- as.numeric(y$clave)
+            y$ovitrap <- stringr::str_trim(y$ovitrap, side = "both")
             y
         }
         ## Step 4. apply the function for each file and row bind
