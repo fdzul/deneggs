@@ -56,6 +56,5 @@ Suggests:
 Remotes: 
     fdzul/rgeomex,
     fdzul/boldenr,
-    davidsjoberg/similiars,
-    url::https://inla.r-inla-download.org/R/stable
+    davidsjoberg/similiars
 VignetteBuilder: knitr
