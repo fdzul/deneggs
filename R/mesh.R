@@ -24,7 +24,8 @@ mesh <- function(x, k, long, lat, loc_limit, plot = NULL){
     mesh <- INLA::inla.mesh.2d(coor, ## provide locations or domain #
                                boundary = loc_limit,
                                max.edge = c(0.3/k, 2/k), ## mandatory
-                               cutoff= 0.1/k) ## good to have >0
+                               cutoff= 0.1/k,
+                               crs = 4326) ## good to have >0
     if(plot == TRUE){
         plot(mesh, asp=1, main = ""); points(coor, col= "red")
     } else {
