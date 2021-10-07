@@ -95,7 +95,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
             y$loc <- stringr::str_sub(y$clave, 6, 9)
             y$sector <- stringr::str_sub(y$clave, 10, 13)
             y$manzana <- stringr::str_sub(y$clave, 14, 17)
-            y$date <- lubridate::ymd_hms(y$fecha_lectura)
+            y$date <- lubridate::ymd(y$fecha_lectura)
             y$year <- lubridate::year(y$date)
             y$week <-  lubridate::epiweek(y$date)
             y$fecha_lectura <- NULL
