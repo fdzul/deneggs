@@ -69,8 +69,8 @@ remotes::install_github("fdzul/deneggs")
 # Step 1. define the paths 
 library(magrittr)
 library(sf)
-path_lect <- "C:/Users/felip/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero"
-path_coord =  "C:/Users/felip/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/12_Guerrero/DescargaOvitrampasMesFco.txt"
+path_lect <- "C:/Users/felip/Dropbox/cenaprece_datasets/12_Guerrero"
+path_coord <- paste(path_lect,"DescargaOvitrampasMesFco.txt", sep = "/")
 
 acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                                    cve_ent = "12",
@@ -83,7 +83,7 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                                    k = 20,
                                    palette_vir  = "magma",
                                    leg_title = "Huevos",
-                                   week = lubridate::epiweek(Sys.Date())-2,
+                                   week = lubridate::epiweek(Sys.Date())-10,
                                    plot = TRUE,
                                    var = "Huevecillos",
                                    cell_size = 1000,
@@ -105,13 +105,13 @@ plot(sf::st_geometry(acapulco$loc))
 acapulco$map
 
 # prediction of the number of eggs in the metropolitan area of Monterrey 
-deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/19_NuevoLeon",
+deneggs::eggs_hotspots(path_lect = "C:/Users/felip/Dropbox/cenaprece_datasets/19_nuevo_leon",
                        cve_ent = "19",
                        locality  = c("Ciudad General Escobedo", "Ciudad Apodaca",
                                      "Guadalupe", "Monterrey", "Ciudad Santa Catarina",
                                      "San Pedro Garza García", "Ciudad Benito Juárez",
                                      "San Nicolás de los Garza", "Montebello"),
-                       path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/19_NuevoLeon/DescargaOvitrampasMesFco.txt",
+                       path_coord =  "C:/Users/felip/Dropbox/cenaprece_datasets/19_nuevo_leon/DescargaOvitrampasMesFco.txt",
                        longitude  = "Pocision_X",
                        latitude =  "Pocision_Y",
                        aproximation = "gaussian",
@@ -128,10 +128,10 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
                        alpha = .99)$map
 
 # prediction of the number of eggs in the metropolitan area of Merida
-deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/31_Yucatan",
+deneggs::eggs_hotspots(path_lect = "C:/Users/felip/Dropbox/cenaprece_datasets/31_yucatan",
                        cve_ent = "31",
                        locality  = c("Mérida"),
-                       path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/31_yucatan/DescargaOvitrampasMesFco.txt",
+                       path_coord =  "C:/Users/felip/Dropbox/cenaprece_datasets/31_yucatan/DescargaOvitrampasMesFco.txt",
                        longitude  = "Pocision_X",
                        latitude =  "Pocision_Y",
                        aproximation = "gaussian",
@@ -148,10 +148,10 @@ deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vect
                        alpha = .99)$map
 
 # prediction of the number of eggs in the metropolitan area of Guadalajara
-deneggs::eggs_hotspots(path_lect = "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco",
+deneggs::eggs_hotspots(path_lect = "C:/Users/felip/Dropbox/cenaprece_datasets/14_jalisco",
                        cve_ent = "14",
                        locality  = c("Guadalajara", "Tlaquepaque", "Zapopan", "Tonalá"),
-                       path_coord =  "D:/Users/OneDrive/datasets/SI_Monitoreo_Vectores/subsistema_vigilancia_dengue/2020/14_Jalisco/DescargaOvitrampasMesFco.txt",
+                       path_coord =  "C:/Users/felip/Dropbox/cenaprece_datasets/14_jalisco/DescargaOvitrampasMesFco.txt",
                        longitude  = "Pocision_X",
                        latitude =  "Pocision_Y",
                        aproximation = "gaussian",

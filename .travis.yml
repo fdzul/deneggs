@@ -4,4 +4,3 @@ language: R
 cache: packages
 r_github_packages: fdzul/rgeomex
 r_github_packages: fdzul/boldenr
-r_github_packages: davidsjoberg/similiars
