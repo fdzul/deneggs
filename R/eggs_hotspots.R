@@ -42,26 +42,26 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
 
     if(hist_dataset == FALSE){
         x <- deneggs::ovitraps_read(path = path_lect,
-                                    current_year = TRUE) %>%
-            dplyr::arrange(week) %>%
+                                    current_year = TRUE)  |>
+            dplyr::arrange(week)  |>
             dplyr::filter(week %in% c(sem))
 
     } else {
         x <- deneggs::ovitraps_read(path = path_lect,
                                     current_year = FALSE,
-                                    year = c(year)) %>%
-            dplyr::arrange(week) %>%
+                                    year = c(year))  |>
+            dplyr::arrange(week)  |>
             dplyr::filter(week %in% c(sem))
     }
 
 
     # Step 0. 2 load the locality limit ####
-    loc <- rgeomex::loc_inegi19_mx %>%
+    loc <- rgeomex::loc_inegi19_mx  |>
         dplyr::filter(NOMGEO %in% c(similiars::find_most_similar_string(locality, unique(NOMGEO))) &
                           CVE_ENT %in% c(cve_ent))
 
     if(nrow(loc) > 1){
-        loc <- loc %>% sf::st_union()
+        loc <- loc  |>  sf::st_union()
     } else {
 
     }
@@ -73,11 +73,11 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
                     sep = "\t",
                     header = TRUE,
                     stringsAsFactors = FALSE,
-                    fileEncoding = "UCS-2LE") %>%
-        dplyr::mutate(Municipio = stringr::str_trim(Municipio, side = "both")) %>%
+                    fileEncoding = "UCS-2LE")  |>
+        dplyr::mutate(Municipio = stringr::str_trim(Municipio, side = "both"))  |>
         dplyr::mutate(Entidad = stringr::str_sub(Entidad, start = 4, end = -1),
                       Municipio = stringr::str_sub(Municipio, start = 5, end = -1),
-                      Localidad = stringr::str_sub(Localidad, start = 6, end = -1)) %>%
+                      Localidad = stringr::str_sub(Localidad, start = 6, end = -1))  |>
         dplyr::mutate(Localidad = stringr::str_to_title(Localidad))
 
     names(y)[1] <- "clave"
@@ -90,15 +90,15 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
     x <- dplyr::left_join(x = x,
                           y = y,
                           by = c("Ovitrampa",
-                                 "clave")) %>%
+                                 "clave"))  |>
         dplyr::mutate(long = Pocision_X,
-                      lat = Pocision_Y) %>%
-        dplyr::filter(!is.na(long)) %>%
-        dplyr::filter(!is.na(eggs)) %>%
+                      lat = Pocision_Y)  |>
+        dplyr::filter(!is.na(long))  |>
+        dplyr::filter(!is.na(eggs))  |>
         sf::st_as_sf(coords = c("long", "lat"),
                      crs = 4326)
-    x <- x[loc, ] %>%
-        sf::st_drop_geometry() %>%
+    x <- x[loc, ]  |>
+        sf::st_drop_geometry()  |>
         as.data.frame()
 
     ####################################################
@@ -129,7 +129,9 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
 
     # 3.2.2 extract the coordinates of grid point prediction #####
 
-    p <- deneggs::loc_grid_points(sf = loc, cell_size = cell_size)
+    #p <- deneggs::loc_grid_points(sf = loc, cell_size = cell_size)
+    p <- sf::st_sample(x = loc, size = cell_size, type = "regular") |>
+        sf::st_as_sf()
 
 
     # 3.2.3 make the projector matrix for use prediction ####
@@ -279,13 +281,13 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
 
         # detect the hotspot based in the cutt_off of benferroni ####
 
-        x <- x %>%
+        x <- x  |>
             dplyr::mutate(hotspots = ifelse(z_score >= cutt_off,
                                             "Hotspots",
                                             "No Hotspots"))
         names(x) <- c("x", "y", "pred_mean", "pred_sd","pred_ll","pred_ul",
                       "week","fam","dic","z_score","hotspots")
-        x %>% as.data.frame()
+        x  |>  as.data.frame()
 
     }
 
