@@ -109,7 +109,10 @@ spde_pred_map <- function(path_lect,locality, path_coord,cve_ent,
 
     # 3.2.2 extract the coordinates of grid point prediction #####
 
-    p <- deneggs::loc_grid_points(sf = loc, cell_size = cell_size)
+    #p <- deneggs::loc_grid_points(sf = loc, cell_size = cell_size)
+    p <- sf::st_sample(x = loc, size = cell_size, type = "regular") |>
+        sf::st_as_sf()
+
 
 
     # 3.2.3 make the projector matrix for use prediction ####
