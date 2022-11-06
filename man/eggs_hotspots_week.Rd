@@ -16,6 +16,7 @@ eggs_hotspots_week(
   path_vect,
   path_coord,
   palette.viridis,
+  plot,
   cell.size,
   alpha.value,
   kvalue
@@ -43,6 +44,8 @@ eggs_hotspots_week(
 \item{path_coord}{is the directory of the coordinates dataset.}
 
 \item{palette.viridis}{is the palette of viridis. The options are plasma, viridis, inferno & magma.}
+
+\item{plot}{is a logical value for the plot the mesh.}
 
 \item{cell.size}{is the sample number per location for predictions.}
 

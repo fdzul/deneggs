@@ -13,6 +13,7 @@
 #' @param path_vect  is the directory of the ovitrampas dataset.
 #' @param path_coord is the directory of the coordinates dataset.
 #' @param palette.viridis is the palette of viridis. The options are plasma, viridis, inferno & magma.
+#' @param plot is a logical value for the plot the mesh.
 #' @param cell.size is the sample number per location for predictions.
 #' @param alpha.value alpha The significance level, also denoted as alpha or α, is the probability of rejecting the null hypothesis when it is true.
 #' @param kvalue is the parameter for define the triagulization of delauney in the inner and the outer area in the argument max.edge in the INLA:inla.mesh.2d.
@@ -32,6 +33,7 @@ eggs_hotspots_week <- function(cve_mpo,
                                fam_distribution,
                                path_vect, path_coord,
                                palette.viridis,
+                               plot,
                                cell.size,
                                alpha.value,
                                #'
@@ -53,6 +55,7 @@ eggs_hotspots_week <- function(cve_mpo,
                                    k_value,
                                    palette_viridis,
                                    title,
+                                   plot,
                                    cell_size_b,
                                    alpha_value){
         deneggs::eggs_hotspots(path_lect = path_lect_ovitraps,
@@ -67,7 +70,7 @@ eggs_hotspots_week <- function(cve_mpo,
                                k = k_value,
                                palette_vir  = palette_viridis,
                                leg_title = title,
-                               plot = TRUE,
+                               plot = plot,
                                hist_dataset = hist_dataset,
                                year = year,
                                sem = x,
@@ -109,6 +112,7 @@ eggs_hotspots_week <- function(cve_mpo,
                                     k_value = kvalue,
                                     palette_viridis  = palette.viridis,
                                     title = "Huevos",
+                                    plot = plot,
                                     cell_size_b = cell.size,
                                     alpha_value = alpha.value) |>
         purrr::map("result")
