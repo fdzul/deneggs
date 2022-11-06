@@ -21,7 +21,7 @@
 #' @export
 #' @details \link[INLA]{inla}, \link[deneggs]{eggs_hotspots}
 #' @author Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
-#' @examples
+#' @examples 1+1
 eggs_hotspots_week <- function(cve_mpo,
                                cve_edo,
                                locality,
