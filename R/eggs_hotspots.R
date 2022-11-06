@@ -130,6 +130,7 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
     # 3.2.2 extract the coordinates of grid point prediction #####
 
     #p <- deneggs::loc_grid_points(sf = loc, cell_size = cell_size)
+    set.seed(123456)
     p <- sf::st_sample(x = loc, size = cell_size, type = "regular") |>
         sf::st_as_sf()
 
