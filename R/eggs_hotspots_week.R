@@ -95,10 +95,6 @@ eggs_hotspots_week <- function(cve_mpo,
     list_week <- as.list(c(unique(z$week)))
 
     # Step 3. run the spde model ####
-    library(sf)
-    library(future)
-    future::plan(multisession)
-    future::plan(multicore)
     y <- collateral::map_peacefully(.x = list_week,
                                     .f = eggs_hotspots_week,
                                     hist_dataset = hist_dataset,
