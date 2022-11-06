@@ -21,7 +21,9 @@ eggs_hotspots_intensity_map <- function(spde_betas,
 
     y <- spde_betas |>
         dplyr::filter(year == years) |>
-        dplyr::mutate(hotspots_binary = ifelse(hotspots == "Hotspots", 1, 0)) |>
+        #dplyr::mutate(hotspots_binary = ifelse(hotspots == "Hotspots", 1, 0)) |>
+        dplyr::mutate(hotspots_binary = dplyr::case_when(hotspots == "Hotspots" ~ 1,
+                                                         hotspots == "No Hotspots" ~ 0)) |>
         dplyr::select(x, y, week, hotspots_binary) |>
         tidyr::pivot_wider(id_cols = c(x, y),
                            names_from = week,
