@@ -36,9 +36,6 @@ eggs_hotspots_week <- function(cve_mpo,
                                plot,
                                cell.size,
                                alpha.value,
-                               #'
-                               #' @seealso \link[viridis]{viridis}, \link[viridis]{plasma}, \link[viridis]{inferno}, \link[viridis]{magma}
-                               #' @seealso \link[INLA]{inla}
                                kvalue){
 
     # Step 1. define the function ####
