@@ -125,12 +125,19 @@ eggs_hotspots_week <- function(cve_mpo,
 
     y_betas$year <- year
 
+    # Step 4. extract betas ####
+    y_data <- purrr::map_dfr(.x = y,
+                              .f = function(x){x$data})
+
+    y_data$year <- year
+
 
 
     ## Step 5. return the map and the prediction values ####
     multi_return <- function() {
         my_list <- list("spde" = y,
-                        "betas" = y_betas)
+                        "betas" = y_betas,
+                        "data" = y_data)
         return(my_list)
     }
     multi_return()
