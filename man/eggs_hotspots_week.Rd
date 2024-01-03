@@ -64,12 +64,6 @@ this function predicts the number of eggs using a geostatistical analysis with I
 }
 \examples{
 1+1
-
-}
-\seealso{
-\link[viridis]{viridis}, \link[viridis]{plasma}, \link[viridis]{inferno}, \link[viridis]{magma}
-
-\link[INLA]{inla}
 }
 \author{
 Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
