@@ -26,7 +26,7 @@
 #' @return a list with the gmap with the prediction of the number of eggs, the prediction of number of eggs, the mesh.
 #' @export
 #'
-#' @importFrom magrittr %>%
+#' @importFrom magrittr |>
 #' @importFrom methods slot
 #' @importFrom stats qnorm
 #' @importFrom stats sd
@@ -46,12 +46,12 @@ spde_pred_map <- function(path_lect,locality, path_coord,cve_ent,
 
 
     # Step 0. 2 load the locality limit ####
-    loc <- rgeomex::loc_inegi19_mx %>%
+    loc <- rgeomex::loc_inegi19_mx |>
       dplyr::filter(NOMGEO %in% c(similiars::find_most_similar_string(locality, unique(NOMGEO))) &
                       CVE_ENT %in% c(cve_ent))
 
     if(nrow(loc) > 1){
-      loc <- loc %>% sf::st_union()
+      loc <- loc |> sf::st_union()
     } else {
 
     }
@@ -69,15 +69,15 @@ spde_pred_map <- function(path_lect,locality, path_coord,cve_ent,
     y$Ovitrampa <- as.numeric(y$Ovitrampa)
     x <- dplyr::left_join(x = x,
                           y = y,
-                          by = "Ovitrampa") %>%
-      dplyr::filter(Semana.Epidemiologica %in% c(week)) %>%
+                          by = "Ovitrampa") |>
+      dplyr::filter(Semana.Epidemiologica %in% c(week)) |>
       dplyr::mutate(long = Pocision_X,
-                    lat = Pocision_Y) %>%
-      dplyr::filter(!is.na(long)) %>%
+                    lat = Pocision_Y) |>
+      dplyr::filter(!is.na(long)) |>
       sf::st_as_sf(coords = c("long", "lat"),
                    crs = 4326)
-    x <- x[loc, ] %>%
-      sf::st_drop_geometry() %>%
+    x <- x[loc, ] |>
+      sf::st_drop_geometry() |>
       as.data.frame()
 
     ####################################################
@@ -315,7 +315,7 @@ spde_pred_map <- function(path_lect,locality, path_coord,cve_ent,
         as.numeric(ifelse(x >= cutt_off, 1, 0))
       }
 
-      x %>%
+      x |>
         dplyr::mutate(hotspots = ifelse(z_score >= cutt_off, "Hotspots", "No Hotspots"))
 
 
