@@ -10,7 +10,7 @@ Version](https://badge.fury.io/rb/jekyll-theme-cayman.svg)](https://badge.fury.i
 All
 Releases](https://img.shields.io/github/downloads/fdzul/deneggs/total.svg)]()
 
-<img align="center" src="https://github.com/fdzul/deneggs/blob/master/deneggs.png?raw=true" alt="logo" width="140">
+<img align="center" src="" alt="logo" width="140">
 
 **deneggs is a package developed in the department of prevention and
 control of diseases transmitted by vector of the [Secretary of Health of
@@ -65,18 +65,6 @@ linux fedora
 # install.packages("devtools")
 remotes::install_github("fdzul/deneggs")
 ```
-
-### **`deneggs::spde_pred_map()`** return a list with six object:
-
-- **`data`** is the original dataset of the ovitrap.
-- **`pred`** is the predicction dataset of *the Ae. aegypti* eggs.
-- **`dics`** is a dataframe with the dics of six distribution (poisson,
-  zeroinflatedpoisson0, 1, zeroinflatedpoisson1, nbinomial, nbinomial2,
-  zeroinflatednbinomial0, zeroinflatednbinomial1).
-- **`hotspots`** a dataset with the eggs prediction and the hotspots
-  eggs.
-- **`loc`** is the boundary locality.
-- **`map`** is the map prediction.
 
 ## Authors
 
