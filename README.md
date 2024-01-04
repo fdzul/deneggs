@@ -9,6 +9,8 @@ Status](https://travis-ci.org/pages-themes/cayman.svg?branch=master)](https://tr
 Version](https://badge.fury.io/rb/jekyll-theme-cayman.svg)](https://badge.fury.io/rb/jekyll-theme-cayman)[![Github
 All
 Releases](https://img.shields.io/github/downloads/fdzul/deneggs/total.svg)]()
+[![Netlify
+Status](https://api.netlify.com/api/v1/badges/40ecc871-b296-4dfd-8aa4-daa706355330/deploy-status)](https://app.netlify.com/sites/chic-shortbread-cffbbf/deploys)
 
 <img align="center" src="" alt="logo" width="140">
 

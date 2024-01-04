@@ -6,4 +6,6 @@ utils::globalVariables(c("Localidad", "Semana.Epidemiologica", "read.table",
                          "Clave", "Ovitrampa", "Fecha.Lectura",
                          "unzip_read", "unzip", "week", "Municipio", "Entidad", "eggs",
                          "Sector", "Manzana", "sec_manz", "seccion", "manzana", "geometry",
-                         "risk", "CVE_ENT"))
+                         "risk", "CVE_ENT",
+                         "clave", "hotspots_binary", "intensity",
+                         "mpo", "ovitrap", "x", "year"))
