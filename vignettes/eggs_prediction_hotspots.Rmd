@@ -1,8 +1,8 @@
 ---
-title: "geoestatistical_analisis_with_INLA"
+title: "Eggs Prediction Hotspots"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{geoestatistical_analisis_with_INLA}
+  %\VignetteIndexEntry{Eggs Prediction Hotspots}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -1,5 +1,5 @@
 ---
-title: "eggs_prediction_week"
+title: "eggs prediction week"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{eggs_prediction_week}
@@ -17,3 +17,9 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(deneggs)
 ```
+
+La predicción de huevos en toda la localidad, es decir tanto en las área muestreadeas como en las áreas no muestreadas (el análisis geoestadístico), se realiza con la funcion ***[deneggs::spde_pred_map](https://github.com/fdzul/deneggs/blob/master/R/spde_pred_map.R)***, la función ***[deneggs::eggs_hotspots](https://github.com/fdzul/deneggs/blob/master/R/eggs_hotspots.R)***, y [deneggs::eggs_hotspots_week](https://github.com/fdzul/deneggs/blob/master/R/eggs_hotspots.R)
+
+Ambas funciones tienen argumentos similares, excepto por el año y la semana. La primera funciona para
+
+
