@@ -46,13 +46,14 @@ devtools::install_github("fdzul/deneggs")
 remotes::install_github("fdzul/deneggs")
 ``` 
 
-```{r example, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE,}
+
+```{r spde_acapulco, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE}
 # Step 1. define the paths 
-library(magrittr)
 library(sf)
-path_lect <- "C:/Users/felip/Dropbox/cenaprece_datasets/12_Guerrero"
+path_lect <- "/Users/fdzul/Library/CloudStorage/OneDrive-Personal/datasets/CENAPRECE/2023/12_guerrero/"
 path_coord <- paste(path_lect,"DescargaOvitrampasMesFco.txt", sep = "/")
 
+# Step 2. make the prediction
 acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                                    cve_ent = "12",
                                    locality  = c("Acapulco de Juárez"),
@@ -64,7 +65,7 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
                                    k = 20,
                                    palette_vir  = "magma",
                                    leg_title = "Huevos",
-                                   week = lubridate::epiweek(Sys.Date())-1,
+                                   week = 30,
                                    plot = TRUE,
                                    var = "Huevecillos",
                                    cell_size = 1000,
@@ -72,11 +73,8 @@ acapulco <- deneggs::spde_pred_map(path_lect = path_lect,
 
 
 knitr::kable(head(acapulco$data), "simple")
-
 knitr::kable(head(acapulco$pred), "simple")
-
 knitr::kable(head(acapulco$dics), "simple")
-
 knitr::kable(head(acapulco$hotspots), "simple")
 
 # The locality limit of Acapulco
@@ -85,14 +83,20 @@ plot(sf::st_geometry(acapulco$loc))
 # prediction of the number of Ae. aegypty eggs in the metropolitan area of Acapulco
 acapulco$map
 
-# prediction of the number of eggs in the metropolitan area of Monterrey 
-deneggs::eggs_hotspots(path_lect = "C:/Users/felip/Dropbox/cenaprece_datasets/19_nuevo_leon",
+```
+
+## Prediction of the number of eggs in the metropolitan area of Monterrey 
+
+```{r spde_monterrey, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE}
+path_lect <- "/Users/fdzul/Library/CloudStorage/OneDrive-Personal/datasets/CENAPRECE/2023/19_nuevo_leon/"
+path_coord <- paste(path_lect,"DescargaOvitrampasMesFco.txt", sep = "/")
+deneggs::eggs_hotspots(path_lect = path_lect,
                        cve_ent = "19",
                        locality  = c("Ciudad General Escobedo", "Ciudad Apodaca",
                                      "Guadalupe", "Monterrey", "Ciudad Santa Catarina",
                                      "San Pedro Garza García", "Ciudad Benito Juárez",
                                      "San Nicolás de los Garza", "Montebello"),
-                       path_coord =  "C:/Users/felip/Dropbox/cenaprece_datasets/19_nuevo_leon/DescargaOvitrampasMesFco.txt",
+                       path_coord =  path_coord,
                        longitude  = "Pocision_X",
                        latitude =  "Pocision_Y",
                        aproximation = "gaussian",
@@ -103,16 +107,23 @@ deneggs::eggs_hotspots(path_lect = "C:/Users/felip/Dropbox/cenaprece_datasets/19
                        leg_title = "Huevos",
                        plot = FALSE,
                        hist_dataset = FALSE, #####
-                       sem = lubridate::epiweek(Sys.Date())-2,
+                       sem = 40,
                        var = "eggs",
                        cell_size = 1000,
                        alpha = .99)$map
+```
 
+
+## Prediction of the number of eggs in the metropolitan area of Merida
+
+```{r spde_merida, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE}
+path_lect <- "/Users/fdzul/Library/CloudStorage/OneDrive-Personal/datasets/CENAPRECE/2023/31_yucatan/"
+path_coord <- paste(path_lect,"DescargaOvitrampasMesFco.txt", sep = "/")
 # prediction of the number of eggs in the metropolitan area of Merida
-deneggs::eggs_hotspots(path_lect = "C:/Users/felip/Dropbox/cenaprece_datasets/31_yucatan",
+deneggs::eggs_hotspots(path_lect = path_lect,
                        cve_ent = "31",
                        locality  = c("Mérida"),
-                       path_coord =  "C:/Users/felip/Dropbox/cenaprece_datasets/31_yucatan/DescargaOvitrampasMesFco.txt",
+                       path_coord =  path_coord,
                        longitude  = "Pocision_X",
                        latitude =  "Pocision_Y",
                        aproximation = "gaussian",
@@ -123,16 +134,22 @@ deneggs::eggs_hotspots(path_lect = "C:/Users/felip/Dropbox/cenaprece_datasets/31
                        leg_title = "Huevos",
                        plot = FALSE,
                        hist_dataset = FALSE, #####
-                       sem = lubridate::epiweek(Sys.Date())-2,
+                       sem = 40,
                        var = "eggs",
                        cell_size = 1000,
                        alpha = .99)$map
+```
 
-# prediction of the number of eggs in the metropolitan area of Guadalajara
-deneggs::eggs_hotspots(path_lect = "C:/Users/felip/Dropbox/cenaprece_datasets/14_jalisco",
+## Prediction of the number of eggs in the metropolitan area of Guadalajara
+```{r spde_guadalajara, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE}
+
+path_lect <- "/Users/fdzul/Library/CloudStorage/OneDrive-Personal/datasets/CENAPRECE/2023/14_jalisco/"
+path_coord <- paste(path_lect,"DescargaOvitrampasMesFco.txt", sep = "/")
+
+deneggs::eggs_hotspots(path_lect = path_lect,
                        cve_ent = "14",
                        locality  = c("Guadalajara", "Tlaquepaque", "Zapopan", "Tonalá"),
-                       path_coord =  "C:/Users/felip/Dropbox/cenaprece_datasets/14_jalisco/DescargaOvitrampasMesFco.txt",
+                       path_coord =  path_coord,
                        longitude  = "Pocision_X",
                        latitude =  "Pocision_Y",
                        aproximation = "gaussian",
@@ -143,9 +160,9 @@ deneggs::eggs_hotspots(path_lect = "C:/Users/felip/Dropbox/cenaprece_datasets/14
                        leg_title = "Huevos",
                        plot = FALSE,
                        hist_dataset = FALSE, #####
-                       sem = lubridate::epiweek(Sys.Date())-2,
+                       sem = 40,
                        var = "eggs",
-                       cell_size = 1000,
+                       cell_size = 5000,
                        alpha = .99)$map
 ```
 
