@@ -58,3 +58,4 @@ Remotes:
     fdzul/boldenr,
     davidsjoberg/similiars
 VignetteBuilder: knitr
+URL: https://fdzul.github.io/deneggs/
