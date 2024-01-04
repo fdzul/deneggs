@@ -75,7 +75,7 @@ remotes::install_github("fdzul/deneggs")
   zeroinflatednbinomial0, zeroinflatednbinomial1).
 - **`hotspots`** a dataset with the eggs prediction and the hotspots
   eggs.
-- **`loc`** is the loclaity limit.
+- **`loc`** is the boundary locality.
 - **`map`** is the map prediction.
 
 ``` r
@@ -124,14 +124,14 @@ knitr::kable(head(acapulco$data), "simple")
 knitr::kable(head(acapulco$pred), "simple")
 ```
 
-|         x |        y | pred_mean |  pred_sd |  pred_ll |  pred_ul | ws_mean | ws_sd | week | fam                    |   dic |
-|----------:|---------:|----------:|---------:|---------:|---------:|--------:|------:|-----:|:-----------------------|------:|
-| -99.70784 | 16.71790 |  47.67103 | 12.37079 | 27.97067 | 27.97067 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52505 |
-| -99.71478 | 16.72138 |  47.77636 | 12.82593 | 27.50750 | 27.50750 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52505 |
-| -99.71131 | 16.72138 |  47.89692 | 13.33242 | 27.00629 | 27.00629 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52505 |
-| -99.72173 | 16.72485 |  56.62858 | 40.28339 | 13.15570 | 13.15570 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52505 |
-| -99.71826 | 16.72485 |  53.87441 | 32.46604 | 15.49111 | 15.49111 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52505 |
-| -99.72867 | 16.72832 |  54.34492 | 33.81270 | 15.02876 | 15.02876 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52505 |
+|         x |        y | pred_mean |  pred_sd |  pred_ll |  pred_ul | ws_mean | ws_sd | week | fam                    |      dic |
+|----------:|---------:|----------:|---------:|---------:|---------:|--------:|------:|-----:|:-----------------------|---------:|
+| -99.70782 | 16.71772 |  48.35455 | 18.96289 | 21.44253 | 21.44253 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52509.37 |
+| -99.71477 | 16.72119 |  47.96649 | 17.65223 | 22.37977 | 22.37977 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52509.37 |
+| -99.71130 | 16.72119 |  48.82526 | 20.50526 | 20.42405 | 20.42405 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52509.37 |
+| -99.72172 | 16.72466 |  56.10135 | 41.72929 | 12.25062 | 12.25062 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52509.37 |
+| -99.71824 | 16.72466 |  53.28249 | 33.74316 | 14.41416 | 14.41416 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52509.37 |
+| -99.72866 | 16.72814 |  54.37306 | 36.88502 | 13.46368 | 13.46368 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52509.37 |
 
 ``` r
 knitr::kable(head(acapulco$dics), "simple")
@@ -139,25 +139,25 @@ knitr::kable(head(acapulco$dics), "simple")
 
 |       dic | fam                    |
 |----------:|:-----------------------|
-| 101955.79 | poisson                |
+| 101955.82 | poisson                |
 |  89688.48 | zeroinflatedpoisson0   |
 |  89771.94 | zeroinflatedpoisson1   |
-|  52681.60 | nbinomial              |
+|  52681.54 | nbinomial              |
 |  52799.23 | nbinomial2             |
-|  52546.25 | zeroinflatednbinomial0 |
+|  52545.71 | zeroinflatednbinomial0 |
 
 ``` r
 knitr::kable(head(acapulco$hotspots), "simple")
 ```
 
-|         x |        y | pred_mean |  pred_sd |  pred_ll |  pred_ul | ws_mean | ws_sd | week | fam                    |   dic | z_score    | hotspots    |
-|----------:|---------:|----------:|---------:|---------:|---------:|--------:|------:|-----:|:-----------------------|------:|:-----------|:------------|
-| -99.70784 | 16.71790 |  47.67103 | 12.37079 | 27.97067 | 27.97067 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52505 | -0.5459522 | No Hotspots |
-| -99.71478 | 16.72138 |  47.77636 | 12.82593 | 27.50750 | 27.50750 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52505 | -0.5028567 | No Hotspots |
-| -99.71131 | 16.72138 |  47.89692 | 13.33242 | 27.00629 | 27.00629 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52505 | -0.6640205 | No Hotspots |
-| -99.72173 | 16.72485 |  56.62858 | 40.28339 | 13.15570 | 13.15570 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52505 | -0.5329307 | No Hotspots |
-| -99.71826 | 16.72485 |  53.87441 | 32.46604 | 15.49111 | 15.49111 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52505 | -0.5603690 | No Hotspots |
-| -99.72867 | 16.72832 |  54.34492 | 33.81270 | 15.02876 | 15.02876 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52505 | -0.1609808 | No Hotspots |
+|         x |        y | pred_mean |  pred_sd |  pred_ll |  pred_ul | ws_mean | ws_sd | week | fam                    |      dic | z_score    | hotspots    |
+|----------:|---------:|----------:|---------:|---------:|---------:|--------:|------:|-----:|:-----------------------|---------:|:-----------|:------------|
+| -99.70782 | 16.71772 |  48.35455 | 18.96289 | 21.44253 | 21.44253 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52509.37 | -0.5004944 | No Hotspots |
+| -99.71477 | 16.72119 |  47.96649 | 17.65223 | 22.37977 | 22.37977 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52509.37 | -0.4785923 | No Hotspots |
+| -99.71130 | 16.72119 |  48.82526 | 20.50526 | 20.42405 | 20.42405 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52509.37 | -0.5712365 | No Hotspots |
+| -99.72172 | 16.72466 |  56.10135 | 41.72929 | 12.25062 | 12.25062 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52509.37 | -0.4749301 | No Hotspots |
+| -99.71824 | 16.72466 |  53.28249 | 33.74316 | 14.41416 | 14.41416 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52509.37 | -0.5033017 | No Hotspots |
+| -99.72866 | 16.72814 |  54.37306 | 36.88502 | 13.46368 | 13.46368 |      NA |    NA |   30 | zeroinflatednbinomial1 | 52509.37 | -0.1663180 | No Hotspots |
 
 ``` r
 
