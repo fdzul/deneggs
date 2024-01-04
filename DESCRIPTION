@@ -48,7 +48,8 @@ Imports:
     stats,
     deldir,
     sp,
-    spdep
+    spdep,
+    collateral
 Suggests: 
     roxygen2,
     knitr,
