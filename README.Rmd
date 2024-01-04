@@ -65,7 +65,7 @@ remotes::install_github("fdzul/deneggs")
  - **`map`** is the map prediction.
 
 
-```{r example, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE,}
+```{r spde_acapulco, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE}
 # Step 1. define the paths 
 library(sf)
 path_lect <- "/Users/fdzul/Library/CloudStorage/OneDrive-Personal/datasets/CENAPRECE/2023/12_guerrero/"
@@ -105,7 +105,7 @@ acapulco$map
 
 ## Prediction of the number of eggs in the metropolitan area of Monterrey 
 
-```{r}
+```{r spde_monterrey, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE}
 path_lect <- "/Users/fdzul/Library/CloudStorage/OneDrive-Personal/datasets/CENAPRECE/2023/19_nuevo_leon/"
 path_coord <- paste(path_lect,"DescargaOvitrampasMesFco.txt", sep = "/")
 deneggs::eggs_hotspots(path_lect = path_lect,
@@ -134,7 +134,7 @@ deneggs::eggs_hotspots(path_lect = path_lect,
 
 ## Prediction of the number of eggs in the metropolitan area of Merida
 
-```{r}
+```{r spde_merida, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE}
 path_lect <- "/Users/fdzul/Library/CloudStorage/OneDrive-Personal/datasets/CENAPRECE/2023/31_yucatan/"
 path_coord <- paste(path_lect,"DescargaOvitrampasMesFco.txt", sep = "/")
 # prediction of the number of eggs in the metropolitan area of Merida
@@ -159,8 +159,8 @@ deneggs::eggs_hotspots(path_lect = path_lect,
 ```
 
 ## Prediction of the number of eggs in the metropolitan area of Guadalajara
-```{r}
-library(magrittr)
+```{r spde_guadalajara, dpi = 300, warning=FALSE, fig.align = "center", message=FALSE}
+
 path_lect <- "/Users/fdzul/Library/CloudStorage/OneDrive-Personal/datasets/CENAPRECE/2023/14_jalisco/"
 path_coord <- paste(path_lect,"DescargaOvitrampasMesFco.txt", sep = "/")
 
