@@ -1,0 +1,19 @@
+---
+title: "geoestatistical_analisis_with_INLA"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{geoestatistical_analisis_with_INLA}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(deneggs)
+```
