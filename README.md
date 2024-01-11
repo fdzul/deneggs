@@ -10,19 +10,20 @@ Version](https://badge.fury.io/rb/jekyll-theme-cayman.svg)](https://badge.fury.i
 All
 Releases](https://img.shields.io/github/downloads/fdzul/deneggs/total.svg)]()
 [![Netlify
-Status](https://api.netlify.com/api/v1/badges/40ecc871-b296-4dfd-8aa4-daa706355330/deploy-status)](https://app.netlify.com/sites/chic-shortbread-cffbbf/deploys)
+Status](https://api.netlify.com/api/v1/badges/ce21544b-5fef-4761-9103-70b483e2907f/deploy-status)](https://app.netlify.com/sites/dancing-tiramisu-fdd5c0/deploys)
 
 <img align="center" src="man/figures/logo.png" alt="logo" width="140">
 
-**deneggs is a package developed in the department of prevention and
-control of diseases transmitted by vector of the [Secretary of Health of
-Veracruz](https://www.ssaver.gob.mx/) and with colaboration of the
-[CENAPRECE](https://www.gob.mx/salud/cenaprece)**
+**deneggs** is a package developed in the
+[CENAPRECE](https://www.gob.mx/salud/cenaprece) dengue prevention and
+control program in collaboration with
+[INDRE](https://www.gob.mx/salud/acciones-y-programas/instituto-de-diagnostico-y-referencia-epidemiologicos-mision-vision-y-politica-de-calidad-181639?state=published)
+& the Yucatan state.
 
-## **overview**
+## **Overview**
 
 **deneggs** is a package to generate predictive maps of the number of
-eggs or adults in areas where it is not collected.The predictive maps
+eggs or adults in areas where it is not collected. The predictive maps
 are generated using geostatistical analysis in the
 [INLA](http://www.r-inla.org/) framework.
 

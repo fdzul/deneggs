@@ -20,12 +20,15 @@ knitr::opts_chunk$set(
 
 <img align="center" src="man/figures/logo.png" alt="logo" width="140">
 
-**deneggs is a package developed in the department of prevention and control of diseases transmitted by vector of the [Secretary of Health of Veracruz](https://www.ssaver.gob.mx/) and with colaboration of the [CENAPRECE](https://www.gob.mx/salud/cenaprece)**
+
+**deneggs** is a package developed in the [CENAPRECE](https://www.gob.mx/salud/cenaprece) dengue prevention and control program in collaboration with [INDRE](https://www.gob.mx/salud/acciones-y-programas/instituto-de-diagnostico-y-referencia-epidemiologicos-mision-vision-y-politica-de-calidad-181639?state=published) & the Yucatan state.
 
 
-## **overview**
 
-**deneggs** is a package to generate predictive maps of the number of eggs or adults in areas where it is not collected.The predictive maps are generated using geostatistical analysis in the [INLA](http://www.r-inla.org/) framework. 
+
+## **Overview**
+
+**deneggs** is a package to generate predictive maps of the number of eggs or adults in areas where it is not collected. The predictive maps are generated using geostatistical analysis in the [INLA](http://www.r-inla.org/) framework. 
 
   - **`deneggs::spde_pred_map()`** generate the predictive mapand calculate the hotspots. Run the models with six distributions.
   - **`deneggs::eggs_hotspots()`** generate the predictive map and calculate the hotspots. Run the model with one distribution.
