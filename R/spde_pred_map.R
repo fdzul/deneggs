@@ -26,7 +26,6 @@
 #' @return a list with the gmap with the prediction of the number of eggs, the prediction of number of eggs, the mesh.
 #' @export
 #'
-#' @importFrom magrittr |>
 #' @importFrom methods slot
 #' @importFrom stats qnorm
 #' @importFrom stats sd

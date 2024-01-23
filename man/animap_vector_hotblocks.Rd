@@ -7,7 +7,7 @@
 animap_vector_hotblocks(
   path_vector,
   locality,
-  cve_ent,
+  cve_edo,
   dir,
   name,
   vel,
@@ -20,7 +20,7 @@ animap_vector_hotblocks(
 
 \item{locality}{is the locality target with the ovitraps.}
 
-\item{cve_ent}{is the text id of the state.}
+\item{cve_edo}{is the text id of the state.}
 
 \item{dir}{is the directory where the animation will be saved.}
 
