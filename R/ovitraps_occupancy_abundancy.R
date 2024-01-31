@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-ovitraps_occupancy_abundancy <- function(path_ovitraps
+ovitraps_occupancy_abundancy <- function(path_ovitraps,
                                          scale){
 
     # Step 1. Load the ovitrap dataset ####

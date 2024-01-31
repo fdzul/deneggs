@@ -4,10 +4,10 @@
 \alias{ovitraps_occupancy_abundancy}
 \title{ovitraps_occupancy_abundancy}
 \usage{
-ovitraps_occupancy_abundancy(ovitraps_path, scale)
+ovitraps_occupancy_abundancy(path_ovitraps, scale)
 }
 \arguments{
-\item{ovitraps_path}{is the path  of the ovitrap file.}
+\item{path_ovitraps}{is the path  of the ovitrap file.}
 
 \item{scale}{is a string that define the scale, there are two options ovitraps & blocks}
 }
