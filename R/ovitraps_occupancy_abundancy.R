@@ -1,13 +1,13 @@
 #' ovitraps_occupancy_abundancy
 #'
-#' @param ovitraps_path is the path  of the ovitrap file.
+#' @param path_ovitraps is the path  of the ovitrap file.
 #' @param scale is a string that define the scale, there are two options ovitraps & blocks
 #'
 #' @return
 #' @export
 #'
 #' @examples
-ovitraps_occupancy_abundancy <- function(ovitraps_path,
+ovitraps_occupancy_abundancy <- function(path_ovitraps
                                          scale){
 
     # Step 1. Load the ovitrap dataset ####
