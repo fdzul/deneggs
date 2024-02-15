@@ -223,9 +223,7 @@ spde_pred_map <- function(path_lect,locality, path_coord,cve_ent,
     p$pred_mean <- mod$summary.fitted.values[index, "mean"]
     p$pred_sd <- mod$summary.fitted.values[index, "sd"]
     p$pred_ll <- mod$summary.fitted.values[index, "0.025quant"]
-    p$pred_ul <- mod$summary.fitted.values[index, "0.025quant"]
-    p$ws_mean <- mod$summary.random$w[index, "mean"]
-    p$ws_sd <- mod$summary.random$w[index, "sd"]
+    p$pred_ul <- mod$summary.fitted.values[index, "0.095quant"]
     p$week <- week
     p$fam <- fam
     p$dic <- mod$dic$dic
@@ -326,7 +324,7 @@ spde_pred_map <- function(path_lect,locality, path_coord,cve_ent,
     ## Step 9. return the map and the prediction values ####
     multi_return <- function() {
       my_list <- list("data" = x,
-                      "pred" = p,
+                      "mesh" = mesh,
                       "map" = map,
                       "loc" = loc,
                       "dics" = dics,

@@ -198,7 +198,7 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
     p$pred_mean <- mod$summary.fitted.values[index, "mean"]
     p$pred_sd <- mod$summary.fitted.values[index, "sd"]
     p$pred_ll <- mod$summary.fitted.values[index, "0.025quant"]
-    p$pred_ul <- mod$summary.fitted.values[index, "0.025quant"]
+    p$pred_ul <- mod$summary.fitted.values[index, "0.095quant"]
     p$week <- sem
     p$fam <- fam
     p$dic <- mod$dic$dic
