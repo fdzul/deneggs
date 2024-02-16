@@ -326,6 +326,7 @@ spde_pred_map <- function(path_lect,locality, path_coord,cve_ent,
       my_list <- list("data" = x,
                       "mesh" = mesh,
                       "map" = map,
+                      "mod" = mod,
                       "loc" = loc,
                       "dics" = dics,
                       "hotspots" =  hotspots_eggs(x = p, var = "pred_mean", alpha = alpha))
