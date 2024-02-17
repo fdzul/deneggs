@@ -48,6 +48,8 @@ read_ovitraps_coordinates <- function(path_ovitraps,
                       lat = Pocision_Y)  |>
         dplyr::filter(!is.na(long))  |>
         dplyr::filter(!is.na(eggs))  |>
+        dplyr::mutate(Clave = NULL,
+                      Ovitrampa = NULL)
         sf::st_as_sf(coords = c("long", "lat"),
                      crs = 4326)
 
