@@ -17,17 +17,27 @@
 #' @details this function use \link[INLA]{inla}.
 #' @examples 1+1
 mesh <- function(x, k, long, lat, loc_limit, plot = NULL){
-    #x$X <- x$long
-    #x$Y <- x$lat
     coor <- cbind(x[,c(long)], x[, c(lat)])
-    #coor <- cbind(x$Pocision_X, x$Pocision_Y)
-    mesh <- INLA::inla.mesh.2d(coor, ## provide locations or domain #
-                               boundary = loc_limit,
-                               max.edge = c(0.3/k, 2/k), ## mandatory
-                               cutoff= 0.1/k,
-                               crs = "+proj=longlat +datum=WGS84") ## good to have >0
+    #mesh <- INLA::inla.mesh.2d(coor, ## provide locations or domain #
+    #                           boundary = loc_limit,
+    #                           max.edge = c(0.3/k, 2/k), ## mandatory
+    #                           cutoff= 0.1/k,
+    #                           crs = "+proj=longlat +datum=WGS84") ## good to have >0
+
+    mesh <- fmesher::fm_mesh_2d_inla(loc = coor,
+                                     boundary = loc_limit,
+                                     max.edge = c(0.3/k, 2/k), ## mandatory
+                                     cutoff= 0.1/k,
+                                     crs = fmesher::fm_CRS("longlat_globe"))
+
     if(plot == TRUE){
-        plot(mesh, asp=1, main = ""); points(coor, col= "red")
+        #plot(mesh, asp=1, main = ""); points(coor, col= "red")
+        ggplot2::ggplot() +
+            inlabru::gg(x$mesh) +
+            ggplot2::geom_point(data = as.data.frame(coord),
+                                ggplot2::aes(x = Pocision_X,
+                                             y = Pocision_Y),
+                                col = "red")
     } else {
 
     }
