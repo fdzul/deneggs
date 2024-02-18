@@ -34,7 +34,7 @@ mesh <- function(x, k, long, lat, loc_limit, plot = NULL){
         #plot(mesh, asp=1, main = ""); points(coor, col= "red")
         ggplot2::ggplot() +
             inlabru::gg(mesh) +
-            ggplot2::geom_point(data = as.data.frame(coord),
+            ggplot2::geom_point(data = as.data.frame(coor),
                                 ggplot2::aes(x = Pocision_X,
                                              y = Pocision_Y),
                                 col = "red")
