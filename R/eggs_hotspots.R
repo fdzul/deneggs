@@ -287,7 +287,7 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
                                             "Hotspots",
                                             "No Hotspots"))
         #names(x) <- c("x", "y", "pred_mean", "pred_sd","pred_ll","pred_ul",
-        #              "week","fam","dic","z_score","hotspots")
+                      #"week","fam","dic","z_score","hotspots")
         x  |>  as.data.frame()
 
     }
