@@ -1,8 +1,10 @@
 #' blocks_surveillance
 #'
-#' @param locality
-#' @param cve_edo
-#' @param path_coords
+#'  this function generate the map of block surveillance
+#'
+#' @param locality is the locality target.
+#' @param cve_edo is the id of state.
+#' @param path_coords is the path of coordinates file.
 #'
 #' @return
 #' @export

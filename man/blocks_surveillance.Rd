@@ -7,8 +7,12 @@
 blocks_surveillance(locality, cve_edo, path_coords)
 }
 \arguments{
-\item{path_coords}{}
+\item{locality}{is the locality target.}
+
+\item{cve_edo}{is the id of state.}
+
+\item{path_coords}{is the path of coordinates file.}
 }
 \description{
-blocks_surveillance
+this function generate the map of block surveillance
 }
