@@ -286,8 +286,8 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
             dplyr::mutate(hotspots = ifelse(z_score >= cutt_off,
                                             "Hotspots",
                                             "No Hotspots"))
-        names(x) <- c("x", "y", "pred_mean", "pred_sd","pred_ll","pred_ul",
-                      "week","fam","dic","z_score","hotspots")
+        #names(x) <- c("x", "y", "pred_mean", "pred_sd","pred_ll","pred_ul",
+        #              "week","fam","dic","z_score","hotspots")
         x  |>  as.data.frame()
 
     }
