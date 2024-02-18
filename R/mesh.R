@@ -22,7 +22,7 @@ mesh <- function(x, k, long, lat, loc_limit, plot = NULL){
                                boundary = loc_limit,
                                max.edge = c(0.3/k, 2/k), ## mandatory
                                cutoff= 0.1/k,
-                               crs = fmesher::fm_CRS("longlat_globe")) ## good to have >0
+                               crs = "+proj=longlat +datum=WGS84") ## good to have >0
 
     #mesh <- fmesher::fm_mesh_2d_inla(loc = coor,
     #                                 boundary = loc_limit,
