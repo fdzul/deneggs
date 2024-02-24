@@ -18,8 +18,7 @@ knitr::opts_chunk$set(
 [![Build Status](https://travis-ci.org/pages-themes/cayman.svg?branch=master)](https://travis-ci.org/pages-themes/cayman) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-cayman.svg)](https://badge.fury.io/rb/jekyll-theme-cayman)[![Github All Releases](https://img.shields.io/github/downloads/fdzul/deneggs/total.svg)]()
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ce21544b-5fef-4761-9103-70b483e2907f/deploy-status)](https://app.netlify.com/sites/dancing-tiramisu-fdd5c0/deploys)
 
-<img align="center" src="man/figures/logo.png" alt="logo" width="140">
-
+# deneggs <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 **deneggs** is a package developed in the [CENAPRECE](https://www.gob.mx/salud/cenaprece) dengue prevention and control program in collaboration with [INDRE](https://www.gob.mx/salud/acciones-y-programas/instituto-de-diagnostico-y-referencia-epidemiologicos-mision-vision-y-politica-de-calidad-181639?state=published) & the Yucatan state.
 

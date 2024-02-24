@@ -12,7 +12,7 @@ Releases](https://img.shields.io/github/downloads/fdzul/deneggs/total.svg)]()
 [![Netlify
 Status](https://api.netlify.com/api/v1/badges/ce21544b-5fef-4761-9103-70b483e2907f/deploy-status)](https://app.netlify.com/sites/dancing-tiramisu-fdd5c0/deploys)
 
-<img align="center" src="man/figures/logo.png" alt="logo" width="140">
+# deneggs <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 **deneggs** is a package developed in the
 [CENAPRECE](https://www.gob.mx/salud/cenaprece) dengue prevention and
