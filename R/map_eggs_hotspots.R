@@ -45,7 +45,7 @@ map_eggs_hotspots <- function(betas,
                                names_from = "week",
                                names_prefix = "week_",
                                values_from = "hotspots_binary") |>
-            dplyr::mutate(intensity = rowSums(dplyr::across(dplyr::starts_with("week_")))) |>
+            dplyr::mutate(intensity = rowSums(dplyr::across(dplyr::starts_with("week_")), na.rm = TRUE)) |>
             dplyr::mutate(n_week = length(dplyr::across(dplyr::starts_with("week_")))) |>
             dplyr::mutate(per_intensity = round(intensity/n_week, digits = 1)) |>
             dplyr::select(x, y, intensity,n_week, per_intensity) |>
