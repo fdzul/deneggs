@@ -41,6 +41,7 @@ map_eggs_hotspots <- function(betas,
         x |>
             dplyr::mutate(hotspots_binary = ifelse(hotspots == "Hotspots", 1, 0)) |>
             dplyr::select(x, y, week, hotspots_binary) |>
+            dplyr::distinct(x, y, .keep_all = TRUE) |>
             tidyr::pivot_wider(id_cols = c(x, y),
                                names_from = "week",
                                names_prefix = "week_",
