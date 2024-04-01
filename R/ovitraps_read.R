@@ -31,6 +31,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
                             header = TRUE,
                             skipNul = TRUE,
                             stringsAsFactors = FALSE,
+                            fill = TRUE,
                             colClasses = "character",
                             fileEncoding = "UCS-2LE") %>%
             dplyr::select(Clave, Ovitrampa, Huevecillos, Fecha.Lectura)
