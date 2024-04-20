@@ -33,7 +33,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
                             stringsAsFactors = FALSE,
                             fill = TRUE,
                             colClasses = "character",
-                            fileEncoding = "UCS-2LE") %>%
+                            fileEncoding = "UCS-2LE")  |>
             dplyr::select(Clave, Ovitrampa, Huevecillos, Fecha.Lectura)
         names(y) <- c("clave", "ovitrap",
                       "eggs", "fecha_lectura")
