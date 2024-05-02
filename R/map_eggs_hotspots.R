@@ -92,8 +92,8 @@ map_eggs_hotspots <- function(betas,
                                                           face = "bold"))
 
 
-    plotly::ggplotly(p) |>
-        plotly::layout(legend = list(orientation = 'h'))
+    #plotly::ggplotly(p) |>
+    #    plotly::layout(legend = list(orientation = 'h'))
 
 
 }
