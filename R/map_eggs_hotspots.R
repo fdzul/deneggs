@@ -62,7 +62,7 @@ map_eggs_hotspots <- function(betas,
 
 
     # step 4 plot the map ####
-    p <- ggplot2::ggplot() +
+    ggplot2::ggplot() +
         ggplot2::geom_tile(data = x,
                            ggplot2::aes(x = x,
                                         y = y,
@@ -94,6 +94,7 @@ map_eggs_hotspots <- function(betas,
 
     #plotly::ggplotly(p) |>
     #    plotly::layout(legend = list(orientation = 'h'))
+
 
 
 }
