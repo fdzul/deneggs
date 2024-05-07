@@ -4,7 +4,7 @@
 \alias{map_eggs_hotspots}
 \title{map_eggs_hotspots}
 \usage{
-map_eggs_hotspots(betas, locality, cve_edo, palette, name)
+map_eggs_hotspots(betas, locality, cve_edo, palette, name, static_map)
 }
 \arguments{
 \item{betas}{is the betas of inla spde model.}
@@ -16,6 +16,8 @@ map_eggs_hotspots(betas, locality, cve_edo, palette, name)
 \item{palette}{is the palette name package and function. example  rcartocolor::carto_pal.}
 
 \item{name}{is the name of palette.}
+
+\item{static_map}{is logical value (TRUE o FALSE). if the value es TRUE the map is static, else the map es interactive.}
 }
 \value{
 a ggplot map.
