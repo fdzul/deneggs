@@ -7,7 +7,7 @@
 #' @param cve_edo is the id of state.
 #' @param palette is the palette name package and function. example  rcartocolor::carto_pal.
 #' @param name is the name of palette.
-#'
+#' @param static_map is logical value (TRUE o FALSE). if the value es TRUE the map is static, else the map es interactive.
 #' @return a ggplot map.
 #' @export
 #' @details \link[INLA]{inla}, \link[deneggs]{eggs_hotspots_week}
@@ -17,7 +17,8 @@ map_eggs_hotspots <- function(betas,
                               locality,
                               cve_edo,
                               palette,
-                              name){
+                              name,
+                              static_map){
 
     # Step 1. extract the locality
     locality <- rgeomex::extract_locality(cve_edo = cve_edo,
@@ -62,7 +63,7 @@ map_eggs_hotspots <- function(betas,
 
 
     # step 4 plot the map ####
-    ggplot2::ggplot() +
+    p <- ggplot2::ggplot() +
         ggplot2::geom_tile(data = x,
                            ggplot2::aes(x = x,
                                         y = y,
@@ -91,10 +92,12 @@ map_eggs_hotspots <- function(betas,
         ggplot2::theme(strip.text = ggplot2::element_text(size = 11,
                                                           face = "bold"))
 
-
-    #plotly::ggplotly(p) |>
-    #    plotly::layout(legend = list(orientation = 'h'))
-
+    if(static_map == TRUE){
+        p
+    } else {
+        plotly::ggplotly(p) |>
+            plotly::layout(legend = list(orientation = 'h'))
+    }
 
 
 }
