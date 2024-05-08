@@ -56,9 +56,11 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
 
 
     # Step 0. 2 load the locality limit ####
-    loc <- rgeomex::loc_inegi19_mx  |>
-        dplyr::filter(NOMGEO %in% c(similiars::find_most_similar_string(locality, unique(NOMGEO))) &
-                          CVE_ENT %in% c(cve_ent))
+    loc <- rgeomex::extract_locality(cve_edo = cve_ent,
+                                     locality = locality)
+    #loc <- rgeomex::loc_inegi19_mx  |>
+    #    dplyr::filter(NOMGEO %in% c(similiars::find_most_similar_string(locality, unique(NOMGEO))) &
+    #                      CVE_ENT %in% c(cve_ent))
 
     if(nrow(loc) > 1){
         loc <- loc  |>  sf::st_union()
@@ -286,8 +288,8 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
             dplyr::mutate(hotspots = ifelse(z_score >= cutt_off,
                                             "Hotspots",
                                             "No Hotspots"))
-        #names(x) <- c("x", "y", "pred_mean", "pred_sd","pred_ll","pred_ul",
-                      #"week","fam","dic","z_score","hotspots")
+        names(x) <- c("x", "y", "pred_mean", "pred_sd","pred_ll","pred_ul",
+                      "week","fam","dic","z_score","hotspots")
         x  |>  as.data.frame()
 
     }
