@@ -200,7 +200,7 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
     p$pred_mean <- mod$summary.fitted.values[index, "mean"]
     p$pred_sd <- mod$summary.fitted.values[index, "sd"]
     p$pred_ll <- mod$summary.fitted.values[index, "0.025quant"]
-    p$pred_ul <- mod$summary.fitted.values[index, "0.095quant"]
+    p$pred_ul <- mod$summary.fitted.values[index, "0.975quant"]
     p$week <- sem
     p$fam <- fam
     p$dic <- mod$dic$dic
@@ -288,8 +288,8 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
             dplyr::mutate(hotspots = ifelse(z_score >= cutt_off,
                                             "Hotspots",
                                             "No Hotspots"))
-        names(x) <- c("x", "y", "pred_mean", "pred_sd","pred_ll","pred_ul",
-                      "week","fam","dic","z_score","hotspots")
+        #names(x) <- c("x", "y", "pred_mean", "pred_sd","pred_ll","pred_ul",
+        #              "week","fam","dic","z_score","hotspots")
         x  |>  as.data.frame()
 
     }
