@@ -1,5 +1,5 @@
-pandoc: 3.1.1
-pkgdown: 2.0.7
+pandoc: 3.1.11
+pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   deneggs: deneggs.html
@@ -7,5 +7,5 @@ articles:
   eggs_prediction_hotspots: eggs_prediction_hotspots.html
   eggs_prediction_week: eggs_prediction_week.html
   eggs_prediction_year: eggs_prediction_year.html
-last_built: 2024-02-24T01:27Z
+last_built: 2024-08-13T20:15Z
 

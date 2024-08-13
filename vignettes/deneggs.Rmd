@@ -14,3 +14,22 @@ knitr::opts_chunk$set(
 )
 ```
 
+
+The **deneggs** package was developed by the [CENAPRECE](https://www.gob.mx/salud/cenaprece) dengue prevention and control program in collaboration with [INDRE](https://www.gob.mx/salud/acciones-y-programas/instituto-de-diagnostico-y-referencia-epidemiologicos-mision-vision-y-politica-de-calidad-181639?state=published) (Entomology Laboratory), [INSP](https://www.insp.mx) (Health Systems Research Center & Population Health Research Center), and the states of Veracruz, Tabasco, and Yucatan.
+
+
+## **Overview**
+
+The **deneggs** package was designed to generate predictive maps of the number of eggs or adults through geostatistical analysis using stochastic partial differential equations (SPDE) and integrated nested Laplace with [R-INLA](http://www.r-inla.org/). The objective of geostatistical analysis is to predict the response variable (eggs or adults) in areas or zones where entomological collection was not carried out, such as unsampled blocks.
+
+Geostatistical analysis of entomological surveillance with ovitraps and adult collections was performed using the **deneggs** package. The package is part of dengueverse and has three functions for predicting the number of eggs in areas where they were not collected from a location.
+
+- **`spde_pred_map`**
+
+- **`eggs_hotspots`**
+
+- **`eggs_hotspots_week`**
+
+The spde_pred_map function performs geostatistical analysis per week with seven different distributions (poisson, zeroinflatedpoisson0, zeroinflatedpoisson1, nbinomial, nbinomial2, zeroinflatednbinomial0, & zeroinflatednbinomial1). The eggs_hotspots function performed the analysis per week with only one distribution, and the eggs_hotspots_week function performed the analysis for all weeks of the year.
+ 
+In addition, the denegg package has complementary functions associated with geostatistical analysis. For an in-depth review of all the features, please refer to the reference section.

@@ -1,0 +1,52 @@
+---
+title: "Visualization of Entomological Surveillance data with Ovitraps"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Visualization of Entomological Surveillance data with Ovitraps}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(deneggs)
+```
+
+En la [Guia metodológica para la vigilancia entomologica con ovitrampas](https://www.gob.mx/cms/uploads/attachment/file/598092/Guia_Metodologica_para_Vigilancia_Entomologica_con_Ovitrampas_compressed.pdf) del Centro Nacional de Programas Preventivos y Control de Enfermedades (CENAPRECE) se recomiendad cinco indicadores para el análisis y toma de desiciones.
+
+  1) Porcentaje de Ovitrampa Positivas (IPO): $$\frac{Ovitrampas Positivas}{Ovitrampas Revisadas} * 100$$
+
+  2) Porcentaje de Manzanas Positivas (MP): $$\frac{Manzanas Positivas}{Manzanas Revisadas} * 100$$
+  
+  2) Promedio de Huevos por Ovitrampa (PHO): $$\frac{Total de Huevos}{Número de Ovitrampas Positiva}$$
+
+  3) Promedio de Huevos por Manzana (PHMR): $$\frac{Total de Huevos por Manzana}{Manzanas Revisadas}$$
+
+  3) Promedio de Huevos por Manzanas Positivas (PHMP): $$\frac{Total de Huevos por Manzana}{Manzanas Positivas}$$
+
+
+El paquete deneggs calcula los indicadores de prevalencia y abundancia para las ovitrampas (casa) o para las manzanas.
+
+## Indicadores por Ovitrampa o Casa
+```{r, warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%'}
+library(magrittr)
+path <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
+deneggs::ovitraps_occupancy_abundancy(path_ovitraps  = path,
+                                      scale = "ovitraps")
+```
+
+
+## Indicadores por Manzana
+
+```{r,  warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%'}
+path <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
+deneggs::ovitraps_occupancy_abundancy(path_ovitraps = path,
+                                      scale = "blocks")
+```
+

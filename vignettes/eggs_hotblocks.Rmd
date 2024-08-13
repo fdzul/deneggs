@@ -17,3 +17,24 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(deneggs)
 ```
+
+
+
+
+
+```{r}
+#| echo: false
+#| output: true
+mapview::mapviewOptions(leafletWidth = 300, 
+                        leafletHeight = 671/2,
+                        legend = FALSE)
+library(magrittr)
+library(sf)
+path_vect <- "/Users/fdzul/Library/CloudStorage/OneDrive-Personal/datasets/CENAPRECE/2023/31_yucatan"
+
+deneggs::eggs_hotblocks(path_vect = path_vect,
+                        cve_edo = "31",
+                        locality = "Ticul",
+                        week = 50,
+                        brand = "slack")
+```

@@ -14,59 +14,66 @@ Status](https://api.netlify.com/api/v1/badges/ce21544b-5fef-4761-9103-70b483e290
 
 # deneggs <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
-**deneggs** is a package developed in the
+The **deneggs** package was developed by the
 [CENAPRECE](https://www.gob.mx/salud/cenaprece) dengue prevention and
 control program in collaboration with
 [INDRE](https://www.gob.mx/salud/acciones-y-programas/instituto-de-diagnostico-y-referencia-epidemiologicos-mision-vision-y-politica-de-calidad-181639?state=published)
-& the Yucatan state.
+(Entomology Laboratory), [INSP](https://www.insp.mx) (Health Systems
+Research Center & Population Health Research Center), and the states of
+Veracruz, Tabasco, and Yucatan.
 
 ## **Overview**
 
-**deneggs** is a package to generate predictive maps of the number of
-eggs or adults in areas where it is not collected. The predictive maps
-are generated using geostatistical analysis in the
-[INLA](http://www.r-inla.org/) framework.
+The **deneggs** package was designed to generate predictive maps of the
+number of eggs or adults through geostatistical analysis using
+stochastic partial differential equations (SPDE) and integrated nested
+Laplace with [R-INLA](http://www.r-inla.org/). The objective of
+geostatistical analysis is to predict the response variable (eggs or
+adults) in areas or zones where entomological collection was not carried
+out, such as unsampled blocks.
 
-- **`deneggs::spde_pred_map()`** generate the predictive mapand
-  calculate the hotspots. Run the models with six distributions.
-- **`deneggs::eggs_hotspots()`** generate the predictive map and
-  calculate the hotspots. Run the model with one distribution.
-- **`deneggs::animap_vector_hotblocks()`** generate the animated map of
-  hotblocks of eggs abundance.
-- **`deneggs::ovitraps_read()`** reads current ovitramp databases and
-  historical.
-- **`deneggs::eggs_map()`** generates an entomological risk map or an
-  egg density map.
-- **`deneggs::loc_grid_points()`** It is a complementary function that
-  helps in the creation of grid of the locality in the prediction stack
-  in [INLA](http://www.r-inla.org/).
-- **`mesh()`** It is a complementary function that helps in the creation
-  of mesh.
+Geostatistical analysis of entomological surveillance with ovitraps and
+adult collections was performed using the **deneggs** package. The
+package is part of dengueverse and has three functions for predicting
+the number of eggs in areas where they were not collected from a
+location.
+
+- **`spde_pred_map`**
+
+- **`eggs_hotspots`**
+
+- **`eggs_hotspots_week`**
+
+The spde_pred_map function performs geostatistical analysis per week
+with seven different distributions (poisson, zeroinflatedpoisson0,
+zeroinflatedpoisson1, nbinomial, nbinomial2, zeroinflatednbinomial0, &
+zeroinflatednbinomial1). The eggs_hotspots function performed the
+analysis per week with only one distribution, and the eggs_hotspots_week
+function performed the analysis for all weeks of the year.
+
+In addition, the denegg package has complementary functions associated
+with geostatistical analysis.
 
 ## Instalation
-
-``` r
-# The easiest way to get deneggs is to install:
-install.packages("deneggs")
-```
 
 ### Development version
 
 To get a bug fix, or use a feature from the development version, you can
-install deneggs from GitHub.
+install deneggs from GitHub. For an in-depth review of all the features,
+please refer to the reference section.
 
-mac
+devtools
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("fdzul/deneggs")
 ```
 
-linux fedora
+pak
 
 ``` r
-# install.packages("devtools")
-remotes::install_github("fdzul/deneggs")
+# install.packages("pak")
+pak::pkg_install("fdzul/deneggs")
 ```
 
 ## Authors
