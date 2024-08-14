@@ -41,7 +41,7 @@ El resultado de la función **ovitraps_occupancy_abundancy** es un gráfico biva
 
 
 ## Indicadores por Ovitrampa o Casa
-```{r, warning=FALSE, message=FALSE, out.width = '110%', out.height= '110%'}
+```{r ind_, warning=FALSE, message=FALSE, out.width = '110%', out.height= '110%'}
 path <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
 deneggs::ovitraps_occupancy_abundancy(path_ovitraps  = path,
                                       scale = "ovitraps")
@@ -58,5 +58,47 @@ deneggs::ovitraps_occupancy_abundancy(path_ovitraps = path,
 
 
 ## Mapas la Vigilancia Entomológica con Ovitrampas
+
+El paquete **deneggs** tiene funciones adicionales para mapear
+
+
+## Mapa de la Abundancia de Huevos
+```{r ovitraps, warning=FALSE, message=FALSE}
+#| warning: False
+#| message: False
+#| echo: true
+#| output: true
+#| out.width: "100%"
+
+# Paso 1. definir la ruta de la carpeta
+path_vect <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
+path_coord <- paste(path_vect, "DescargaOvitrampasMesFco.txt", sep = "/")
+
+# Paso 2. ge
+deneggs::eggs_risk(path_vect = path_vect,
+                   path_coord = path_coord,
+                   weeks = 30,
+                   locality = "Ticul",
+                   risk = FALSE)
+```
+
+
+## Mapa del Riesgo Entomológico de Huevos
+
+```{r riesgo_entomologicos}
+#| warning: False
+#| message: False
+#| echo: true
+#| output: true
+#| out.width: "100%"
+path_vect <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
+path_coord <- paste(path_vect, "DescargaOvitrampasMesFco.txt", sep = "/")
+
+deneggs::eggs_risk(path_vect = path_vect,
+                   path_coord = path_coord,
+                   weeks = 30,
+                   locality = "Ticul",
+                   risk = TRUE)
+```
 
 
