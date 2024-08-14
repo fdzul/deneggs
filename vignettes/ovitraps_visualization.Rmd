@@ -57,3 +57,6 @@ deneggs::ovitraps_occupancy_abundancy(path_ovitraps = path,
 ```
 
 
+## Mapas la Vigilancia Entomológica con Ovitrampas
+
+
