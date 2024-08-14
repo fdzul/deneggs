@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(deneggs)
 ```
 
-En la [Guia metodológica para la vigilancia entomologica con ovitrampas](https://www.gob.mx/cms/uploads/attachment/file/598092/Guia_Metodologica_para_Vigilancia_Entomologica_con_Ovitrampas_compressed.pdf) del Centro Nacional de Programas Preventivos y Control de Enfermedades (CENAPRECE) se recomiendad cinco indicadores para el análisis y toma de desiciones.
+En la [Guia metodológica para la vigilancia entomologica con ovitrampas](https://www.gob.mx/cms/uploads/attachment/file/598092/Guia_Metodologica_para_Vigilancia_Entomologica_con_Ovitrampas_compressed.pdf) del Centro Nacional de Programas Preventivos y Control de Enfermedades (CENAPRECE) se recomiendad cinco indicadores para el análisis y toma de desiciones. 
 
   1) Porcentaje de Ovitrampa Positivas (IPO): $$\frac{Ovitrampas Positivas}{Ovitrampas Revisadas} * 100$$
 
@@ -31,7 +31,7 @@ En la [Guia metodológica para la vigilancia entomologica con ovitrampas](https:
   3) Promedio de Huevos por Manzanas Positivas (PHMP): $$\frac{Total de Huevos por Manzana}{Manzanas Positivas}$$
 
 
-El paquete deneggs calcula los indicadores de prevalencia y abundancia para las ovitrampas (casa) o para las manzanas.
+El paquete deneggs calcula los indicadores de prevalencia y abundancia para los dos niveles de resolución (ovitrampas (casa) o para las manzanas). Las funciones tienen dos argumentos, **path_ovitraps** y **scale**. La primera es para definir la ruta de la carpeta donde están guardados los archivos de lecturas de ovitrampas con extensión txt. El argumento scale es para definir la resolución espacial o la unidad de análisis, la cual tiene solo dos opciones, manzana (blocks) u ovitrampa (ovitraps).
 
 ## Indicadores por Ovitrampa o Casa
 ```{r, warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%'}
@@ -49,4 +49,5 @@ path <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
 deneggs::ovitraps_occupancy_abundancy(path_ovitraps = path,
                                       scale = "blocks")
 ```
+
 
