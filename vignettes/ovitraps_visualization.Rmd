@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, echo=FALSE}
 library(deneggs)
 ```
 
@@ -27,20 +27,21 @@ En la [Guia metodológica para la vigilancia entomologica con ovitrampas](https:
 
   2) Porcentaje de Manzanas Positivas (MP): $$\frac{Manzanas Positivas}{Manzanas Revisadas} * 100$$
   
-  2) Promedio de Huevos por Ovitrampa (PHO): $$\frac{Total de Huevos}{Número de Ovitrampas Positiva}$$
+  3) Promedio de Huevos por Ovitrampa (PHO): $$\frac{Total de Huevos}{Número de Ovitrampas Positiva}$$
 
-  3) Promedio de Huevos por Manzana (PHMR): $$\frac{Total de Huevos por Manzana}{Manzanas Revisadas}$$
+  4) Promedio de Huevos por Manzana (PHM): $$\frac{Total de Huevos por Manzana}{Manzanas Revisadas}$$
 
-  3) Promedio de Huevos por Manzanas Positivas (PHMP): $$\frac{Total de Huevos por Manzana}{Manzanas Positivas}$$
+  5) Promedio de Huevos por Manzanas Positivas (PHMP): $$\frac{Total de Huevos por Manzana}{Manzanas Positivas}$$
 
 
-El paquete deneggs calcula los indicadores de prevalencia y abundancia para los dos niveles de resolución (ovitrampas (casa) o para las manzanas). Las funciones tienen dos argumentos, **path_ovitraps** y **scale**. La primera es para definir la ruta de la carpeta donde están guardados los archivos de lecturas de ovitrampas con extensión txt. El argumento scale es para definir la resolución espacial o la unidad de análisis, la cual tiene solo dos opciones, manzana (blocks) u ovitrampa (ovitraps).
+El paquete **deneggs** calcula los indicadores de prevalencia y abundancia para los dos niveles de resolución espacial (ovitrampas (casa) o para las manzanas). Estos indicadores son obtenidos a través de la función **ovitraps_occupancy_abundancy**. Las función tienen dos argumentos, **path_ovitraps** y **scale**, la primera es para definir la ruta de la carpeta donde están guardados los archivos de lecturas de ovitrampas con extensión txt y el argumento **scale** es para definir la resolución espacial o la unidad de análisis, la cual tiene solo dos opciones, manzana (blocks) u ovitrampa (ovitraps).
+
+El resultado de la función **ovitraps_occupancy_abundancy** es un gráfico bivariado de dos ejes interactivo de todas las localidades con ovitrampas del estado. En en el eje x se representa el tiempo en escala de semanas epidemiológicas, en el eje y primario (eje izquierdo) se gráfica el porcentaje de ovitrampas positivas o el porcentaje de manzanas positivas & en el eje y (eje derecho) se gráfica la abundancia de huevos en ovitrampas positivas o la abundancia de huevos en manzanas positivas.
 
 
 
 ## Indicadores por Ovitrampa o Casa
-```{r, warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%'}
-library(magrittr)
+```{r, warning=FALSE, message=FALSE, out.width = '110%', out.height= '110%'}
 path <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
 deneggs::ovitraps_occupancy_abundancy(path_ovitraps  = path,
                                       scale = "ovitraps")
@@ -49,7 +50,7 @@ deneggs::ovitraps_occupancy_abundancy(path_ovitraps  = path,
 
 ## Indicadores por Manzana
 
-```{r,  warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%'}
+```{r,  warning=FALSE, message=FALSE, out.width = '110%', out.height= '110%'}
 path <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
 deneggs::ovitraps_occupancy_abundancy(path_ovitraps = path,
                                       scale = "blocks")
