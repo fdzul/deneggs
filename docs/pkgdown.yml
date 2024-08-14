@@ -3,10 +3,8 @@ pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   deneggs: deneggs.html
-  eggs_hotblocks: eggs_hotblocks.html
   eggs_prediction_hotspots: eggs_prediction_hotspots.html
   eggs_prediction_week: eggs_prediction_week.html
-  eggs_prediction_year: eggs_prediction_year.html
   ovitraps_visualization: ovitraps_visualization.html
-last_built: 2024-08-14T22:18Z
+last_built: 2024-08-14T22:48Z
 
