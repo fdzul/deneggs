@@ -73,8 +73,6 @@ La función **eggs_risk** cuenta con cinco argumentos **path_vect**, **path_coor
 
 La función **eggs_hotblocks** cuenta con cinco argumentos **path_vect**, **cve_edo**,**locality**, **weeks**  & **brand**. Los argumentos **path_vect** y  **weeks** son similares a los mismos argumentos en la función **eggs_risk**. El argumento **cve_edo** y **locality** definen la clave del estado y la localidad de interes, respectivamente. El argumento brand define la paleta de colores y tiene dos opciones google (brand = "google") o slack (brand = "slack"). 
 
-
-
 ## Mapa de la Abundancia de Huevos
 ```{r ovitraps, warning=FALSE, message=FALSE}
 #| warning: False
