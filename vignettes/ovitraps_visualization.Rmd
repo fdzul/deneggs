@@ -41,7 +41,11 @@ El resultado de la función **ovitraps_occupancy_abundancy** es un gráfico biva
 
 
 ## Indicadores por Ovitrampa o Casa
-```{r ind_, warning=FALSE, message=FALSE, out.width = '110%', out.height= '110%'}
+```{r indicador_ovitraps, out.width = '110%', out.height= '110%'}
+#| warning: False
+#| message: False
+#| echo: true
+#| output: true
 path <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
 deneggs::ovitraps_occupancy_abundancy(path_ovitraps  = path,
                                       scale = "ovitraps")
@@ -50,7 +54,11 @@ deneggs::ovitraps_occupancy_abundancy(path_ovitraps  = path,
 
 ## Indicadores por Manzana
 
-```{r,  warning=FALSE, message=FALSE, out.width = '110%', out.height= '110%'}
+```{r indicador_manzana, out.width = '110%', out.height= '110%'}
+#| warning: False
+#| message: False
+#| echo: true
+#| output: true
 path <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
 deneggs::ovitraps_occupancy_abundancy(path_ovitraps = path,
                                       scale = "blocks")
@@ -59,7 +67,14 @@ deneggs::ovitraps_occupancy_abundancy(path_ovitraps = path,
 
 ## Mapas la Vigilancia Entomológica con Ovitrampas
 
-El paquete **deneggs** tiene funciones adicionales para mapear
+El paquete **deneggs** tiene funciones adicionales para visualizar geográficamente (mapas) los datos de la vigilancia entomológica de ovitrampas, específicamente la abundancia de huevos y el riesgo entomológico. Este último es definido a travéz de los quartiles (q4 = Muy Alto, q3= Alto, q2 = medio ó moderado, q1 = bajo) de la abundancia en las ovitrampas (ovitrampas calientes) o las manzanas (manzanas calientes). Los mapas son generados por medio de la función **eggs_risk** ó **eggs_hotblocks**. 
+
+La función **eggs_risk** cuenta con cinco argumentos **path_vect**, **path_coord**, **weeks**, **locality**, & **risk**. Los dos primeros (**path_vect** &  **path_coord**) son para definir la ruta de la carpeta de la base de datos de las lecturas de ovitrampas (extensión txt) y la base de datos las coordenadas geográficas. Los argumentos **weeks** y **locality** son para definir la semana que se desea analizar y la localidad de interes. El argumento **risk** tiene dos opciones (TRUE ó FALSE), cuando es verdadero el argumento proporciona el mapa del riesgo entomológico (risk = T ó risk = TRUE) o de lo contrario se mapea la abundancia de huevos por manzana cuando el argumento es falso (risk = F ó risk = FALSE).
+
+
+
+La función **eggs_hotblocks** cuenta con cinco argumentos **path_vect**, **cve_edo**,**locality**, **weeks**  & **brand**. Los argumentos **path_vect** y  **weeks** son similares a los mismos argumentos en la función **eggs_risk**. El argumento **cve_edo** y **locality** definen la clave del estado y la localidad de interes, respectivamente. El argumento brand define la paleta de colores y tiene dos opciones google (brand = "google") o slack (brand = "slack"). 
+
 
 
 ## Mapa de la Abundancia de Huevos
@@ -74,7 +89,7 @@ El paquete **deneggs** tiene funciones adicionales para mapear
 path_vect <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
 path_coord <- paste(path_vect, "DescargaOvitrampasMesFco.txt", sep = "/")
 
-# Paso 2. ge
+# Paso 2. 
 deneggs::eggs_risk(path_vect = path_vect,
                    path_coord = path_coord,
                    weeks = 30,
@@ -85,7 +100,8 @@ deneggs::eggs_risk(path_vect = path_vect,
 
 ## Mapa del Riesgo Entomológico de Huevos
 
-```{r riesgo_entomologicos}
+### Ovitrampas Calientes
+```{r riesgo_entomologicos_ovitrampas}
 #| warning: False
 #| message: False
 #| echo: true
@@ -101,4 +117,20 @@ deneggs::eggs_risk(path_vect = path_vect,
                    risk = TRUE)
 ```
 
+### Manzanas Calientes
+
+```{r riesgo_entomologicos_manzanas}
+#| warning: False
+#| message: False
+#| echo: true
+#| output: true
+#| out.width: "100%"
+path_vect <- "/Users/fdzul/Library/CloudStorage/OneDrive-Personal/datasets/CENAPRECE/2023/31_yucatan"
+
+deneggs::eggs_hotblocks(path_vect = path_vect,
+                        cve_edo = "31",
+                        locality = "Valladolid",
+                        week = 50,
+                        brand = "slack")
+```
 
