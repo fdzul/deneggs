@@ -82,7 +82,7 @@ Una ovitrampa consiste en un vaso de plástico negro de una capacidad de un litr
 
 La vigilancia entomológica con ovitrampas consiste en instalar 4 ovitrampas por manzana (una ovitrampa por cada lado de la manzana) con un intervalo de separación de cada 4 a 6 manzanas en zonas planas y con un intervalo de separación de 2 a 3 manzanas en zonas con relieve.
 
-```{r}
+```{r blocks_ovitraps}
 #| warning: False
 #| message: False
 #| echo: true
@@ -98,4 +98,10 @@ Semanalmente a las ovitrampas instaladas en lugares sombreados a una altura de 1
 
 ## Análisis Geoestadístico
 
+Los datos del registro del número de huevos generados de la vigilancia entomológica con ovitrampas (es decir el número de huevos con las coordenadas geográficas finitas en la localidad de estudio),  es conceptualizado para fines del análisis espacial como una realización parcial de un proceso espacial continuo de todo el dominio de estudio (localidad). Las características y propiededades de esta realización parcial permiten conocer todo el proceso espacial y en consecuencia realizar predicciones del número de huevos en las áreas (manzanas sin muestrear) donde no se instalaron ovitrampas. 
+
+Para predecir el número de huevos en toda la localidad, se asume que la variable de respuesta $y{_s{_i}}$ tiene una distribución discreta para los datos de conteo (binomial negativa o cero inflado binomial negativa) y que existe un efecto espacial $u{_s{_i}}$ definido por cada suscripto $s{i}$ como la longitud y la latitud de la ovitrampa 1 a la n en cada localidad de estudio. Las $u{_s{_i}}$ son espacialmente correlacionadas (existe dependencia espacial) con media y una matriz de covarianzas Σ. La solución del efecto espacial es resuelta a través de Stochastic Partial differential Equation (SPDE) e Integrated Nested Laplace Approximations (INLA). El algoritmo para el análisis es presentado a continuación (Figura).
+
 ### Análisis Geoestadístico de la Vigilancia Entomológica
+
+
