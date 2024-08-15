@@ -104,4 +104,166 @@ Para predecir el número de huevos en toda la localidad, se asume que la variabl
 
 ### Análisis Geoestadístico de la Vigilancia Entomológica
 
+En analisis geoestadístico de la vigilancia entomológica con ovitrampas se realiza con el paquete [deneggs](https://fdzul.github.io/deneggs/). El paquete es parte del dengueverse & tiene tres funciones para realizar la predicción del número de huevos en áreas donde no se colectó de una localidad.
+
+   - [spde_pred_map](https://fdzul.github.io/deneggs/reference/spde_pred_map.html)
+   - [eggs_hotspots](https://fdzul.github.io/deneggs/reference/eggs_hotspots.html)
+   - [eggs_hotspots_week](https://fdzul.github.io/deneggs/reference/eggs_hotspots_week.html)
+
+La función [spde_pred_map](https://fdzul.github.io/deneggs/reference/spde_pred_map.html) tiene la característica de realizar el analisis geoestadístico por semana con siete diferentes distribuciones (poisson, zeroinflatedpoisson0, zeroinflatedpoisson1, nbinomial, nbinomial2, zeroinflatednbinomial0, & zeroinflatednbinomial1). La función [eggs_hotspots](https://fdzul.github.io/deneggs/reference/eggs_hotspots.html) realiza el análisis por semana con solo una distribución y la función [eggs_hotspots_week](https://fdzul.github.io/deneggs/reference/eggs_hotspots_week.html) realiza el análisis para todas las semanas del año. Los argumentos estas tres funciones son definidos en la siguiente tabla.
+
+
+```{r echo=FALSE}
+ a <- tibble::tibble(argumentos = c("path_lect", "path_coord", 
+                              "locality",  "cve_ent", 
+                              "longitude", "latitude",
+                              "year", "week o sem", 
+                              "var", "plot", "k"),
+               spde_pred_map = c(T, T, T, T,T,
+                                 T, F, T, T, T, T),
+               eggs_hotspots = c(T, T, T, T,T,
+                                 T, T, T, T, T, T),
+    definicion = c("Es la ruta de la carpetas donde estan guardadas las ovitrampas",
+                   "Es la ruta de la carpetas donde estan guardadas las coordenadas",
+                   "Es la localidad de Interes",
+                   "Es la clave del estado",
+                   "Es la coordenadas geográfica (longitud)",
+                   "Es la coordenadas geográfica (latitud)",
+                   "Es el año", "Es la semana epidemiológica",
+                   "Es la variable de Interes",
+                   "Es un valor logico para definir si se visualiza el mesh (TRUE) o no (FALSE)",
+                   "Es el parámetro para definir los triangulos interiores y exteriores")) 
+
+
+b <- tibble::tibble(argumentos = c("fam", 
+                             "aproximation", "integration",
+                             "alpha", "cell_size",
+                             "leg_title",
+                             "palette_vir",
+                             "hist_dataset"),
+               spde_pred_map = c(F, T, T, T,T,
+                                 T, T, F),
+               eggs_hotspots = c(T, T, T, T,T,
+                                 T, T, T ),
+               definicion = c("Nombre de la Distribució",
+                              "Es el método de aproximación para calcular los hiperparametros y valores marginales. Las opciones son gaussian, simplified.laplace & laplace",
+                              "Es la estrategia de integración. Las opciones son grid, eb & ccd)",
+                              "Nivel de Significancia",
+                              "Es el tamaño de muestra para predecir",
+                              "Título de la leyenda",
+                              "Es la paleta de viridis. Las opciones son magma, inferno, plasma & viridis", 
+                              "Es un valor lógico para definir las bases históricas (FALSE) ó la actual base de datos (FALSE)")) 
+dplyr::bind_rows(a,b) |>
+  reactable::reactable(defaultPageSize = 10,
+                         theme = reactablefmtr::flatly(),
+                         filterable = FALSE,
+                         striped = TRUE,
+                         #minRows = 10,
+                         resizable = TRUE, 
+                         wrap = TRUE, 
+                         bordered = TRUE,
+                       columns = list(spde_pred_map = reactable::colDef(style = reactablefmtr::cell_style(font_size = 20),
+                                                                       cell = function(value) {
+                           if (value == F) "\u274c No" else "\u2714\ufe0f Yes"}),
+                           eggs_hotspots = reactable::colDef(style = reactablefmtr::cell_style(font_size = 20),
+                                                             cell = function(value) {
+                           if (value == F) "\u274c No" else "\u2714\ufe0f Yes"}),
+                           argumentos = reactable::colDef(style = reactablefmtr::cell_style(font_size = 20)), 
+                           definicion = reactable::colDef(style = reactablefmtr::cell_style(font_size = 20))))
+```
+
+
+### Predicción de huevos por semana
+
+####  función **spde_pred_map**
+
+Código
+```{r spde_pred_map, warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%'}
+#| echo: true
+#| output: false
+# Step 1. define the path ####
+path_ovitraps <- "/Users/fdzul/Dropbox/CENAPRECE/2024/12_guerrero"
+path_coordinates <- paste(path_ovitraps, 
+                          "DescargaOvitrampasMesFco.txt", 
+                          sep = "/")
+# Step 2. run the function #### 
+library(magrittr)
+library(sf)
+x <- deneggs::spde_pred_map(path_lect = path_ovitraps,
+                            path_coord = path_coordinates,
+                            cve_ent = "12",
+                            locality = "Acapulco de Juarez",
+                            longitude  = "Pocision_X",
+                            latitude =  "Pocision_Y",
+                            aproximation = "gaussian",
+                            integration = "eb",
+                            k = 30, plot = TRUE, week = 30,
+                            var = "Huevecillos",
+                            cell_size = 2000, alpha = 0.99,
+                            palette_vir  = "magma", leg_title = "Huevos")
+```
+
+Elementos
+```{r}
+#| echo: true
+#| output: true
+names(x)
+```
+
+Distribuciones
+```{r}
+#| echo: true
+#| output: true
+# x$dics
+x$dics |>
+    dplyr::arrange(dic)
+```
+
+Mapa
+```{r, out.width = '100%', out.height= '100%', dpi=300}
+#| echo: false
+#| output: true
+x$map
+```
+
+
+####  función **eggs_hotspots**
+
+Código
+```{r eggs_hotspots_funcion, warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%'}
+#| echo: true
+#| output: false
+path_ovitraps <- "/Users/fdzul/Dropbox/CENAPRECE/2024/27_tabasco"
+path_coord <- paste(path_ovitraps,"DescargaOvitrampasMesFco.txt", 
+                    sep = "/" )
+x <- deneggs::eggs_hotspots(path_lect = path_ovitraps,
+                            cve_ent = "27",
+                            locality  = "Villahermosa",
+                            path_coord = path_coord,
+                            longitude  = "Pocision_X",
+                            latitude =  "Pocision_Y",
+                            aproximation = "gaussian",
+                            integration = "eb",
+                            fam = "zeroinflatednbinomial1",
+                            k = 80, palette_vir  = "magma",
+                            leg_title = "Huevos", plot = FALSE,
+                            hist_dataset = FALSE, sem = 29,
+                            var = "eggs", cell_size = 3000,
+                            alpha = .99)
+```
+
+Elementos
+```{r}
+#| echo: true
+#| output: true
+names(x)
+```
+
+Mapa
+```{r, out.width = '100%', out.height= '100%', dpi=300}
+#| echo: true
+#| output: true
+x$map
+```
+
 
