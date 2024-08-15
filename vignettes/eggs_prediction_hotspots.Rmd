@@ -18,8 +18,84 @@ knitr::opts_chunk$set(
 library(deneggs)
 ```
 
+## Vigilancia Entomológica con Ovitrampas en México
 
-## Vigilancia Entomologica con Ovitrampas
+### Ovitrampa
 
-## Análisis Geoestadístico 
+Una ovitrampa consiste en un vaso de plástico negro de una capacidad de un litro cubierto en su superficie interior con papel pellón (F-1600) y rellenado con agua potable aproximadamente 3/4 ó hasta 2-cm antes su borde superior.
+
+<html>
+
+<head>
+
+```{=html}
+<style>
+.grid-container {
+  display: grid;
+  gap: 0px;
+  background-color: #FFFFFF;
+  padding: 1px;
+}
+
+.grid-item1 {
+  background-color: rgba(255, 255, 255);
+  text-align: center;
+  padding: 0px;
+  font-size: 1px;
+}
+
+
+.item2 {
+  grid-column: 1 / span 3;
+  grid-row: 3;
+}
+</style>
+```
+</head>
+
+<body>
+
+
+::: grid-container
+::: {.grid-item .item1}
+![](/Users/fdzul/Downloads/IMG_6173/IMG_6137.JPG){width=98%}
+:::
+
+::: {.grid-item .item1}
+![](/Users/fdzul/Downloads/IMG_6173/IMG_6176.JPG){width=98%}
+:::
+
+::: {.grid-item .item1}
+![](/Users/fdzul/Downloads/IMG_6173/IMG_6186.JPG){width=98%}
+:::
+
+::: {.grid-item .item2}
+![](/Users/fdzul/Downloads/IMG_6173/IMG_6150.JPG){width=99%}
+:::
+:::
+
+</body>
+
+</html>
+
+### Sistema de Vigilancia Entomológica con Ovitrampas.
+
+La vigilancia entomológica con ovitrampas consiste en instalar 4 ovitrampas por manzana (una ovitrampa por cada lado de la manzana) con un intervalo de separación de cada 4 a 6 manzanas en zonas planas y con un intervalo de separación de 2 a 3 manzanas en zonas con relieve.
+
+```{r}
+#| warning: False
+#| message: False
+#| echo: true
+#| output: true
+#| out.width: "100%"
+path <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan/DescargaOvitrampasMesFco.txt"
+deneggs::blocks_surveillance(locality = "Ticul",
+                             cve_edo = "31",
+                             path_coords = path)
+```
+
+Semanalmente a las ovitrampas instaladas en lugares sombreados a una altura de 1.5, se les retira el sustrato de oviposición y se les cambia por un sustrato nuevo y agua. El número de huevos en la papeleta es contado y registrado. La información asociada a la papeleta (localidad, municipio, manzana, sector, fecha, colector y número de huevos) es capturado en el sistema de Monitoreo Integral de Vectores de la Secretaría de Salud Federal (<http://geosis.mx/Aplicaciones/SisMV/Home/Dengue>) (Secretaría de Salud [SSA], 2019; Mejía-Guevara et al, 2020).
+
+## Análisis Geoestadístico
+
 ### Análisis Geoestadístico de la Vigilancia Entomológica
