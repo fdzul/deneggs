@@ -267,3 +267,46 @@ x$map
 ```
 
 
+### Predicción de huevos por año
+
+####  función **eggs_hotspots_week**
+
+Código 
+```{r, warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%', dpi=300}
+# Step 1. define the path ####
+path_ovitraps <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
+path_coordinates <- paste(path_ovitraps, "DescargaOvitrampasMesFco.txt", sep = "/")
+
+library(sf)
+library(INLA)
+# # Step 2. run the spde model of Merida ####
+merida <- deneggs::eggs_hotspots_week(cve_mpo = "050",
+                                           cve_edo = "31",
+                                           year = "2024",
+                                           hist_dataset = FALSE,
+                                           locality  = c("Merida", "Uman", 
+                                                         "Kanasin", "Caucel"),
+                                           path_vect = path_ovitraps,
+                                           path_coord = path_coordinates,
+                                           integration_strategy = "eb",
+                                           aproximation_method = "gaussian",
+                                           fam_distribution = "zeroinflatednbinomial1",
+                                           kvalue = 30,
+                                           plot = FALSE,
+                                           palette.viridis = "viridis",
+                                           cell.size = 5000,
+                                           alpha.value = .99)
+```
+
+Mapa de Intensidad
+```{r,warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%', dpi=300}
+deneggs::map_eggs_hotspots(betas = merida$betas,
+                           locality = c("Merida", "Uman", 
+                                        "Kanasin", "Caucel"),
+                           cve_edo = "31",
+                           palette = rcartocolor::carto_pal,
+                           name = "SunsetDark",
+                           static_map = FALSE)
+
+```
+
