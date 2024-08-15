@@ -188,18 +188,21 @@ parcial permiten conocer todo el proceso espacial y en consecuencia
 realizar predicciones del número de huevos en las áreas (manzanas sin
 muestrear) donde no se instalaron ovitrampas.</p>
 <p>Para predecir el número de huevos en toda la localidad, se asume que
-la variable de respuesta <span class="math inline">\(y{_s{_i}}\)</span>
-tiene una distribución discreta para los datos de conteo (binomial
-negativa o cero inflado binomial negativa) y que existe un efecto
-espacial <span class="math inline">\(u{_s{_i}}\)</span> definido por
+la variable de respuesta <span class="math inline">\(\color{#2EB67D}{y_i}\)</span> tiene una
+distribución discreta para los datos de conteo (binomial negativa o cero
+inflado binomial negativa) y que existe un efecto espacial <span class="math inline">\(\color{#ECB22E}{u{_s{_i}}}\)</span> definido por
 cada suscripto <span class="math inline">\(s{i}\)</span> como la
 longitud y la latitud de la ovitrampa 1 a la n en cada localidad de
-estudio. Las <span class="math inline">\(u{_s{_i}}\)</span> son
+estudio. Las <span class="math inline">\(\color{#ECB22E}{u{_s{_i}}}\)</span> son
 espacialmente correlacionadas (existe dependencia espacial) con media y
 una matriz de covarianzas Σ. La solución del efecto espacial es resuelta
 a través de Stochastic Partial differential Equation (SPDE) e Integrated
-Nested Laplace Approximations (INLA). El algoritmo para el análisis es
-presentado a continuación (Figura).</p>
+Nested Laplace Approximations (INLA). El modelo es parametrizado con la
+ecuación <span class="math inline">\(\color{#2EB67D}{y_i} =
+\color{#36C5F0}{\beta_0} + \color{#ECB22E}{u{_s{_i}}}
++\color{#6200B4}{e_i}\)</span> y las predicciones del número de huevos
+en la localidad fueron utilizados para calcular los hotspots de las
+abundancias de huevos de <em>Ae. aegypti</em> en la localidad.</p>
 <div class="section level3">
 <h3 id="análisis-geoestadístico-de-la-vigilancia-entomológica">Análisis Geoestadístico de la Vigilancia Entomológica<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-geoestad%C3%ADstico-de-la-vigilancia-entomol%C3%B3gica"></a>
 </h3>
