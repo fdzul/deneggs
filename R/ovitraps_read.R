@@ -22,6 +22,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
     ## Step 0.1 load the ovitrap dataset ####
 
     if(current_year == TRUE){
+
         l_files <- purrr::map(list.dirs(path = path,
                                         full.names = TRUE),
                               list.files, pattern = "txt", full.names = TRUE)
@@ -34,33 +35,33 @@ ovitraps_read <- function(path, current_year, year = NULL){
                             fill = TRUE,
                             colClasses = "character",
                             fileEncoding = "UCS-2LE")  |>
-            dplyr::select(Clave, Ovitrampa, Huevecillos, Fecha.Lectura)
-        names(y) <- c("clave", "ovitrap",
-                      "eggs", "fecha_lectura")
-        y$clave <- as.character(y$clave)
-        y$clave <- ifelse(stringr::str_length(y$clave) == 17,
-                          y$clave,  stringr::str_pad(y$clave, width = 17,
-                                                     side = "left",
-                                                     pad = "0"))
-        y$ovitrap <- as.character(y$ovitrap)
-        y$ovitrap <- ifelse(stringr::str_length(y$ovitrap) == 9,
-                            y$ovitrap,  stringr::str_pad(y$ovitrap, width = 9,
-                                                         side = "left",
-                                                         pad = "0"))
-
-        y$eggs <- as.numeric(y$eggs)
-        y$edo <- stringr::str_sub(y$clave, 1, 2)
-        y$mpo <- stringr::str_sub(y$clave, 3, 5)
-        y$loc <- stringr::str_sub(y$clave, 6, 9)
-        y$sector <- stringr::str_sub(y$clave, 10, 13)
-        y$manzana <- stringr::str_sub(y$clave, 14, 17)
-        y$date <- lubridate::dmy(y$fecha_lectura)
-        y$year <- lubridate::year(y$date)
-        y$week <-  lubridate::epiweek(y$date)
-        y$fecha_lectura <- NULL
-        y$clave <- as.numeric(y$clave)
-        y$ovitrap <- stringr::str_trim(y$ovitrap, side = "both")
-        y
+            dplyr::select(Clave, Ovitrampa, Huevecillos, Fecha.Lectura) |>
+            dplyr::rename(clave = Clave,
+                          ovitrap = Ovitrampa,
+                          eggs = Huevecillos,
+                          fecha_lectura = Fecha.Lectura) |>
+            dplyr::mutate(clave = as.character(clave),
+                          ovitrap = as.character(ovitrap)) |>
+            dplyr::mutate(clave = ifelse(stringr::str_length(clave) == 17,
+                                         clave,  stringr::str_pad(clave, width = 17,
+                                                                  side = "left",
+                                                                  pad = "0")),
+                          ovitrap = ifelse(stringr::str_length(ovitrap) == 9,
+                                           ovitrap,  stringr::str_pad(ovitrap, width = 9,
+                                                                      side = "left",
+                                                                      pad = "0"))) |>
+            dplyr::mutate(eggs = as.numeric(eggs),
+                          edo = stringr::str_sub(clave, 1, 2),
+                          mpo = stringr::str_sub(clave, 3, 5),
+                          loc = stringr::str_sub(clave, 6, 9),
+                          sector = stringr::str_sub(clave, 10, 13),
+                          manzana = stringr::str_sub(clave, 14, 17),
+                          date = lubridate::dmy(fecha_lectura),
+                          year = lubridate::year(date),
+                          week =  lubridate::epiweek(date),
+                          fecha_lectura = NULL,
+                          clave = as.numeric(clave),
+                          ovitrap = stringr::str_trim(ovitrap, side = "both"))
 
     } else {
 
