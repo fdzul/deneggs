@@ -26,7 +26,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
         l_files <- purrr::map(list.dirs(path = path,
                                         full.names = TRUE),
                               list.files, pattern = "txt", full.names = TRUE)
-        l <- unlist(purrr::map(l_files, stringr::str_subset, c("Lecturas")))
+        l <- unlist(purrr::map(l_files, stringr::str_subset, c("Lectura")))
         y <- purrr::map_dfr(l, utils::read.table,
                             sep = "\t",
                             header = TRUE,
@@ -69,7 +69,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
         l_files <- purrr::map(list.dirs(path = path,
                                         full.names = TRUE),
                               list.files, pattern = "csv", full.names = TRUE)
-        l <- unlist(purrr::map(l_files, stringr::str_subset, c("Lecturas")))
+        l <- unlist(purrr::map(l_files, stringr::str_subset, c("Lectura")))
 
         z <- purrr::map_dfr(l, data.table::fread) |>
             dplyr::select(Clave, Ovitrampa, Huevecillos, "Fecha Lectura", Sector, Manzana) |>
@@ -111,8 +111,6 @@ ovitraps_read <- function(path, current_year, year = NULL){
                           ovitrap = stringr::str_trim(ovitrap, side = "both"))
 
         dplyr::bind_rows(y, z)
-
-
 
 
     } else {
