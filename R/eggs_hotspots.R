@@ -80,18 +80,17 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
         dplyr::mutate(Entidad = stringr::str_sub(Entidad, start = 4, end = -1),
                       Municipio = stringr::str_sub(Municipio, start = 5, end = -1),
                       Localidad = stringr::str_sub(Localidad, start = 6, end = -1))  |>
-        dplyr::mutate(Localidad = stringr::str_to_title(Localidad))
+        dplyr::mutate(Localidad = stringr::str_to_title(Localidad)) |>
+        dplyr::rename(clave = Clave) |>
+        dplyr::rename(ovitrap = Ovitrampa)
 
-    names(y)[1] <- "clave"
 
     # Step 0.3 joint the coordinates ####
-    x$Ovitrampa <- as.numeric(x$ovitrap)
-    y$Ovitrampa <- as.numeric(y$Ovitrampa)
+    x$ovitrap <- as.numeric(x$ovitrap)
     y$clave <- as.numeric(y$clave)
-    x$clave <- as.numeric(x$clave)
     x <- dplyr::left_join(x = x,
                           y = y,
-                          by = c("Ovitrampa",
+                          by = c("ovitrap",
                                  "clave"))  |>
         dplyr::mutate(long = Pocision_X,
                       lat = Pocision_Y)  |>
@@ -133,8 +132,62 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
 
     #p <- deneggs::loc_grid_points(sf = loc, cell_size = cell_size)
     set.seed(123456)
-    p <- sf::st_sample(x = loc, size = cell_size, type = "regular") |>
-        sf::st_as_sf()
+    #p <- sf::st_sample(x = loc, size = cell_size, type = "regular") |>
+    #    sf::st_as_sf()
+
+    # Step 2. load the raster ####
+    if(cve_ent == "11"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "temp_100m_11.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "12"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "temp_100m_12.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "14"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "temp_100m_14.tif",
+                                       package = "deneggs"))
+    }
+    if(cve_ent == "16"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "temp_100m_16.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "27"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "temp_100m_27.tif",
+                                       package = "deneggs"))
+    }
+
+
+
+    extract_coord <- function(raster,
+                              loc){
+        terra::crop(x = raster,
+                    y = loc,
+                    mask = TRUE) |>
+            terra::as.data.frame(xy = TRUE) |>
+            dplyr::select(x, y) |>
+            sf::st_as_sf(coords = c("x", "y"),
+                         crs = 4326)
+
+    }
+
+    rast_loc <- terra::crop(x = lyr,
+                            y = loc,
+                            mask = TRUE)
+
+    p <- rast_loc |>
+        terra::as.data.frame(xy = TRUE) |>
+        dplyr::select(x, y) |>
+        sf::st_as_sf(coords = c("x", "y"),
+                     crs = 4326)
 
 
     # 3.2.3 make the projector matrix for use prediction ####
