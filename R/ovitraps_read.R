@@ -74,7 +74,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
         l <- unlist(purrr::map(l_files, stringr::str_subset, c("Lectura")))
 
         z <- purrr::map_dfr(l, data.table::fread) |>
-            dplyr::select(Clave, Ovitrampa, Huevecillos, "Fecha Lectura", Sector, Manzana) |>
+            dplyr::select(Localidad, Clave, Ovitrampa, Huevecillos, "Fecha Lectura", Sector, Manzana) |>
             tidyr::separate(Localidad, into = c(NA,"Localidad"), extra = "merge") |>
             dplyr::mutate(Localidad = stringr::str_to_title(Localidad)) |>
             dplyr::rename(clave = Clave,
