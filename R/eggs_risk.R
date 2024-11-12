@@ -17,35 +17,34 @@ eggs_risk <- function(path_vect,
                       risk){
 
     # Step 1. load the ovitrap dataset ####
-    x <- boldenr::read_dataset_bol(path = path_vect,
-                                   dataset = "vectores",
-                                   inf = "Lecturas") |>
+    x <- deneggs::ovitraps_read(path =path_vect,
+                                current_year = TRUE,
+                                year = NULL) |>
+        dplyr::mutate(ovitrap = as.numeric(ovitrap)) |>
         dplyr::filter(Localidad %in% c(locality)) |>
         dplyr::filter(Semana.Epidemiologica %in% c(weeks))
 
     # Step 2. load the ovitraps coordinates dataset ####
-
     y <- read.table(file = path_coord,
                     sep = "\t",
                     header = TRUE,
                     stringsAsFactors = FALSE,
-                    fileEncoding = "UCS-2LE")
+                    fileEncoding = "UCS-2LE") |>
+        dplyr::rename(ovitrap = Ovitrampa) |>
+        dplyr::select(-Localidad, -Clave)
 
 
     # Step 3. joint the coordinates and ovitraps ####
-    x$Ovitrampa <- as.numeric(x$Ovitrampa)
-    y$Ovitrampa <- as.numeric(y$Ovitrampa)
-
     xy <- dplyr::left_join(x = x,
                            y = y,
-                           by = "Ovitrampa") |>
-        dplyr::filter(!is.na(Huevecillos)) |>
-        as.data.frame() |>
-        dplyr::group_by(Semana.Epidemiologica) |>
+                           by = "ovitrap") |>
+        dplyr::filter(!is.na(eggs)) |>
+        dplyr::filter(!is.na(Entidad)) |>
+        dplyr::group_by(week) |>
         tidyr::nest() |>
         dplyr::mutate(risk = purrr::map(data,
                                         boldenr::risk_percentil,
-                                        var = "Huevecillos",
+                                        var = "eggs",
                                         en = TRUE)) |>
         dplyr::select(-data) |>
         tidyr::unnest(cols = c(risk))
@@ -61,7 +60,7 @@ eggs_risk <- function(path_vect,
                              alpha = .3,
                              col.regions = c("#36C5F0", "#2EB67D",
                                              "#ECB22E", "#E01E5A"),
-                             cex = "Huevecillos",
+                             cex = "eggs",
                              zcol = "risk")
     } else {
         xy |>
@@ -73,8 +72,8 @@ eggs_risk <- function(path_vect,
                              alpha = .3,
                              col.regions = c("#36C5F0", "#2EB67D",
                                              "#ECB22E", "#E01E5A"),
-                             cex = "Huevecillos",
-                             zcol = "Huevecillos")
+                             cex = "eggs",
+                             zcol = "eggs")
     }
 
 }
