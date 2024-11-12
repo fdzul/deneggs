@@ -22,7 +22,7 @@ eggs_risk <- function(path_vect,
                                 year = NULL) |>
         dplyr::mutate(ovitrap = as.numeric(ovitrap)) |>
         dplyr::filter(Localidad %in% c(locality)) |>
-        dplyr::filter(Semana.Epidemiologica %in% c(weeks))
+        dplyr::filter(week %in% c(weeks))
 
     # Step 2. load the ovitraps coordinates dataset ####
     y <- read.table(file = path_coord,
