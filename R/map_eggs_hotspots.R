@@ -81,10 +81,10 @@ map_eggs_hotspots <- function(betas,
         ggplot2::facet_wrap(facets = "year") +
         ggplot2::theme_void() +
         ggplot2::theme(legend.position = "bottom") +
-        ggplot2::theme(legend.key.size = ggplot2::unit(.8, "cm"),
-                       legend.key.width = ggplot2::unit(.5,"cm"),
+        ggplot2::theme(legend.key.size = ggplot2::unit(.4, "cm"),
+                       legend.key.width = ggplot2::unit(.6,"cm"),
                        legend.margin= ggplot2::margin(0,0,0,0),
-                       legend.box.margin= ggplot2::margin(-20,0,0,0)) +
+                       legend.box.margin= ggplot2::margin(1,0,0,0)) +
         ggplot2::theme(legend.text = ggplot2::element_text(colour = "black",
                                                            face  = "bold"),
                        legend.title = ggplot2::element_text(colour = "darkred",
