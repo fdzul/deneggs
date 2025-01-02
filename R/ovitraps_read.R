@@ -74,8 +74,12 @@ ovitraps_read <- function(path, current_year, year = NULL){
                               list.files, pattern = "csv", full.names = TRUE)
         l <- unlist(purrr::map(l_files, stringr::str_subset, c("Lectura")))
 
-        z <- purrr::map_dfr(l, data.table::fread) |>
-            dplyr::select(Localidad, Clave, Ovitrampa, Huevecillos, "Fecha Lectura", Sector, Manzana) |>
+        z <- purrr::map_dfr(l,
+                            data.table::fread,
+                            colClasses = "character") |>
+            dplyr::select(Localidad, Clave,
+                          Ovitrampa, Huevecillos, "Fecha Lectura",
+                          Sector, Manzana) |>
             dplyr::mutate(Localidad = stringr::str_sub(Localidad,
                                                        start = 6,
                                                        end = -1)) |>
