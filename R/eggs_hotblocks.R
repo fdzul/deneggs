@@ -4,13 +4,14 @@
 #' @param cve_edo is the id of state.
 #' @param locality is the locality target
 #' @param brand is the palette of color, thera are two option google o slack
-#' @param week is the week.
+#' @param wk is the target week.
 #'
 #' @return
 #' @export
 #'
 #' @examples
-eggs_hotblocks <- function(path_vect, cve_edo, locality, brand, week){
+eggs_hotblocks <- function(path_vect, cve_edo,
+                           locality, brand, wk){
 
     # Step 1. load the dataset ####
     #x  <- boldenr::read_dataset_bol(path = path_vect,
@@ -26,7 +27,7 @@ eggs_hotblocks <- function(path_vect, cve_edo, locality, brand, week){
 
     x <- deneggs::ovitraps_read(path = path_vect,
                                 current_year = TRUE) |>
-        dplyr::filter(week %in% c(week)) |>
+        dplyr::filter(week %in% c(wk)) |>
         dplyr::filter(Localidad %in% c(similiars::find_most_similar_string(locality,
                                                                            unique(Localidad)))) |>
         dplyr::group_by(week, Localidad, clave) |>
