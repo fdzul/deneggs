@@ -11,26 +11,24 @@ ovitraps_occupancy_abundancy <- function(path_ovitraps,
                                          scale){
 
     # Step 1. Load the ovitrap dataset ####
-    y <- boldenr::read_dataset_bol(path = path_ovitraps,
-                                   dataset = "vectores",
-                                   inf = "Lecturas") |>
-        dplyr::mutate(sec_manz = paste(Sector, Manzana, sep = "")) |>
-        dplyr::group_by(Semana.Epidemiologica, Localidad) |>
+    y <- deneggs::ovitraps_read(path = path_ovitraps,
+                                current_year = TRUE) |>
+        dplyr::mutate(sec_manz = paste(sector, manzana, sep = "")) |>
+        dplyr::group_by(week, Localidad) |>
         dplyr::summarise(n_blocks = data.table::uniqueN(sec_manz),
-                         n_block_positive = data.table::uniqueN(sec_manz[Huevecillos > 0]),
-                         n_ovitraps_install = length(unique(Ovitrampa)),
-                         n_ovitraps_positive = sum(Huevecillos > 0, na.rm = TRUE),
-                         n_ovitraps_negative = sum(Huevecillos <= 0, na.rm = TRUE),
+                         n_block_positive = data.table::uniqueN(sec_manz[eggs > 0]),
+                         n_ovitraps_install = length(unique(ovitrap)),
+                         n_ovitraps_positive = sum(eggs > 0, na.rm = TRUE),
+                         n_ovitraps_negative = sum(eggs <= 0, na.rm = TRUE),
                          n_ovitraps_lectura = n_ovitraps_positive + n_ovitraps_negative,
-                         sum_ovitrap_positive = sum(Huevecillos, na.rm = TRUE),
+                         sum_ovitrap_positive = sum(eggs, na.rm = TRUE),
                          perc_lectura =  round(n_ovitraps_lectura/n_ovitraps_install, 2)*100,
                          perc_OP = round(n_ovitraps_positive/n_ovitraps_lectura, 2)*100,
                          perc_MP = round(n_block_positive/n_blocks, 2),
                          avg_HOP = round(sum_ovitrap_positive/n_ovitraps_positive,1),
                          avg_HMP = round(sum_ovitrap_positive/n_block_positive,1),
                          .groups = "drop") |>
-        dplyr::mutate(week = Semana.Epidemiologica,
-                      locality = Localidad) |>
+        dplyr::mutate(locality = Localidad) |>
         dplyr::select(week, locality, avg_HOP, avg_HMP, perc_OP, perc_MP, perc_lectura) |>
         tidyr::pivot_longer(cols =  c("avg_HOP", "avg_HMP",
                                       "perc_OP", "perc_MP",
