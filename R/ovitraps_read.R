@@ -36,7 +36,9 @@ ovitraps_read <- function(path, current_year, year = NULL){
                             colClasses = "character",
                             fileEncoding = "UCS-2LE")  |>
             dplyr::select(Localidad, Clave, Ovitrampa, Huevecillos, Fecha.Lectura, Sector, Manzana) |>
-            tidyr::separate(Localidad, into = c(NA,"Localidad"), extra = "merge") |>
+            dplyr::mutate(Localidad = stringr::str_sub(Localidad,
+                                                       start = 6,
+                                                       end = -1)) |>
             dplyr::mutate(Localidad = stringr::str_to_title(Localidad)) |>
             dplyr::rename(clave = Clave,
                           ovitrap = Ovitrampa,
@@ -44,8 +46,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
                           fecha_lectura = Fecha.Lectura,
                           sector = Sector,
                           manzana = Manzana) |>
-            dplyr::mutate(clave = as.character(clave),
-                          ovitrap = as.character(ovitrap)) |>
+            dplyr::mutate(ovitrap = as.character(ovitrap)) |>
             dplyr::mutate(clave = ifelse(stringr::str_length(clave) == 17,
                                          clave,  stringr::str_pad(clave, width = 17,
                                                                   side = "left",
@@ -62,7 +63,7 @@ ovitraps_read <- function(path, current_year, year = NULL){
                           year = lubridate::year(date),
                           week =  lubridate::epiweek(date),
                           fecha_lectura = NULL,
-                          clave = as.numeric(clave),
+                          #clave = as.numeric(clave),
                           ovitrap = stringr::str_trim(ovitrap, side = "both"))
 
 
