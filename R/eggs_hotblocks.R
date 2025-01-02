@@ -13,16 +13,27 @@
 eggs_hotblocks <- function(path_vect, cve_edo, locality, brand, week){
 
     # Step 1. load the dataset ####
-    x  <- boldenr::read_dataset_bol(path = path_vect,
-                                    dataset = "vectores",
-                                    inf = "Lecturas") |>
-        dplyr::filter(Semana.Epidemiologica %in% c(week)) |>
+    #x  <- boldenr::read_dataset_bol(path = path_vect,
+    #                                dataset = "vectores",
+    #                                inf = "Lecturas") |>
+    #    dplyr::filter(Semana.Epidemiologica %in% c(week)) |>
+    #    dplyr::filter(Localidad %in% c(similiars::find_most_similar_string(locality,
+    #                                                                       unique(Localidad)))) |>
+    #    dplyr::group_by(Semana.Epidemiologica, Localidad, Clave) |>
+    #    dplyr::summarise(mean = round(mean(Huevecillos, na.rm = TRUE),
+    #                                  digits = 1),
+    #                     .groups = "drop")
+
+    x <- deneggs::ovitraps_read(path = path_vect,
+                                current_year = TRUE) |>
+        dplyr::filter(week %in% c(week)) |>
         dplyr::filter(Localidad %in% c(similiars::find_most_similar_string(locality,
                                                                            unique(Localidad)))) |>
-        dplyr::group_by(Semana.Epidemiologica, Localidad, Clave) |>
-        dplyr::summarise(mean = round(mean(Huevecillos, na.rm = TRUE),
+        dplyr::group_by(week, Localidad, clave) |>
+        dplyr::summarise(mean = round(mean(eggs, na.rm = TRUE),
                                       digits = 1),
-                         .groups = "drop")
+                         .groups = "drop") |>
+        dplyr::filter(!is.na(mean))
 
     # Step 2. load the blocks ine 2020 ####
     if(cve_edo %in% c(rep(26:32))){
@@ -72,7 +83,7 @@ eggs_hotblocks <- function(path_vect, cve_edo, locality, brand, week){
     x_blocks <- dplyr::left_join(x = blocks_ine |>
                                      dplyr::select(geometry, id, cve_geo),
                                  y = x,
-                                 by  = c("cve_geo" = "Clave")) |>
+                                 by  = c("cve_geo" = "clave")) |>
         dplyr::filter(!is.na(Localidad)) |>
         dplyr::select(Localidad:geometry)
 
