@@ -44,15 +44,15 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
         x <- deneggs::ovitraps_read(path = path_lect,
                                     current_year = TRUE)  |>
             dplyr::arrange(week)  |>
-            dplyr::filter(week %in% c(sem))
+            dplyr::filter(week %in% c(sem)) |>
+            dplyr::mutate(ovitrap = as.numeric(ovitrap))
 
     } else {
         x <- deneggs::ovitraps_read(path = path_lect,
                                     current_year = FALSE,
                                     year = c(year))  |>
             dplyr::arrange(week)  |>
-            dplyr::filter(week %in% c(sem)) |>
-            dplyr::mutate(ovitrap = as.numeric(ovitrap))
+            dplyr::filter(week %in% c(sem))
     }
 
 
