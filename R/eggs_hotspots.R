@@ -51,7 +51,8 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
                                     current_year = FALSE,
                                     year = c(year))  |>
             dplyr::arrange(week)  |>
-            dplyr::filter(week %in% c(sem))
+            dplyr::filter(week %in% c(sem)) |>
+            dplyr::mutate(ovitrap = as.numeric(ovitrap))
     }
 
 
@@ -88,6 +89,7 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
     # Step 0.3 joint the coordinates ####
     #x$ovitrap <- as.numeric(x$ovitrap)
     #y$clave <- as.numeric(y$clave)
+
 
     x <- dplyr::left_join(x = x,
                           y = y,
