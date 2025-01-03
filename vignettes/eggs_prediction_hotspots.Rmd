@@ -25,7 +25,6 @@ library(deneggs)
 Una ovitrampa consiste en un vaso de plástico negro de una capacidad de un litro cubierto en su superficie interior con papel pellón (F-1600) y rellenado con agua potable aproximadamente 3/4 ó hasta 2-cm antes su borde superior.
 
 <html>
-
 <head>
 
 ```{=html}
@@ -45,38 +44,40 @@ Una ovitrampa consiste en un vaso de plástico negro de una capacidad de un litr
 }
 
 
-.item2 {
+.grid-item2 {
   grid-column: 1 / span 3;
   grid-row: 3;
 }
 </style>
 ```
 </head>
-
 <body>
 
-
 ::: grid-container
-::: {.grid-item.item1}
-![](IMG_6137.JPG){width=98%}
+
+::: {.grid-item1}
+![](https://github.com/fdzul/deneggs/blob/master/IMG_6137.JPG?raw=true){width=98%}
 :::
 
-::: {.grid-item.item1}
-![](IMG_6176.JPG){width=98%}
+::: {.grid-item1}
+![](https://github.com/fdzul/deneggs/blob/master/IMG_6176.JPG?raw=true){width=98%}
 :::
 
-::: {.grid-item.item1}
-![](IMG_6186.JPG){width=98%}
+::: {.grid-item1}
+![](https://github.com/fdzul/deneggs/blob/master/IMG_6186.JPG?raw=true){width=98%}
 :::
 
-::: {.grid-item.item2}
-![](IMG_6150.JPG){width=99%}
+::: {.grid-item2}
+![](https://github.com/fdzul/deneggs/blob/master/IMG_6150.JPG?raw=true){width=98%}
 :::
+
+
 :::
 
 </body>
-
 </html>
+
+
 
 ### Sistema de Vigilancia Entomológica con Ovitrampas.
 
@@ -295,7 +296,7 @@ leon <- deneggs::eggs_hotspots_week(cve_mpo = "020",
                                     plot = FALSE,
                                     palette.viridis = "viridis",
                                     cell.size = 2000,
-                                    alpha.value = .99)
+                                   alpha.value = .99)
 ```
 
 Mapa de Intensidad
