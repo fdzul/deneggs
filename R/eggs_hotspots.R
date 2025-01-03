@@ -86,8 +86,9 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
 
 
     # Step 0.3 joint the coordinates ####
-    x$ovitrap <- as.numeric(x$ovitrap)
-    y$clave <- as.numeric(y$clave)
+    #x$ovitrap <- as.numeric(x$ovitrap)
+    #y$clave <- as.numeric(y$clave)
+
     x <- dplyr::left_join(x = x,
                           y = y,
                           by = c("ovitrap",
