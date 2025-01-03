@@ -58,19 +58,19 @@ Una ovitrampa consiste en un vaso de plástico negro de una capacidad de un litr
 
 ::: grid-container
 ::: {.grid-item .item1}
-![](/Users/fdzul/Downloads/IMG_6173/IMG_6137.JPG){width=98%}
+![](IMG_6137.JPG){width=98%}
 :::
 
 ::: {.grid-item .item1}
-![](/Users/fdzul/Downloads/IMG_6173/IMG_6176.JPG){width=98%}
+![](IMG_6176.JPG){width=98%}
 :::
 
 ::: {.grid-item .item1}
-![](/Users/fdzul/Downloads/IMG_6173/IMG_6186.JPG){width=98%}
+![](IMG_6186.JPG){width=98%}
 :::
 
 ::: {.grid-item .item2}
-![](/Users/fdzul/Downloads/IMG_6173/IMG_6150.JPG){width=99%}
+![](IMG_6150.JPG){width=99%}
 :::
 :::
 
@@ -88,7 +88,7 @@ La vigilancia entomológica con ovitrampas consiste en instalar 4 ovitrampas por
 #| echo: true
 #| output: true
 #| out.width: "100%"
-path <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan/DescargaOvitrampasMesFco.txt"
+path <- "/Users/felipedzul/Dropbox/CENAPRECE/2024/31_yucatan/DescargaOvitrampasMesFco.txt"
 deneggs::blocks_surveillance(locality = "Ticul",
                              cve_edo = "31",
                              path_coords = path)
@@ -182,7 +182,7 @@ Código
 #| echo: true
 #| output: false
 # Step 1. define the path ####
-path_ovitraps <- "/Users/fdzul/Dropbox/CENAPRECE/2024/12_guerrero"
+path_ovitraps <- "/Users/felipedzul/Dropbox/CENAPRECE/2024/12_guerrero"
 path_coordinates <- paste(path_ovitraps, 
                           "DescargaOvitrampasMesFco.txt", 
                           sep = "/")
@@ -233,7 +233,7 @@ Código
 ```{r eggs_hotspots_funcion, warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%'}
 #| echo: true
 #| output: false
-path_ovitraps <- "/Users/fdzul/Dropbox/CENAPRECE/2024/27_tabasco"
+path_ovitraps <- "/Users/felipedzul/Dropbox/CENAPRECE/2024/27_tabasco"
 path_coord <- paste(path_ovitraps,"DescargaOvitrampasMesFco.txt", 
                     sep = "/" )
 x <- deneggs::eggs_hotspots(path_lect = path_ovitraps,
@@ -272,38 +272,37 @@ x$map
 ####  función **eggs_hotspots_week**
 
 Código 
-```{r, warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%', dpi=300}
+```{r leon_spde, warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%', dpi=300}
 # Step 1. define the path ####
-path_ovitraps <- "/Users/fdzul/Dropbox/CENAPRECE/2024/31_yucatan"
+path_ovitraps <- "/Users/felipedzul/Dropbox/CENAPRECE/2024/11_guanajuato"
 path_coordinates <- paste(path_ovitraps, "DescargaOvitrampasMesFco.txt", sep = "/")
+
 
 library(sf)
 library(INLA)
-# # Step 2. run the spde model of Merida ####
-merida <- deneggs::eggs_hotspots_week(cve_mpo = "050",
-                                           cve_edo = "31",
-                                           year = "2024",
-                                           hist_dataset = FALSE,
-                                           locality  = c("Merida", "Uman", 
-                                                         "Kanasin", "Caucel"),
-                                           path_vect = path_ovitraps,
-                                           path_coord = path_coordinates,
-                                           integration_strategy = "eb",
-                                           aproximation_method = "gaussian",
-                                           fam_distribution = "zeroinflatednbinomial1",
-                                           kvalue = 30,
-                                           plot = FALSE,
-                                           palette.viridis = "viridis",
-                                           cell.size = 5000,
-                                           alpha.value = .99)
+# # Step 2. run the spde model of Leon ####
+leon <- deneggs::eggs_hotspots_week(cve_mpo = "020",
+                                    cve_edo = "11",
+                                    year = "2024",
+                                    hist_dataset = FALSE,
+                                    locality  = "Leon de Aldama",
+                                    path_vect = path_ovitraps,
+                                    path_coord = path_coordinates,
+                                    integration_strategy = "eb",
+                                    aproximation_method = "gaussian",
+                                    fam_distribution = "zeroinflatednbinomial1",
+                                    kvalue = 40,
+                                    plot = TRUE,
+                                    palette.viridis = "viridis",
+                                    cell.size = 2000,
+                                    alpha.value = .99)
 ```
 
 Mapa de Intensidad
-```{r,warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%', dpi=300}
-deneggs::map_eggs_hotspots(betas = merida$betas,
-                           locality = c("Merida", "Uman", 
-                                        "Kanasin", "Caucel"),
-                           cve_edo = "31",
+```{r betas,warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%', dpi=300}
+deneggs::map_eggs_hotspots(betas = leon$betas,
+                           locality = "Leon de Aldama",
+                           cve_edo = "11",
                            palette = rcartocolor::carto_pal,
                            name = "SunsetDark",
                            static_map = FALSE)
