@@ -57,19 +57,19 @@ Una ovitrampa consiste en un vaso de plástico negro de una capacidad de un litr
 
 
 ::: grid-container
-::: {.grid-item .item1}
+::: {.grid-item.item1}
 ![](IMG_6137.JPG){width=98%}
 :::
 
-::: {.grid-item .item1}
+::: {.grid-item.item1}
 ![](IMG_6176.JPG){width=98%}
 :::
 
-::: {.grid-item .item1}
+::: {.grid-item.item1}
 ![](IMG_6186.JPG){width=98%}
 :::
 
-::: {.grid-item .item2}
+::: {.grid-item.item2}
 ![](IMG_6150.JPG){width=99%}
 :::
 :::
@@ -292,7 +292,7 @@ leon <- deneggs::eggs_hotspots_week(cve_mpo = "020",
                                     aproximation_method = "gaussian",
                                     fam_distribution = "zeroinflatednbinomial1",
                                     kvalue = 40,
-                                    plot = TRUE,
+                                    plot = FALSE,
                                     palette.viridis = "viridis",
                                     cell.size = 2000,
                                     alpha.value = .99)
