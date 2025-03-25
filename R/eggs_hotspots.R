@@ -96,8 +96,7 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
 
     x <- dplyr::left_join(x = x,
                           y = y,
-                          by = c("ovitrap",
-                                 "clave"))  |>
+                          by = c("ovitrap"))  |>
         dplyr::mutate(long = Pocision_X,
                       lat = Pocision_Y)  |>
         dplyr::filter(!is.na(long))  |>
