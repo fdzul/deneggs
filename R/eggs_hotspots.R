@@ -354,7 +354,7 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
         sf::st_as_sf(coords = c("x", "y"),
                      crs = 4326)
 
-    p <- rast_loc[loc,]
+    p <- p[loc,]
 
 
     # 3.2.3 make the projector matrix for use prediction ####
