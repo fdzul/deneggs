@@ -96,7 +96,7 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
 
     x <- dplyr::left_join(x = x,
                           y = y,
-                          by = c("ovitrap"))  |>
+                          by = "ovitrap")  |>
         dplyr::mutate(long = Pocision_X,
                       lat = Pocision_Y)  |>
         dplyr::filter(!is.na(long))  |>
@@ -129,9 +129,6 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
     A_mod <- INLA::inla.spde.make.A(mesh = mesh,
                                     loc = cbind(x[, c(longitude)],
                                                 x[, c(latitude)]))
-
-
-
 
     # 3.2.2 extract the coordinates of grid point prediction #####
 
