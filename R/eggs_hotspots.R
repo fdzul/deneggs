@@ -138,36 +138,199 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
     #    sf::st_as_sf()
 
     # Step 2. load the raster ####
-    if(cve_ent == "11"){
+    if(cve_ent == "01"){
         lyr <- terra::rast(system.file("extdata",
-                                       "temp_100m_11.tif",
+                                       "lyr_01.tif",
                                        package = "deneggs"))
     }
 
+    if(cve_ent == "02"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_02.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "03"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_03.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "04"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_04.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "05"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_05.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "06"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_06.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "07"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_07.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "08"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_08.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "09"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_09.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "10"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_10.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "11"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_11.tif",
+                                       package = "deneggs"))
+    }
+
+
     if(cve_ent == "12"){
         lyr <- terra::rast(system.file("extdata",
-                                       "temp_100m_12.tif",
+                                       "lyr_12.tif",
+                                       package = "deneggs"))
+    }
+
+
+    if(cve_ent == "13"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_13.tif",
                                        package = "deneggs"))
     }
 
     if(cve_ent == "14"){
         lyr <- terra::rast(system.file("extdata",
-                                       "temp_100m_14.tif",
+                                       "lyr_14.tif",
                                        package = "deneggs"))
     }
+
+    if(cve_ent == "15"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_15.tif",
+                                       package = "deneggs"))
+    }
+
     if(cve_ent == "16"){
         lyr <- terra::rast(system.file("extdata",
-                                       "temp_100m_16.tif",
+                                       "lyr_16.tif",
+                                       package = "deneggs"))
+    }
+
+
+    if(cve_ent == "17"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_17.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "18"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_18.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "19"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_19.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "20"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_20.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "21"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_21.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "22"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_22.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "23"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_23.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "24"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_24.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "25"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_25.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "26"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_26.tif",
                                        package = "deneggs"))
     }
 
     if(cve_ent == "27"){
         lyr <- terra::rast(system.file("extdata",
-                                       "temp_100m_27.tif",
+                                       "lyr_27.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "28"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_28.tif",
                                        package = "deneggs"))
     }
 
 
+    if(cve_ent == "29"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_29.tif",
+                                       package = "deneggs"))
+    }
+
+    if(cve_ent == "30"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_30.tif",
+                                       package = "deneggs"))
+    }
+    if(cve_ent == "31"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_31.tif",
+                                       package = "deneggs"))
+    }
+    if(cve_ent == "32"){
+        lyr <- terra::rast(system.file("extdata",
+                                       "lyr_32.tif",
+                                       package = "deneggs"))
+    }
 
     extract_coord <- function(raster,
                               loc){
