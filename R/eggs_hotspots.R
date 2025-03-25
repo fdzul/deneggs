@@ -69,7 +69,7 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
     if(nrow(loc) > 1){
         loc <- loc  |>  sf::st_union()
     } else {
-
+        loc
     }
 
     loc_sp <- sf::as_Spatial(from = sf::st_geometry(loc), cast = TRUE)
@@ -353,6 +353,8 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
         dplyr::select(x, y) |>
         sf::st_as_sf(coords = c("x", "y"),
                      crs = 4326)
+
+    p <- rast_loc[loc,]
 
 
     # 3.2.3 make the projector matrix for use prediction ####
