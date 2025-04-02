@@ -32,7 +32,8 @@ blocks_surveillance <- function(locality,
     } else if(cve_edo %in% c(rep(11:14))){
         blocks_ine <- rgeomex::blocks_ine20_mx_b
 
-    } else if(cve_edo %in% c(rep(1:10))){
+    } else if(cve_edo %in% c("01", "02", "03", "04", "05",
+                             "06", "07", "08", "09", "10")){
         blocks_ine <- rgeomex::blocks_ine20_mx_a |>
             sf::st_make_valid()
 
@@ -45,7 +46,8 @@ blocks_surveillance <- function(locality,
 
     # Step 3 load the sectores ####
 
-    if(cve_edo %in% c(1:10)){
+    if(cve_edo %in% c("01", "02", "03", "04", "05",
+                      "06", "07", "08", "09", "10")){
         sectores <-  rgeomex::sectores_ine20_mx_a
     } else if(cve_edo %in% c(11:20)){
         sectores <-  rgeomex::sectores_ine20_mx_b
