@@ -3,7 +3,7 @@
 #'  this function generate the map of block surveillance
 #'
 #' @param locality is the locality target.
-#' @param cve_edo is the id of state.
+#' @param cve_edo is the numeric id of state.
 #' @param path_coords is the path of coordinates file.
 #'
 #' @return
@@ -33,7 +33,8 @@ blocks_surveillance <- function(locality,
         blocks_ine <- rgeomex::blocks_ine20_mx_b
 
     } else if(cve_edo %in% c(rep(1:10))){
-        blocks_ine <- rgeomex::blocks_ine20_mx_a
+        blocks_ine <- rgeomex::blocks_ine20_mx_a |>
+            sf::st_make_valid()
 
     } else{
 
