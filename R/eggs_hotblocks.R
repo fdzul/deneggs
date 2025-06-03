@@ -43,7 +43,8 @@ eggs_hotblocks <- function(path_vect, cve_edo,
 
     } else if(cve_edo %in% c(rep(20:25))){
         blocks_ine <- rgeomex::blocks_ine20_mx_d |>
-            dplyr::filter(entidad == cve_edo)
+            dplyr::filter(entidad == cve_edo) |>
+            sf::st_make_valid()
 
     } else if(cve_edo %in% c(rep(15:19))){
         blocks_ine <- rgeomex::blocks_ine20_mx_c |>
@@ -71,7 +72,7 @@ eggs_hotblocks <- function(path_vect, cve_edo,
 
     # Step 3. load the locality shapefile ####
     z <- rgeomex::loc_inegi19_mx  |>
-        dplyr::filter(NOMGEO %in% c(similiars::find_most_similar_string(locality, unique(NOMGEO))) &
+        dplyr::filter(NOMGEO %in% c(rgeomex::find_most_similar_string(locality, unique(NOMGEO))) &
                           cve_edo %in% c(cve_edo))
 
     if(nrow(z) > 1){

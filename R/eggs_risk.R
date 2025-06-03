@@ -17,7 +17,7 @@ eggs_risk <- function(path_vect,
                       risk){
 
     # Step 1. load the ovitrap dataset ####
-    x <- deneggs::ovitraps_read(path =path_vect,
+    x <- deneggs::ovitraps_read(path = path_vect,
                                 current_year = TRUE,
                                 year = NULL) |>
         dplyr::mutate(ovitrap = as.numeric(ovitrap)) |>
