@@ -71,9 +71,8 @@ eggs_hotblocks <- function(path_vect, cve_edo,
                                       sep = ""))
 
     # Step 3. load the locality shapefile ####
-    z <- rgeomex::loc_inegi19_mx  |>
-        dplyr::filter(NOMGEO %in% c(rgeomex::find_most_similar_string(locality, unique(NOMGEO))) &
-                          cve_edo %in% c(cve_edo))
+    z <- rgeomex::extract_locality(cve_edo = cve_edo,
+                                   locality = locality)
 
     if(nrow(z) > 1){
         z <- z  |>    sf::st_union()
