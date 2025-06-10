@@ -21,16 +21,20 @@ blocks_surveillance <- function(locality,
 
     # Step 2. load the blocks ine 2020 ####
     if(cve_edo %in% c(rep(26:32))){
-        blocks_ine <- rgeomex::blocks_ine20_mx_e
+        blocks_ine <- rgeomex::blocks_ine20_mx_e |>
+            sf::st_make_valid()
 
     } else if(cve_edo %in% c(rep(20:25))){
-        blocks_ine <- rgeomex::blocks_ine20_mx_d
+        blocks_ine <- rgeomex::blocks_ine20_mx_d |>
+            sf::st_make_valid()
 
     } else if(cve_edo %in% c(rep(15:19))){
-        blocks_ine <- rgeomex::blocks_ine20_mx_c
+        blocks_ine <- rgeomex::blocks_ine20_mx_c |>
+            sf::st_make_valid()
 
     } else if(cve_edo %in% c(rep(11:14))){
-        blocks_ine <- rgeomex::blocks_ine20_mx_b
+        blocks_ine <- rgeomex::blocks_ine20_mx_b |>
+            sf::st_make_valid()
 
     } else if(cve_edo %in% c("01", "02", "03", "04", "05",
                              "06", "07", "08", "09", "10")){
