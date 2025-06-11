@@ -52,11 +52,14 @@ blocks_surveillance <- function(locality,
 
     if(cve_edo %in% c("01", "02", "03", "04", "05",
                       "06", "07", "08", "09", "10")){
-        sectores <-  rgeomex::sectores_ine20_mx_a
+        sectores <-  rgeomex::sectores_ine20_mx_a |>
+            sf::st_make_valid()
     } else if(cve_edo %in% c(11:20)){
-        sectores <-  rgeomex::sectores_ine20_mx_b
+        sectores <-  rgeomex::sectores_ine20_mx_b |>
+            sf::st_make_valid()
     } else if(cve_edo %in% c(21:32)){
-        sectores <-  rgeomex::sectores_ine20_mx_c
+        sectores <-  rgeomex::sectores_ine20_mx_c |>
+            sf::st_make_valid()
     }
 
 
