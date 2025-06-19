@@ -4,7 +4,7 @@
 \alias{eggs_hotblocks}
 \title{eggs_hotblocks}
 \usage{
-eggs_hotblocks(path_vect, cve_edo, locality, brand, week)
+eggs_hotblocks(path_vect, cve_edo, locality, brand, wk)
 }
 \arguments{
 \item{path_vect}{is the directory of the ovitrampas dataset.}
@@ -15,7 +15,7 @@ eggs_hotblocks(path_vect, cve_edo, locality, brand, week)
 
 \item{brand}{is the palette of color, thera are two option google o slack}
 
-\item{week}{is the week.}
+\item{wk}{is the target week.}
 }
 \description{
 eggs_hotblocks
