@@ -95,7 +95,18 @@ indicators <- function(path_ovitraps, scale, locality,fac_axes){
                            axis.text.y.right = ggplot2::element_text(color = "#E01A59",
                                                                      size=10),
                            axis.text.y = ggplot2::element_text(color = "#2EB67D",
-                                                               size=10))
+                                                               size=10),
+                           panel.grid.major = ggplot2::element_line("grey90"),
+                           panel.grid.minor = ggplot2::element_line("grey90")) +
+            ggplot2::geom_text(ggplot2::aes(x = week, y = value/fac_axes, label = round(value,1)),
+                               vjust = -0.5,
+                               size = 3.5,
+                               color = "#000000") +
+            ggplot2::geom_text(data = y,
+                               ggplot2::aes(x = week,
+                                            y = value/fac_axes, label = round(value, 1)),
+                               size = 2,
+                               vjust = 0.15)
     } else {
         # Step 1. Load the ovitrap dataset ####
         z <- deneggs::ovitraps_read(path = path_ovitraps,
@@ -182,6 +193,17 @@ indicators <- function(path_ovitraps, scale, locality,fac_axes){
                            axis.text.y.right = ggplot2::element_text(color = "#E01A59",
                                                                      size=10),
                            axis.text.y = ggplot2::element_text(color = "#2EB67D",
-                                                               size=10))
+                                                               size=10),
+                           panel.grid.major = ggplot2::element_line("grey90"),
+                           panel.grid.minor = ggplot2::element_line("grey90")) +
+            ggplot2::geom_text(ggplot2::aes(x = week, y = value/fac_axes, label = round(value,1)),
+                               vjust = -0.5,
+                               size = 3.5,
+                               color = "#000000") +
+            ggplot2::geom_text(data = y,
+                               ggplot2::aes(x = week,
+                                            y = value/fac_axes, label = round(value, 1)),
+                               size = 2,
+                               vjust = 0.15)
     }
 }
