@@ -60,3 +60,5 @@ Remotes:
     davidsjoberg/similiars
 VignetteBuilder: knitr
 URL: https://fdzul.github.io/deneggs/
+Depends: 
+    R (>= 3.5)
