@@ -4,15 +4,12 @@
 #'
 #' @param locality is the locality target.
 #' @param cve_edo is the numeric id of state.
-#' @param path_coords is the path of coordinates file.
-#'
 #' @return
 #' @export
 #'
-#' @examples
+#' @examples 1+1
 blocks_surveillance <- function(locality,
-                                cve_edo,
-                                path_coords){
+                                cve_edo){
 
     # Step 1. load the locality target ####
     loc <- rgeomex::extract_locality(locality = locality,
