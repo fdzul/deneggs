@@ -68,16 +68,17 @@ blocks_surveillance <- function(locality,
 
     # Step 3. load the coordinates of ovitraps of veracruz ####
 
-    coord <- read.table(file = path_coords,
-                        sep = "\t",
-                        header = TRUE,
-                        stringsAsFactors = FALSE,
-                        fileEncoding = "UCS-2LE") |>
-        sf::st_as_sf(coords = c("Pocision_X", "Pocision_Y"),
-                     crs = 4326)
+    #coord <- read.table(file = path_coords,
+    #                    sep = "\t",
+    #                    header = TRUE,
+    #                    stringsAsFactors = FALSE,
+    #                    fileEncoding = "UCS-2LE") |>
+    #    sf::st_as_sf(coords = c("Pocision_X", "Pocision_Y"),
+    #                 crs = 4326)
+    coords <- deneggs::coords
 
     # step 4. extract the coords of locality
-    coors_loc <- coord[loc,]
+    coors_loc <- coords[loc,]
 
 
     # Step 5. extract the block with ovitraps ####
