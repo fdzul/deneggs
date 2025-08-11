@@ -1,8 +1,8 @@
-#' Polygons of blocks from Mexico of the National Electoral Institute 2020
+#' Coordinates of the ovitraps of the Entomological Surveillance System in México
 #'
-#' A spatial dataset containing of polygon data of blocks from Mexico
+#' A spatial dataset the coordinates of the ovitraps
 #'
-#' @format A sf object with 2278337 rows and 19 variables:
+#' @format A sf object with 208034 rows and 16 variables:
 #' \describe{
 #'   \item{clave}{the ids of ovitrap.}
 #'   \item{entidad}{key and state name.}
@@ -19,7 +19,8 @@
 #'   \item{semana_epidemiologica}{epidemiological week.}
 #'   \item{usuario}{user key.}
 #'   \item{fecha_captura}{capture date}
+#'   \item{geometry}{geometry}
 #'   ...
 #' }
-#' @details coordinates of ovitraps 2015-08-11.
+#' @details coordinates of ovitraps 2025-08-11.
 "coords"
