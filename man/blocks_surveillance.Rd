@@ -4,15 +4,16 @@
 \alias{blocks_surveillance}
 \title{blocks_surveillance}
 \usage{
-blocks_surveillance(locality, cve_edo, path_coords)
+blocks_surveillance(locality, cve_edo)
 }
 \arguments{
 \item{locality}{is the locality target.}
 
 \item{cve_edo}{is the numeric id of state.}
-
-\item{path_coords}{is the path of coordinates file.}
 }
 \description{
 this function generate the map of block surveillance
+}
+\examples{
+1+1
 }

@@ -69,7 +69,7 @@ eggs_hotspots(
 a list of object (data, map, loc, dics, hotspots). data is original dataset (ovitraps + coordinates). The map is the map of eggs prediction. Loc is the sf objecto of locality limit. dics is the Deviancie Information Criterio of the model. the hotspots object is the dataset with the eggs prediction and the hotspots.
 }
 \description{
-this function predicts the number of eggs using a geostatistical analysis with INLA and later calculates the hotspots of the eggs
+this function predicts the number of eggs using a geostatistical analysis with INLA and calculates the hotspots of the eggs
 }
 \details{
 \link[INLA]{inla}.

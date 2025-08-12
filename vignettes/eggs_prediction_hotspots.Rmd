@@ -89,10 +89,8 @@ La vigilancia entomológica con ovitrampas consiste en instalar 4 ovitrampas por
 #| echo: true
 #| output: true
 #| out.width: "100%"
-path <- "/Users/felipedzul/Dropbox/CENAPRECE/2024/31_yucatan/DescargaOvitrampasMesFco.txt"
 deneggs::blocks_surveillance(locality = "Ticul",
-                             cve_edo = "31",
-                             path_coords = path)
+                             cve_edo = "31")
 ```
 
 Semanalmente a las ovitrampas instaladas en lugares sombreados a una altura de 1.5, se les retira el sustrato de oviposición y se les cambia por un sustrato nuevo y agua. El número de huevos en la papeleta es contado y registrado. La información asociada a la papeleta (localidad, municipio, manzana, sector, fecha, colector y número de huevos) es capturado en el sistema de Monitoreo Integral de Vectores de la Secretaría de Salud Federal (<http://geosis.mx/Aplicaciones/SisMV/Home/Dengue>) (Secretaría de Salud [SSA], 2019; Mejía-Guevara et al, 2020).
@@ -183,7 +181,7 @@ Código
 #| echo: true
 #| output: false
 # Step 1. define the path ####
-path_ovitraps <- "/Users/felipedzul/Dropbox/CENAPRECE/2024/12_guerrero"
+path_ovitraps <- "/Users/fdzul/Dropbox/CENAPRECE/2024/12_guerrero"
 path_coordinates <- paste(path_ovitraps, 
                           "DescargaOvitrampasMesFco.txt", 
                           sep = "/")
@@ -201,7 +199,8 @@ x <- deneggs::spde_pred_map(path_lect = path_ovitraps,
                             k = 30, plot = TRUE, week = 30,
                             var = "Huevecillos",
                             cell_size = 2000, alpha = 0.99,
-                            palette_vir  = "magma", leg_title = "Huevos")
+                            palette_vir  = "magma", 
+                            leg_title = "Huevos")
 ```
 
 Elementos
@@ -234,7 +233,7 @@ Código
 ```{r eggs_hotspots_funcion, warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%'}
 #| echo: true
 #| output: false
-path_ovitraps <- "/Users/felipedzul/Dropbox/CENAPRECE/2024/27_tabasco"
+path_ovitraps <- "/Users/fdzul/Dropbox/CENAPRECE/2025/27_tabasco"
 path_coord <- paste(path_ovitraps,"DescargaOvitrampasMesFco.txt", 
                     sep = "/" )
 x <- deneggs::eggs_hotspots(path_lect = path_ovitraps,
@@ -275,9 +274,8 @@ x$map
 Código 
 ```{r leon_spde, warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%', dpi=300}
 # Step 1. define the path ####
-path_ovitraps <- "/Users/felipedzul/Dropbox/CENAPRECE/2024/11_guanajuato"
+path_ovitraps <- "/Users/fdzul/Dropbox/CENAPRECE/2025/11_guanajuato"
 path_coordinates <- paste(path_ovitraps, "DescargaOvitrampasMesFco.txt", sep = "/")
-
 
 library(sf)
 library(INLA)

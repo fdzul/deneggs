@@ -1,6 +1,6 @@
 #' eggs prediction hotspots
 #'
-#' this function predicts the number of eggs using a geostatistical analysis with INLA and later calculates the hotspots of the eggs
+#' this function predicts the number of eggs using a geostatistical analysis with INLA and calculates the hotspots of the eggs
 #'
 #' @param path_lect is the directory of the ovitrampas readings file.
 #' @param year is the year to analyze

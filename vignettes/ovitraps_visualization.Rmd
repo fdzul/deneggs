@@ -124,12 +124,13 @@ deneggs::eggs_risk(path_vect = path_vect,
 #| output: true
 #| out.width: "100%"
 # Paso 1. definir la ruta de la carpeta
-path_vect <- "/Users/fdzul/Library/CloudStorage/OneDrive-Personal/datasets/CENAPRECE/2023/31_yucatan"
+path_vect <- "/Users/fdzul/Dropbox/CENAPRECE/2025/31_yucatan"
 # Paso 2. definir el resto de argumentos y aplicar la función
+library(sf)
 deneggs::eggs_hotblocks(path_vect = path_vect,
                         cve_edo = "31",
                         locality = "Valladolid",
-                        week = 50,
+                        wk = 30,
                         brand = "slack")
 ```
 
