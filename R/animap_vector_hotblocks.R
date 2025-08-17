@@ -17,7 +17,7 @@
 #'
 #' @examples 1+1
 animap_vector_hotblocks <- function(path_ovitraps, locality,cve_edo,
-                                    dir, name, vel, xleg, yleg){
+                                    dir, name, vel, xleg, yleg, year){
     # Step 1. load the dataset ####
     x <- deneggs::ovitraps_read(path = path_ovitraps,
                                 current_year = TRUE) |>

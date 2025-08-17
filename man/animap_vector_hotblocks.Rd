@@ -12,7 +12,8 @@ animap_vector_hotblocks(
   name,
   vel,
   xleg,
-  yleg
+  yleg,
+  year
 )
 }
 \arguments{
