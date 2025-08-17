@@ -5,7 +5,7 @@
 \title{animap_vector_hotblocks: a function for create the animated map of hotblocks of eggs.}
 \usage{
 animap_vector_hotblocks(
-  path_vector,
+  path_ovitraps,
   locality,
   cve_edo,
   dir,
@@ -16,7 +16,7 @@ animap_vector_hotblocks(
 )
 }
 \arguments{
-\item{path_vector}{is the directory of ovitrap datasets.}
+\item{path_ovitraps}{is the directory of ovitrap datasets.}
 
 \item{locality}{is the locality target with the ovitraps.}
 
@@ -31,6 +31,8 @@ animap_vector_hotblocks(
 \item{xleg}{x_leg is the x position of legend. The value is in 0 to 1.}
 
 \item{yleg}{y_leg is the y position of legend. The value is in 0 to 1.}
+
+\item{year}{is the year target.}
 }
 \value{
 a gif file of animation.
