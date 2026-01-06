@@ -4,9 +4,8 @@
 #'
 #' @param locality is the locality target.
 #' @param cve_edo is the numeric id of state.
-#' @return
+#' @return a mapview object.
 #' @export
-#'
 #' @examples 1+1
 blocks_surveillance <- function(locality,
                                 cve_edo){

@@ -17,6 +17,12 @@ eggs_risk(path_vect, path_coord, weeks, locality, risk)
 
 \item{risk}{is logical value for define the risk or map the eggs.}
 }
+\value{
+a mapview object
+}
 \description{
 eggs_risk
+}
+\examples{
+1+1
 }

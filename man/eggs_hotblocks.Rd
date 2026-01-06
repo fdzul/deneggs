@@ -17,6 +17,12 @@ eggs_hotblocks(path_vect, cve_edo, locality, brand, wk)
 
 \item{wk}{is the target week.}
 }
+\value{
+a mapview object.
+}
 \description{
 eggs_hotblocks
+}
+\examples{
+1+1
 }

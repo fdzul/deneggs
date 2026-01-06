@@ -11,6 +11,12 @@ ovitraps_occupancy_abundancy(path_ovitraps, scale)
 
 \item{scale}{is a string that define the scale, there are two options ovitraps & blocks}
 }
+\value{
+a plotly object.
+}
 \description{
 ovitraps_occupancy_abundancy
+}
+\examples{
+1 + 1
 }

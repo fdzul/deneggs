@@ -3,10 +3,10 @@
 #' @param path_ovitraps is the path  of the ovitrap file.
 #' @param scale is a string that define the scale, there are two options ovitraps & blocks
 #'
-#' @return
+#' @return a plotly object.
 #' @export
 #'
-#' @examples
+#' @examples 1 + 1
 ovitraps_occupancy_abundancy <- function(path_ovitraps,
                                          scale){
 

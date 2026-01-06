@@ -6,10 +6,10 @@
 #' @param locality is the name of locality
 #' @param risk is logical value for define the risk or map the eggs.
 #'
-#' @return
+#' @return a mapview object
 #' @export
 #'
-#' @examples
+#' @examples 1+1
 eggs_risk <- function(path_vect,
                       path_coord,
                       weeks,

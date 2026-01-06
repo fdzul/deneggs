@@ -11,6 +11,9 @@ blocks_surveillance(locality, cve_edo)
 
 \item{cve_edo}{is the numeric id of state.}
 }
+\value{
+a mapview object.
+}
 \description{
 this function generate the map of block surveillance
 }

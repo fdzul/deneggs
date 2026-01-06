@@ -6,10 +6,10 @@
 #' @param brand is the palette of color, thera are two option google o slack
 #' @param wk is the target week.
 #'
-#' @return
+#' @return a mapview object.
 #' @export
 #'
-#' @examples
+#' @examples 1+1
 eggs_hotblocks <- function(path_vect, cve_edo,
                            locality, brand, wk){
 
