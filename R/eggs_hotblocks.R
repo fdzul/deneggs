@@ -77,7 +77,7 @@ eggs_hotblocks <- function(path_vect, cve_edo,
     if(nrow(z) > 1){
         z <- z  |>    sf::st_union()
     } else {
-
+        z
     }
 
     # Step 3. left joint control larvario and blocks ine 2020 datasets #### 10542

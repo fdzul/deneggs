@@ -1,4 +1,4 @@
-pandoc: 3.6.3
+pandoc: 3.8.3
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
@@ -6,4 +6,4 @@ articles:
   eggs_prediction_hotspots: eggs_prediction_hotspots.html
   eggs_prediction_week: eggs_prediction_week.html
   ovitraps_visualization: ovitraps_visualization.html
-last_built: 2026-01-06T00:16Z
+last_built: 2026-05-04T18:22Z
