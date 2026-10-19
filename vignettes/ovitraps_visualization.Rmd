@@ -8,9 +8,13 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
+# Los datos de este vignette son locales (no se distribuyen con el paquete).
+# En R-universe/CRAN el código se muestra pero no se ejecuta.
+local_data <- dir.exists("/Users/fdzul/Dropbox/CENAPRECE")
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = local_data
 )
 ```
 

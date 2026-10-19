@@ -9,3 +9,5 @@
 ^\.github$
 ^\.positai$
 ^\.claude$
+^\.DS_Store$
+^IMG_.*\.JPG$

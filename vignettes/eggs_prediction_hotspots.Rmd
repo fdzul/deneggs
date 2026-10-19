@@ -8,6 +8,8 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
+# Los datos usados desde la sección de predicción son locales.
+local_data <- dir.exists("/Users/fdzul/Dropbox/CENAPRECE")
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -177,6 +179,10 @@ dplyr::bind_rows(a,b) |>
 ####  función **spde_pred_map**
 
 Código
+```{r local_data_switch, include = FALSE}
+knitr::opts_chunk$set(eval = local_data)
+```
+
 ```{r spde_pred_map, warning=FALSE, message=FALSE, out.width = '100%', out.height= '100%'}
 #| echo: true
 #| output: false
