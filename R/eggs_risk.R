@@ -20,18 +20,19 @@ eggs_risk <- function(path_vect,
     x <- deneggs::ovitraps_read(path = path_vect,
                                 current_year = TRUE,
                                 year = NULL) |>
-        dplyr::mutate(ovitrap = as.numeric(ovitrap)) |>
-        dplyr::filter(Localidad %in% c(locality)) |>
+        janitor::clean_names()|>
+        dplyr::filter(localidad %in% c(locality)) |>
         dplyr::filter(week %in% c(weeks))
 
+
     # Step 2. load the ovitraps coordinates dataset ####
-    y <- read.table(file = path_coord,
-                    sep = "\t",
-                    header = TRUE,
-                    stringsAsFactors = FALSE,
-                    fileEncoding = "UCS-2LE") |>
-        dplyr::rename(ovitrap = Ovitrampa) |>
-        dplyr::select(-Localidad, -Clave)
+    y <- data.table::fread(path_coord,
+                           colClasses= list(character= c(1:10, 11:15)),
+                           stringsAsFactors= FALSE) |>
+        janitor::clean_names()|>
+        dplyr::rename(ovitrap = ovitrampa) |>
+        dplyr::select(-localidad, -clave)
+
 
 
     # Step 3. joint the coordinates and ovitraps ####
@@ -39,7 +40,7 @@ eggs_risk <- function(path_vect,
                            y = y,
                            by = "ovitrap") |>
         dplyr::filter(!is.na(eggs)) |>
-        dplyr::filter(!is.na(Entidad)) |>
+        dplyr::filter(!is.na(entidad)) |>
         dplyr::group_by(week) |>
         tidyr::nest() |>
         dplyr::mutate(risk = purrr::map(data,
@@ -47,14 +48,19 @@ eggs_risk <- function(path_vect,
                                         var = "eggs",
                                         en = TRUE)) |>
         dplyr::select(-data) |>
-        tidyr::unnest(cols = c(risk))
+        tidyr::unnest(cols = c(risk)) |>
+        janitor::clean_names() |>
+        sf::st_as_sf(coords = c("pocision_x",
+                                "pocision_y"),
+                     crs = 4326) |>
+        dplyr::mutate(popup = paste0("<b>Ovitrampa:</b> ", ovitrap,
+                                     "<br><b>Semana:</b> ", week,
+                                     "<br><b>Huevos:</b> ", eggs,
+                                     "<br><b>Riesgo:</b> ", risk))
 
     # Step 4. plot the results.
     if(risk == TRUE){
         xy |>
-            sf::st_as_sf(coords = c("Pocision_X",
-                                    "Pocision_Y"),
-                         crs = 4326) |>
             mapview::mapview(layer.name = "Riesgo Entomológico",
                              color = "white",
                              alpha = .3,
@@ -64,9 +70,6 @@ eggs_risk <- function(path_vect,
                              zcol = "risk")
     } else {
         xy |>
-            sf::st_as_sf(coords = c("Pocision_X",
-                                    "Pocision_Y"),
-                         crs = 4326) |>
             mapview::mapview(layer.name = "Número de Huevos",
                              color = "white",
                              alpha = .3,
