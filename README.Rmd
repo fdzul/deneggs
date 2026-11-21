@@ -22,6 +22,8 @@ knitr::opts_chunk$set(
 
 The **deneggs** package was developed by the [CENAPRECE](https://www.gob.mx/salud/cenaprece) dengue prevention and control program in collaboration with [INDRE](https://www.gob.mx/salud/acciones-y-programas/instituto-de-diagnostico-y-referencia-epidemiologicos-mision-vision-y-politica-de-calidad-181639?state=published) (Entomology Laboratory), [INSP](https://www.insp.mx) (Health Systems Research Center & Population Health Research Center), and the states of Veracruz, Tabasco, and Yucatan.
 
+deneggs is part of the [dengueverse](https://fdzul.github.io/dengueverse/), a set of R and Python packages for the analysis of dengue transmission in Mexico.
+
 
 ## **Overview**
 

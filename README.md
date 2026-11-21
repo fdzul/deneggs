@@ -22,6 +22,8 @@ control program in collaboration with
 Research Center & Population Health Research Center), and the states of
 Veracruz, Tabasco, and Yucatan.
 
+deneggs is part of the [dengueverse](https://fdzul.github.io/dengueverse/), a set of R and Python packages for the analysis of dengue transmission in Mexico.
+
 ## **Overview**
 
 The **deneggs** package was designed to generate predictive maps of the
