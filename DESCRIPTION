@@ -63,7 +63,6 @@ Suggests:
     rmarkdown,
     rcartocolor,
     reactable,
-    reactablefmtr,
     tibble
 Remotes:
     fdzul/rgeomex

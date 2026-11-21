@@ -156,21 +156,21 @@ b <- tibble::tibble(argumentos = c("fam",
                               "Es un valor lógico para definir las bases históricas (FALSE) ó la actual base de datos (FALSE)")) 
 dplyr::bind_rows(a,b) |>
   reactable::reactable(defaultPageSize = 10,
-                         theme = reactablefmtr::flatly(),
+                         theme = reactable::reactableTheme(stripedColor = "#f6f8fa", borderColor = "#dfe2e5"),
                          filterable = FALSE,
                          striped = TRUE,
                          #minRows = 10,
                          resizable = TRUE, 
                          wrap = TRUE, 
                          bordered = TRUE,
-                       columns = list(spde_pred_map = reactable::colDef(style = reactablefmtr::cell_style(font_size = 20),
+                       columns = list(spde_pred_map = reactable::colDef(style = list(fontSize = 20),
                                                                        cell = function(value) {
                            if (value == F) "\u274c No" else "\u2714\ufe0f Yes"}),
-                           eggs_hotspots = reactable::colDef(style = reactablefmtr::cell_style(font_size = 20),
+                           eggs_hotspots = reactable::colDef(style = list(fontSize = 20),
                                                              cell = function(value) {
                            if (value == F) "\u274c No" else "\u2714\ufe0f Yes"}),
-                           argumentos = reactable::colDef(style = reactablefmtr::cell_style(font_size = 20)), 
-                           definicion = reactable::colDef(style = reactablefmtr::cell_style(font_size = 20))))
+                           argumentos = reactable::colDef(style = list(fontSize = 20)), 
+                           definicion = reactable::colDef(style = list(fontSize = 20))))
 ```
 
 
