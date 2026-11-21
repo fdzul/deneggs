@@ -18,7 +18,7 @@ eggs_hotblocks <- function(path_vect, cve_edo,
     #                                dataset = "vectores",
     #                                inf = "Lecturas") |>
     #    dplyr::filter(Semana.Epidemiologica %in% c(week)) |>
-    #    dplyr::filter(Localidad %in% c(similiars::find_most_similar_string(locality,
+    #    dplyr::filter(Localidad %in% c(rgeomex::find_most_similar_string(locality,
     #                                                                       unique(Localidad)))) |>
     #    dplyr::group_by(Semana.Epidemiologica, Localidad, Clave) |>
     #    dplyr::summarise(mean = round(mean(Huevecillos, na.rm = TRUE),
@@ -28,7 +28,7 @@ eggs_hotblocks <- function(path_vect, cve_edo,
     x <- deneggs::ovitraps_read(path = path_vect,
                                 current_year = TRUE) |>
         dplyr::filter(week %in% c(wk)) |>
-        dplyr::filter(Localidad %in% c(similiars::find_most_similar_string(locality,
+        dplyr::filter(Localidad %in% c(rgeomex::find_most_similar_string(locality,
                                                                            unique(Localidad)))) |>
         dplyr::group_by(week, Localidad, clave) |>
         dplyr::summarise(mean = round(mean(eggs, na.rm = TRUE),
@@ -89,7 +89,7 @@ eggs_hotblocks <- function(path_vect, cve_edo,
         dplyr::select(Localidad:geometry)
 
     x_blocks <- x_blocks |>
-        dplyr::bind_cols(boldenr::risk_percentil(x = x_blocks |>
+        dplyr::bind_cols(.risk_percentil(x = x_blocks |>
                                                      sf::st_drop_geometry(),
                                                  var = "mean",
                                                  en = FALSE) |>

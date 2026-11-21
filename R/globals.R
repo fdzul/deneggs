@@ -9,3 +9,10 @@ utils::globalVariables(c("Localidad", "Semana.Epidemiologica", "read.table",
                          "risk", "CVE_ENT",
                          "clave", "hotspots_binary", "intensity",
                          "mpo", "ovitrap", "x", "year"))
+utils::globalVariables(c("X", "Y", "avg_HMP", "avg_HOP", "cve_geo", "entidad",
+  "fecha_lectura", "hotspots", "id", "indicador", "localidad", "locality",
+  "municipio", "n_block_positive", "n_blocks", "n_ovitraps_install",
+  "n_ovitraps_lectura", "n_ovitraps_negative", "n_ovitraps_positive", "n_week",
+  "ovitrampa", "per_intensity", "perc_MP", "perc_OP", "perc_lectura",
+  "percentil", "pocision_x", "pocision_y", "sector", "sum_ovitrap_positive",
+  "value", "y"))

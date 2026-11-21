@@ -27,33 +27,36 @@ Description: a package to generate predictive maps of the number of eggs or adul
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.3
 Imports:
-    magrittr,
-    rlang (>= 0.1.2),
-    INLA,
-    boldenr,
-    dplyr,
-    ggplot2,
-    purrr,
-    sf,
-    tidyr,
-    graphics,
-    utils,
-    methods,
+    cluster,
+    collateral,
     data.table,
-    lubridate,
-    stringr,
-    forcats,
-    similiars,
-    tmap,
-    rgeomex,
-    usethis,
-    stats,
     deldir,
+    dplyr,
+    fmesher,
+    forcats,
+    ggplot2,
+    ggspatial,
+    INLA,
+    inlabru,
+    janitor,
+    lubridate,
+    magrittr,
+    mapview,
+    methods,
+    plotly,
+    purrr,
+    rgeomex,
+    rlang (>= 0.1.2),
+    sf,
     sp,
     spdep,
-    collateral
+    stats,
+    stringr,
+    terra,
+    tidyr,
+    tmap,
+    utils
 Suggests:
     roxygen2,
     knitr,
@@ -63,11 +66,11 @@ Suggests:
     reactablefmtr,
     tibble
 Remotes:
-    fdzul/rgeomex,
-    fdzul/boldenr,
-    davidsjoberg/similiars
+    fdzul/rgeomex
 VignetteBuilder: knitr
 URL: https://fdzul.github.io/deneggs/
 Depends:
-    R (>= 3.5)
+    R (>= 4.1.0)
 Additional_repositories: https://inla.r-inla-download.org/R/stable
+Config/roxygen2/version: 8.1.0
+LazyDataCompression: xz

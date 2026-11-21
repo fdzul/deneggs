@@ -14,7 +14,6 @@
 #' @examples 1+1
 #' @references xxxxx
 #'
-#' @seealso \link[boldenr]{read_dataset_bol}
 #'
 #' @details the current and historic ovitrap dataset is download of the homepage of \href{http://kin.insp.mx/aplicaciones/SisMV}{**Sistema Integral de Monitoreo de Vectores**}.
 ovitraps_read <- function(path, current_year, year = NULL){

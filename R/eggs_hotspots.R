@@ -63,7 +63,7 @@ eggs_hotspots <- function(path_lect, year = NULL, locality, path_coord,cve_ent,
     loc <- rgeomex::extract_locality(cve_edo = cve_ent,
                                      locality = locality)
     #loc <- rgeomex::loc_inegi19_mx  |>
-    #    dplyr::filter(NOMGEO %in% c(similiars::find_most_similar_string(locality, unique(NOMGEO))) &
+    #    dplyr::filter(NOMGEO %in% c(rgeomex::find_most_similar_string(locality, unique(NOMGEO))) &
     #                      CVE_ENT %in% c(cve_ent))
 
     if(nrow(loc) > 1){

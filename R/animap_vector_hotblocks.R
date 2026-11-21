@@ -71,7 +71,7 @@ animap_vector_hotblocks <- function(path_ovitraps, locality,cve_edo,
         dplyr::group_by(week) |>
         tidyr::nest() |>
         dplyr::mutate(risk = purrr::map(data,
-                                        boldenr::risk_percentil,
+                                        .risk_percentil,
                                         var = "n",
                                         en = FALSE)) |>
         dplyr::select(-data) |>

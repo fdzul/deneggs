@@ -22,9 +22,7 @@ eggs_map <- function(path_lect, path_coord, path_shp,
                      leg_title,
                      loc, size, alpha, palette_vir, risk, weeks){
     ## Step 2. load the ovitrap dataset ####
-    x <- boldenr::read_dataset_bol(path = path_lect,
-                                   dataset = "vectores",
-                                   inf = "Lecturas") %>%
+    x <- .read_lecturas(path = path_lect) %>%
         dplyr::filter(Localidad %in% c(loc)) %>%
         dplyr::filter(Semana.Epidemiologica %in% c(weeks))
     ## Step 3. load the coordinates dataset ####
@@ -46,7 +44,7 @@ eggs_map <- function(path_lect, path_coord, path_shp,
         dplyr::group_by(Semana.Epidemiologica) %>%
         tidyr::nest() %>%
         dplyr::mutate(risk = purrr::map(data,
-                                        boldenr::risk_percentil,
+                                        .risk_percentil,
                                         var = "Huevecillos", en = TRUE)) %>%
         dplyr::select(-data) %>%
         tidyr::unnest(cols = c(risk))

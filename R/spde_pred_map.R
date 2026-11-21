@@ -39,14 +39,12 @@ spde_pred_map <- function(path_lect,locality, path_coord,cve_ent,
                           cell_size, palette_vir){
 
     ## Step 0.1 load the ovitrap dataset ####
-    x <- boldenr::read_dataset_bol(path = path_lect,
-                                   dataset = "vectores",
-                                   inf = "Lecturas")
+    x <- .read_lecturas(path = path_lect)
 
 
     # Step 0. 2 load the locality limit ####
     loc <- rgeomex::loc_inegi19_mx |>
-      dplyr::filter(NOMGEO %in% c(similiars::find_most_similar_string(locality, unique(NOMGEO))) &
+      dplyr::filter(NOMGEO %in% c(rgeomex::find_most_similar_string(locality, unique(NOMGEO))) &
                       CVE_ENT %in% c(cve_ent))
 
     if(nrow(loc) > 1){

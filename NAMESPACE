@@ -38,20 +38,24 @@ export(sym)
 export(syms)
 importFrom(magrittr,"%>%")
 importFrom(methods,slot)
-importFrom(rlang,":=")
-importFrom(rlang,.data)
-importFrom(rlang,enexpr)
-importFrom(rlang,enexprs)
-importFrom(rlang,enquo)
-importFrom(rlang,enquos)
-importFrom(rlang,ensym)
-importFrom(rlang,ensyms)
-importFrom(rlang,expr)
-importFrom(rlang,exprs)
-importFrom(rlang,quo)
-importFrom(rlang,quo_name)
-importFrom(rlang,quos)
-importFrom(rlang,sym)
-importFrom(rlang,syms)
-importFrom(stats,qnorm)
-importFrom(stats,sd)
+importFrom(rlang,
+  ":=",
+  .data,
+  enexpr,
+  enexprs,
+  enquo,
+  enquos,
+  ensym,
+  ensyms,
+  expr,
+  exprs,
+  quo,
+  quo_name,
+  quos,
+  sym,
+  syms
+)
+importFrom(stats,
+  qnorm,
+  sd
+)

@@ -82,7 +82,7 @@ indicators <- function(path_ovitraps, scale, locality,fac_axes){
             ggplot2::scale_x_continuous(breaks = seq(from = 0,
                                                      to = lubridate::epiweek(Sys.Date()),
                                                      by = 2)) +
-            ggplot2::xlab("Semanas Epidemiológicas") +
+            ggplot2::xlab("Semanas Epidemiol\u00f3gicas") +
             ggplot2::theme(strip.text = ggplot2::element_text(size = 12)) +
             ggplot2::scale_y_continuous(name = "Porcentaje de Positividad por Ovitrampa",
                                         # Add a second axis and specify its features
@@ -180,7 +180,7 @@ indicators <- function(path_ovitraps, scale, locality,fac_axes){
             ggplot2::scale_x_continuous(breaks = seq(from = 0,
                                                      to = lubridate::epiweek(Sys.Date()),
                                                      by = 2)) +
-            ggplot2::xlab("Semanas Epidemiológicas") +
+            ggplot2::xlab("Semanas Epidemiol\u00f3gicas") +
             ggplot2::theme(strip.text = ggplot2::element_text(size = 12)) +
             ggplot2::scale_y_continuous(name = "Porcentaje de Positividad por Manzana",
                                         # Add a second axis and specify its features

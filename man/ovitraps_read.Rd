@@ -28,9 +28,6 @@ the current and historic ovitrap dataset is download of the homepage of \href{ht
 \references{
 xxxxx
 }
-\seealso{
-\link[boldenr]{read_dataset_bol}
-}
 \author{
 Felipe Antonio Dzul Manzanilla \email{felipe.dzul.m@gmail.com}
 }

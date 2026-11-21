@@ -44,7 +44,7 @@ eggs_risk <- function(path_vect,
         dplyr::group_by(week) |>
         tidyr::nest() |>
         dplyr::mutate(risk = purrr::map(data,
-                                        boldenr::risk_percentil,
+                                        .risk_percentil,
                                         var = "eggs",
                                         en = TRUE)) |>
         dplyr::select(-data) |>
@@ -61,7 +61,7 @@ eggs_risk <- function(path_vect,
     # Step 4. plot the results.
     if(risk == TRUE){
         xy |>
-            mapview::mapview(layer.name = "Riesgo Entomológico",
+            mapview::mapview(layer.name = "Riesgo Entomol\u00f3gico",
                              color = "white",
                              alpha = .3,
                              col.regions = c("#36C5F0", "#2EB67D",
@@ -70,7 +70,7 @@ eggs_risk <- function(path_vect,
                              zcol = "risk")
     } else {
         xy |>
-            mapview::mapview(layer.name = "Número de Huevos",
+            mapview::mapview(layer.name = "N\u00famero de Huevos",
                              color = "white",
                              alpha = .3,
                              col.regions = c("#36C5F0", "#2EB67D",
