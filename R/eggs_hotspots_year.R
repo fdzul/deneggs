@@ -85,8 +85,8 @@ eggs_hotspots_year <- function(cve_mpo,
     list_week <- as.list(c(unique(z$week)))
 
     # Step 3. run the spde model ####
-    y <- collateral::map_peacefully(.x = list_week,
-                                    .f = hotspots,
+    y <- purrr::map(.x = list_week,
+                                    .f = purrr::safely(hotspots),
                                     hist_dataset = hist_dataset,
                                     year = year,
                                     path_lect_ovitrap = path_vect,
